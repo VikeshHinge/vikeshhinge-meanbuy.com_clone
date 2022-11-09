@@ -1,0 +1,29 @@
+
+.categories{
+    width: 95%;
+    position: absolute;
+    margin-left: -130px;
+    top: 150px;
+    background-color: beige;
+    max-height: fit-content;
+    padding: 18px;
+    text-align: left;
+}
+.flexlink {
+ flex-direction: column;
+ gap:10px;
+ flex-wrap: wrap;
+}
+
+.heading{
+   font-size: 14px;
+   font-weight: bold;
+   text-underline-offset: 1px;
+}
+.sidedrower{
+    background-color: aqua;
+    width: 22%;
+    position: absolute;
+    top: 100px;
+    margin-right: -77%;
+}
