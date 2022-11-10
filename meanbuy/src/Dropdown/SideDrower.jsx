@@ -30,6 +30,7 @@ const Sidedrower = () => {
             <Heading as='h4' size='sm'>Come on, throw something in here...</Heading>
         </VStack>:<VStack><h3>show cart product !!!!</h3></VStack>
         }
+        
         </Box>
         </>
     )
