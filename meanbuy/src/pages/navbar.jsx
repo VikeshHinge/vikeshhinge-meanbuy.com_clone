@@ -1,4 +1,4 @@
-import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer} from "@chakra-ui/react"
+import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer,VStack} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
@@ -25,17 +25,17 @@ const Navbar = () => {
     }
 
     return(
-        <>
-        <Box bg='black' color='white'>
-            <Flex alignContent='center'>
+        <VStack position='fixed' spacing='0' w='100%' bg='white' >
+        <Box bg='black' color='white'w='100%' >
+            <Flex m='auto'>
                New Year Beast Offer on Watches  
-               <Flex g='10px'>
-               <FaInstagramSquare/>
+               <Flex>
+                <FaInstagramSquare/>
                 <FaFacebook/>
                </Flex>
             </Flex>
         </Box>
-        <Box  w='100%' p={4} border='2px solid black' >
+        <Box  w='100%' p={4} boxShadow="base" >
             
             <Flex justifyContent='space-around' p='5px' >
 
@@ -61,15 +61,15 @@ const Navbar = () => {
                 <Link> Delivery Info </Link>
                 </Box>
           
-                <Box fontSize='14px' ml='50px' >
+                <Box fontSize='14px' >
                     <Link>Login</Link>/
                     <Link>Signup</Link>
-                    <Text fontWeight='bold' >WELCOME GUEST</Text>
+                    <Flex ml='10px'>
+                      <Text fontWeight='bold' mr='20px' >WELCOME GUEST</Text>
+                      <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />
+                      <Text>3</Text>
+                     </Flex>
                 </Box>
-                 <Flex ml='10px'>
-                  <IoIosCart color="F38F2F" size='25px'  onClick={()=>handeldropdown(2)}  />
-                  <Text>3</Text>
-                 </Flex>
              </Flex>
             {sidedrower === true ?  <Sidedrower/> : ""}
             </Flex>
@@ -85,7 +85,7 @@ const Navbar = () => {
          </HStack>
 
        </Box>
-        </>
+        </VStack>
     )
 }
 

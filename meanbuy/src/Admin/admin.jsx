@@ -1,6 +1,6 @@
 import axios from "axios"
 import {useState} from "react"
-
+import {Box,Button} from "@chakra-ui/react"
 let proobj = {
     title: "",
       img1: "",
@@ -54,7 +54,7 @@ let addproduct = () => {
 
 let {title,img1,img2,img3,img4,img5,img6,categories,brand,discount,rating,color,description,details,price}=prodata;
    return(
-      <div>
+      <Box bg='skyblue' pt='150px'>
          <h1>Add Product</h1>
             <input type="text" name='title' value={title} placeholder="title" onChange={handelchange}  /><br />
             <input type="text" name='img1' value={img1}  placeholder="img1" onChange={handelchange}  /><br />
@@ -73,8 +73,8 @@ let {title,img1,img2,img3,img4,img5,img6,categories,brand,discount,rating,color,
             {/* <input type="text" name='description' value={description}  placeholder="descr" onChange={handelchange}  /><br /> */}
             {/* <input type="text" name='details' value={details}  placeholder="details" onChange={handelchange}  /><br /> */}
             <textarea name="details" id="" cols="30" rows="20"value={details}   placeholder="details"  onChange={handelchange}  ></textarea>
-            <button style={{width:"200px",height:"50px"}} onClick={addproduct}>Submit</button>
-      </div>
+            <Button style={{width:"200px",height:"50px"}} onClick={addproduct}bg='green.300' >Submit</Button>
+      </Box>
    )
 }
 
