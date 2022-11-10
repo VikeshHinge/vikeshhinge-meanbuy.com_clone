@@ -1,6 +1,7 @@
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
+import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
@@ -25,7 +26,15 @@ const Navbar = () => {
 
     return(
         <>
-        <Box bg='black' color='white'>New Year Beast Offer on Watches </Box>
+        <Box bg='black' color='white'>
+            <Flex alignContent='center'>
+               New Year Beast Offer on Watches  
+               <Flex g='10px'>
+               <FaInstagramSquare/>
+                <FaFacebook/>
+               </Flex>
+            </Flex>
+        </Box>
         <Box  w='100%' p={4} border='2px solid black' >
             
             <Flex justifyContent='space-around' p='5px' >
