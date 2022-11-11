@@ -3,6 +3,7 @@ import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
+
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
 const Navbar = () => {
@@ -27,11 +28,11 @@ const Navbar = () => {
     return(
         <VStack position='fixed' spacing='0' w='100%' bg='white' >
         <Box bg='black' color='white'w='100%' >
-            <Flex m='auto'>
+            <Flex alignItems='center' justifyContent='center'>
                New Year Beast Offer on Watches  
                <Flex>
-                <FaInstagramSquare/>
-                <FaFacebook/>
+                <FaInstagramSquare color="#8a3ab9"/>
+                <FaFacebook color="#3b5998"/>
                </Flex>
             </Flex>
         </Box>
@@ -40,8 +41,8 @@ const Navbar = () => {
             <Flex justifyContent='space-around' p='5px' >
 
               <Flex spacing='24px' alignItems='center' gap="50px" >
-              <Image src='gibbresh.png' w={200}  fallbackSrc='https://d64lkarmo2mrq.cloudfront.net/baselogo.png' />
-       
+               <Link href='/'><Image src='gibbresh.png' w={200}  fallbackSrc='https://d64lkarmo2mrq.cloudfront.net/baselogo.png' /></Link>
+              
              <InputGroup size='sm' w="300px" h="10" >
              <Input placeholder='Search' size='sm' w='300px' />
              <InputRightElement width='4.5rem'>
