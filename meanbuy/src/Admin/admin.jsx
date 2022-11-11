@@ -1,6 +1,6 @@
 import axios from "axios"
 import {useState} from "react"
-import {Box,Button} from "@chakra-ui/react"
+import {Box,Button, Spacer} from "@chakra-ui/react"
 let proobj = {
     title: "",
       img1: "",
@@ -9,6 +9,7 @@ let proobj = {
       img4:"", 
       img5:"",
       img6:"",
+      vid:"",
       categories:"",
       brand:"",
       price:"",
@@ -40,6 +41,7 @@ let addproduct = () => {
     img4:prodata.img4,
     img5:prodata.img5,
     img6:prodata.img6,
+    vid:prodata.vid,
     categories:prodata.categories,
     brand:prodata.brand,
     price:prodata.price,
@@ -52,10 +54,11 @@ let addproduct = () => {
    setprodata(proobj)
 }
 
-let {title,img1,img2,img3,img4,img5,img6,categories,brand,discount,rating,color,description,details,price}=prodata;
+let {title,img1,img2,img3,img4,img5,img6,vid,categories,brand,discount,rating,color,description,details,price}=prodata;
    return(
       <Box bg='skyblue' pt='150px'>
          <h1>Add Product</h1>
+         <Button style={{width:"200px",height:"50px",marginBottom:'30px'}} onClick={addproduct}bg='green.300' >Submit</Button><br />
             <input type="text" name='title' value={title} placeholder="title" onChange={handelchange}  /><br />
             <input type="text" name='img1' value={img1}  placeholder="img1" onChange={handelchange}  /><br />
             <input type="text" name='img2' value={img2}  placeholder="img2" onChange={handelchange}  /><br />
@@ -63,6 +66,7 @@ let {title,img1,img2,img3,img4,img5,img6,categories,brand,discount,rating,color,
             <input type="text" name='img4' value={img4}  placeholder="img4" onChange={handelchange}  /><br />
             <input type="text" name='img5' value={img5}  placeholder="img5" onChange={handelchange}  /><br />
             <input type="text" name='img6' value={img6}  placeholder="img6" onChange={handelchange}  /><br />
+            <input type="text" name='vid' value={vid}  placeholder="video link" onChange={handelchange}  /><br />
             <input type="text" name='categories' value={categories}  placeholder="cate" onChange={handelchange}  /><br />
             <input type="text" name='brand' value={brand}  placeholder="brand" onChange={handelchange}  /><br />
             <input type="number" name='discount' value={discount}  placeholder="discount" onChange={handelchange}  /><br />
@@ -73,7 +77,7 @@ let {title,img1,img2,img3,img4,img5,img6,categories,brand,discount,rating,color,
             {/* <input type="text" name='description' value={description}  placeholder="descr" onChange={handelchange}  /><br /> */}
             {/* <input type="text" name='details' value={details}  placeholder="details" onChange={handelchange}  /><br /> */}
             <textarea name="details" id="" cols="30" rows="20"value={details}   placeholder="details"  onChange={handelchange}  ></textarea>
-            <Button style={{width:"200px",height:"50px"}} onClick={addproduct}bg='green.300' >Submit</Button>
+            
       </Box>
    )
 }

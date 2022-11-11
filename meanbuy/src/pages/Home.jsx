@@ -53,11 +53,11 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
     useEffect(()=>{
         FetchFilter(Data,"Home Decor")
         FetchFilter(Data,"mens watch")
-        // FetchFilter(Data,"Ballet Flats")
+         FetchFilter(Data,"Ballet Flats")
          FetchFilter(Data,"Handbags & Clutches")
         // FetchFilter(Data ,"Mobiles Accessories")//*********** */
         // FetchFilter(Data,'Small Appliances')
-        // FetchFilter(Data,'Toys') 
+         FetchFilter(Data,'Toys') 
         // FetchFilter(Data,'Watches')/*********** */
         // FetchFilter(Data,'Keyboards & Mouse')
         // FetchFilter(Data,'Bluetooth Earphone')
