@@ -12,10 +12,13 @@ import Allrouts from './AllRouts/Allrouts';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-    <Allrouts/>
-      {/* <Admin/> */}
-      <Footer/> 
+
+
+     {/* <Navbar/>  */}
+       <Home/>  
+      <Admin/>
+     <Footer/>
+       main
     </div>
   ); 
 }

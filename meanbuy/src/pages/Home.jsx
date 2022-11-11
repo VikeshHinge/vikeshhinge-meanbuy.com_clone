@@ -58,8 +58,10 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
          FetchFilter(Data ,"Mobiles Accessories")//*********** */
         // FetchFilter(Data,'Small Appliances')
          FetchFilter(Data,'Toys') 
+
          FetchFilter(Data,'Watches')/*********** */
          FetchFilter(Data,'Keyboards & Mouse')
+
         // FetchFilter(Data,'Bluetooth Earphone')
          FetchFilter(Data,'Makeup Accessories')
         // FetchFilter(Data,'Kitchen Wares')
