@@ -17,7 +17,7 @@ const Productlist = ({product}) => {
         <Swiper
         slidesPerView={4.3}
         spaceBetween={10}
-        slidesPerGroup={5}
+        slidesPerGroup={2}
         loop={true}
         loopFillGroupWithBlank={true}
         pagination={{
@@ -31,7 +31,7 @@ const Productlist = ({product}) => {
              return(
                 <SwiperSlide >
                    <Box p='10px' border='1px solid'>
-                   <Image src={element.img1} alt='Dan Abramov' mt='20px'/>
+                   <Image src={element.img1} alt={element.title} mt='20px'/>
                 <Text fontSize='sm' lineHeight='15px' mt='10px'>{element.title}</Text>
                 <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' ml='70%' mb='5px'>
                     {element.rating}/5<StarIcon />
