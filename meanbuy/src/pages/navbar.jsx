@@ -29,6 +29,7 @@ let Navbar2 = () => {
     let DataStore=JSON.parse(localStorage.getItem("CartData"));
    
     return(
+
        <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999'>
          <Box bg='black' color='white'w='100%' >
             <Flex alignItems='center' justifyContent='center'>
@@ -36,6 +37,7 @@ let Navbar2 = () => {
                <Flex>
                 <FaInstagramSquare color="#8a3ab9"/>
                 <FaFacebook color="#3b5998"/>
+
                </Flex> 
             </Flex>
         </Box>
@@ -45,6 +47,7 @@ let Navbar2 = () => {
             </Box>
             <Spacer  display={{base:"block",md:"block"}}/>
             <InputGroup size='sm' w="300px" h="10" ml='-20%' display={{base:"none",md:"block"}} >
+
              <Input placeholder='Search' size='sm' w='300px' />
              <InputRightElement width='4.5rem'>
                <Button  size='sm' bg="none">

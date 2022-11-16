@@ -31,21 +31,21 @@ const [New,setNew] =useState([])
 const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMouse,Bluetooth,
                      MWdata,Makeup,Kitchen,Stiletto,Actionfig,Clothing,New,Watchdata]
 
-    // const screensever = () => {
-    //     let count =1;
-    //    let imgslider = setInterval(()=>{
-    //     if(count===8){
-    //         count=0
-    //     }
-    //       //console.log(count)
-    //       setSidedrower(sliderimg[count])
-    //       count++
-    //    },3000)
-    // }
+    const screensever = () => {
+        let count =1;
+       let imgslider = setInterval(()=>{
+        if(count===8){
+            count=0
+        }
+          //console.log(count)
+          setSidedrower(sliderimg[count])
+          count++
+       },3000)
+    }
    
-    // useEffect(()=>{
-    //   screensever()
-    // },[])
+    useEffect(()=>{
+      screensever()
+    },[])
     useEffect(()=> {
         GetData().then((res)=>setData(res.data))
     },[])
@@ -55,11 +55,13 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         FetchFilter(Data,"mens watch")
          FetchFilter(Data,"Ballet Flats")
          FetchFilter(Data,"Handbags & Clutches")
-        // FetchFilter(Data ,"Mobiles Accessories")//*********** */
+         FetchFilter(Data ,"Mobiles Accessories")//*********** */
         // FetchFilter(Data,'Small Appliances')
          FetchFilter(Data,'Toys') 
-        // FetchFilter(Data,'Watches')/*********** */
-        // FetchFilter(Data,'Keyboards & Mouse')
+
+         FetchFilter(Data,'Watches')/*********** */
+         FetchFilter(Data,'Keyboards & Mouse')
+
         // FetchFilter(Data,'Bluetooth Earphone')
          FetchFilter(Data,'Makeup Accessories')
         // FetchFilter(Data,'Kitchen Wares')
@@ -122,12 +124,12 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         if(str  ===""){}
     }
 
-console.log(HDdata)
+//console.log(HDdata)
 
     return(
-        <Box pt='100px'>
+        <Box pt='150px'>
            <Box w='100%'>
-             <Image src={Screensever} alt={Screensever} className="Img" />
+             <Image src={Screensever} alt={Screensever} className="Img"  />
            </Box>
 
            {/* <Box w='95%' m='auto' >
