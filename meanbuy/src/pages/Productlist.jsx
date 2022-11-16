@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import {Box,Image,Badge,Text,Divider,Flex,Spacer } from "@chakra-ui/react"
+import {Link,Navigate} from "react-router-dom"
 import {StarIcon} from "@chakra-ui/icons"
 import { BiRupee } from "react-icons/bi";
 // Import Swiper React components
@@ -10,13 +11,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
+
 import { Pagination, Navigation } from "swiper";
-const Productlist = ({product}) => {
+const Productlist = ({product,num}) => {
+
+
+
+   let handelRoue = (id) => {
+      console.log(id)
+       return <Navigate to={`/products/${id}`}/>
+   }
+
+
 
     return(
-        <Swiper
-        slidesPerView={4.3}
-        spaceBetween={10}
+        <Swiper  
+        slidesPerView={num}
+        spaceBetween={5}
         slidesPerGroup={2}
         loop={true}
         loopFillGroupWithBlank={true}
@@ -30,9 +41,11 @@ const Productlist = ({product}) => {
           {product.map((element)=>{
              return(
                 <SwiperSlide >
-                   <Box p='10px' border='1px solid'>
-                   <Image src={element.img1} alt={element.title} mt='20px'/>
-                <Text fontSize='sm' lineHeight='15px' mt='10px'>{element.title}</Text>
+                <Link to={`/products/${element.id}`} >
+                   <Box p='10px'  onClick={()=>handelRoue(element.id)}>
+                   <Image src={element.img1} alt='Dan Abramov' mt='10px' />
+                <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
+
                 <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' ml='70%' mb='5px'>
                     {element.rating}/5<StarIcon />
                  </Badge>
@@ -42,7 +55,7 @@ const Productlist = ({product}) => {
                  <Spacer />
                  <Text fontSize='md'>Flat{element.discount}%OFF</Text>
                  </Flex>
-                   </Box>
+                   </Box></Link>
                 </SwiperSlide>
              )
           })}

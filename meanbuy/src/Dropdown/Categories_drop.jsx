@@ -1,4 +1,6 @@
-import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer,SimpleGrid} from "@chakra-ui/react"
+import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,
+  Link,Spacer,SimpleGrid,Grid
+} from "@chakra-ui/react"
 import "./dropdown.css"
 let CategoriesDrop = () => {
 
@@ -6,8 +8,8 @@ let CategoriesDrop = () => {
     
 
     return(
-      <Box className="categories" color='black.100' >
-         <SimpleGrid minChildWidth="120px" spacing="20px">
+      <Box className="categories"  >
+         <SimpleGrid minChildWidth="120px" spacing="20px" display={{base:"none",md:'grid'}}>
         <Box  >
           <Flex className="flexlink" mb='28px'>
           <Link className="heading" >MEN</Link>
@@ -100,6 +102,51 @@ let CategoriesDrop = () => {
       
         </Box>
       </SimpleGrid>
+      
+        <SimpleGrid columns={2}  justifyContent='center' textAlign='center' display={{base:"grid",md:"none"}}>
+          <Box w='70%'m='auto'>
+          <Image m='auto' w='90%' src='https://www.meanbuy.com/assets/img/india/icons/cats/Accessories.png'></Image>
+          <Text>Acessories</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%' src='https://www.meanbuy.com/assets/img/india/icons/cats/Electronics.png'></Image>
+          <Text>Electronics</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/Essentials.png'></Image>
+          <Text>Essentials</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/FlashSale.png'></Image>
+          <Text>Flash Sale</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/FootWear.png'></Image>
+          <Text>Foot Wear</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/HomeLiving.png'></Image>
+          <Text>Home & Living</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/KidsMom.png'></Image>
+          <Text>Kids & Mom</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/MeanbuyDeals.png'></Image>
+          <Text>Meanbuy Deals</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/MobilesTabs.png'></Image>
+          <Text>Mobile & Tabs</Text>
+         </Box>
+         <Box w='70%'m='auto'>
+         <Image m='auto' w='90%'  src='https://www.meanbuy.com/assets/img/india/icons/cats/SchoolsOfficeSupplies.png'></Image>
+          <Text>School & Office Supplies</Text>
+         </Box>
+         
+         </SimpleGrid>
+
       </Box>
     )
 }

@@ -1,5 +1,5 @@
   
-import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,GridItem,Divider,SimpleGrid,Stack} from "@chakra-ui/react"
+import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
  import {useState,useEffect} from "react"
 import "./Home.css"
 import {sliderimg,slidername} from "../Componunt/objects"
@@ -31,21 +31,21 @@ const [New,setNew] =useState([])
 const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMouse,Bluetooth,
                      MWdata,Makeup,Kitchen,Stiletto,Actionfig,Clothing,New,Watchdata]
 
-    // const screensever = () => {
-    //     let count =1;
-    //    let imgslider = setInterval(()=>{
-    //     if(count===8){
-    //         count=0
-    //     }
-    //       //console.log(count)
-    //       setSidedrower(sliderimg[count])
-    //       count++
-    //    },3000)
-    // }
+    const screensever = () => {
+        let count =1;
+       let imgslider = setInterval(()=>{
+        if(count===8){
+            count=0
+        }
+          //console.log(count)
+          setSidedrower(sliderimg[count])
+          count++
+       },3000)
+    }
    
-    // useEffect(()=>{
-    //   screensever()
-    // },[])
+    useEffect(()=>{
+      screensever()
+    },[])
     useEffect(()=> {
         GetData().then((res)=>setData(res.data))
     },[])
@@ -55,11 +55,13 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         FetchFilter(Data,"mens watch")
          FetchFilter(Data,"Ballet Flats")
          FetchFilter(Data,"Handbags & Clutches")
-        // FetchFilter(Data ,"Mobiles Accessories")//*********** */
+         FetchFilter(Data ,"Mobiles Accessories")//*********** */
         // FetchFilter(Data,'Small Appliances')
          FetchFilter(Data,'Toys') 
-        // FetchFilter(Data,'Watches')/*********** */
-        // FetchFilter(Data,'Keyboards & Mouse')
+
+         FetchFilter(Data,'Watches')/*********** */
+         FetchFilter(Data,'Keyboards & Mouse')
+
         // FetchFilter(Data,'Bluetooth Earphone')
          FetchFilter(Data,'Makeup Accessories')
         // FetchFilter(Data,'Kitchen Wares')
@@ -122,36 +124,28 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         if(str  ===""){}
     }
 
-console.log(HDdata)
+//console.log(HDdata)
 
     return(
-        <Box pt='100px'>
-           <Box w='100%'>
-             <Image src={Screensever} alt={Screensever} className="Img" />
+        <Box pt='160px'>
+           <Box w='100%' transition="1s ease-in out" >
+             <Image  transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
            </Box>
-
-           {/* <Box w='95%' m='auto' >
-            <Flex alignItems='center'>
-            <Heading as='h1' size='md'>Home Decor</Heading>
-            <Divider w='80%' color='2px solid black.200' />
-            <Link bg='red'>see more</Link>
-            </Flex>
-             <Box>
-                <Productlist product={HDdata}  />
-             </Box>
-           </Box> */}
 
           {
             slidername.map((heading,i)=>{
                 return(
                     <Box w='95%' m='auto' >
-                    <Flex justifyContent='space-evenly' alignItems='center' mt='50px'>
-                    <Heading as='h3' size='sm' w='200px' textAlign='start' >{heading}</Heading>
+                    <HStack justifyContent='space-evenly' alignItems='center' mt='50px'>
+                    <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  textAlign='start' >{heading}</Heading>
                     <Divider  border='1px solid'  />
-                    <Link w='100px' textAlign='end'>see more</Link>
-                    </Flex>
-                    <Box >
-                      <Productlist product={dataheading[i]}  />
+                    <Link w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}} textAlign='end'>see more</Link>
+                    </HStack>
+                    <Box display={{base:"none",md:"block"}} >
+                      <Productlist product={dataheading[i]} num={4.3} />
+                    </Box>
+                    <Box display={{base:"block",md:"none"}} >
+                      <Productlist product={dataheading[i]} num={1.3} />
                     </Box>
                    </Box>
                 )

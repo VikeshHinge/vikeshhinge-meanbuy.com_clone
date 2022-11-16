@@ -25,7 +25,7 @@ let [prodata,setprodata] = useState(proobj)
 
 let handelchange = (e) => {
 let {name,value,type} = e.target;
-//console.log(name,value,type)
+console.log(name,value,type)
 let valpro = type === "number" ? Number(value) : value;
 //console.log(valpro)
 setprodata({...prodata,[name]:valpro})
@@ -74,8 +74,6 @@ let {title,img1,img2,img3,img4,img5,img6,vid,categories,brand,discount,rating,co
             <input type="number" name='price' value={price}  placeholder="price" onChange={handelchange}/><br/>
             <input type="text" name='color' value={color}  placeholder="clr" onChange={handelchange}  /><br />
             <textarea name="description" id="" cols="30" rows="20"  onChange={handelchange} value={description} placeholder="description"></textarea>
-            {/* <input type="text" name='description' value={description}  placeholder="descr" onChange={handelchange}  /><br /> */}
-            {/* <input type="text" name='details' value={details}  placeholder="details" onChange={handelchange}  /><br /> */}
             <textarea name="details" id="" cols="30" rows="20"value={details}   placeholder="details"  onChange={handelchange}  ></textarea>
             
       </Box>

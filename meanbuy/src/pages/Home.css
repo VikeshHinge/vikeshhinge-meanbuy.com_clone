@@ -13,3 +13,14 @@
     margin: auto;
     width: 100%;
 }
+
+@media all and (min-width:260px) and (max-width:720px){
+
+    .Img{
+        width: 95%;
+        margin: auto;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+}
