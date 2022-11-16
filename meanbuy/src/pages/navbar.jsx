@@ -28,13 +28,16 @@ const Navbar = () => {
    
 
     return(
+
         <VStack position='fixed' spacing='0' w='100%' bg='white' zIndex='9999' >
         <Box bg='black' color='white'w='100%' >
+
             <Flex alignItems='center' justifyContent='center'>
                New Year Beast Offer on Watches  
                <Flex>
                 <FaInstagramSquare color="#8a3ab9"/>
                 <FaFacebook color="#3b5998"/>
+
                </Flex>
             </Flex>
         </Box>
@@ -46,6 +49,8 @@ const Navbar = () => {
                <Link href='/'><Image src='gibbresh.png' w='0%' bg='pink' fallbackSrc='https://d64lkarmo2mrq.cloudfront.net/baselogo.png' /></Link>
               
              <InputGroup size='sm' w="300px" h="10" bg='red' display={{base:"none",md:"block"}} >
+
+
              <Input placeholder='Search' size='sm' w='300px' />
              <InputRightElement width='4.5rem'>
                <Button  size='sm' bg="none">

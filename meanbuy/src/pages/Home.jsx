@@ -127,6 +127,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
 //console.log(HDdata)
 
     return(
+
         <Box pt='160px'>
            <Box w='100%' transition="1s ease-in out" >
              <Image  transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />

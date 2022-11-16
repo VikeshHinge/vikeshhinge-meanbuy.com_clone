@@ -15,14 +15,10 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 const Productlist = ({product,num}) => {
 
-
-
    let handelRoue = (id) => {
       console.log(id)
        return <Navigate to={`/products/${id}`}/>
    }
-
-
 
     return(
         <Swiper  
@@ -41,7 +37,9 @@ const Productlist = ({product,num}) => {
           {product.map((element)=>{
              return(
                 <SwiperSlide >
+
                 <Link to={`/products/${element.id}`} >
+
                    <Box p='10px'  onClick={()=>handelRoue(element.id)}>
                    <Image src={element.img1} alt='Dan Abramov' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>

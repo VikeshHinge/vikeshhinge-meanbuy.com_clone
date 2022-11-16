@@ -22,6 +22,7 @@ const [tabIndex, setTabIndex] = useState(0)
 // const bg = colors[tabIndex]
 const param = useParams()
 //console.log(param.id,"param")
+
 let imgproduct = useRef(null)
 
 let productid = (id)=> {
@@ -32,6 +33,7 @@ let productid = (id)=> {
  useEffect(()=>{
   productid(param.id)   //******************id put here */
  },[])
+
 
 let Addtocart = (id) => {
 // let Array = localStorage.getItem("cartdata") || []
@@ -54,6 +56,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                     </Box>
   
                     <Box w='90%'m='auto' textAlign='left' h={{base:'100%',md:'500px'}} overflowY={{base:'none',md:'auto'}}>
+
                     <Heading as='h3' mt='10px' mb='10px' size='lg'>{element.title}</Heading>
 
                     <Flex h='30px' w='100%'  gap='5px' alignItems='center'>
@@ -68,9 +71,11 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                      <GrSnapchat size='18px' color="#FFFC00"/>
                      <BsWhatsapp  size='18px'color="#128C7E "/>
                     </Flex>
+
                     <Flex  alignItems='baseline' mt='10px'mb='10px'  >
                         <BiRupee size='35px' color='#dd6b20'/><Text color='#dd6b20' as='b' fontSize='30px'>{element.price}.00 </Text>
                         <Text as='s' color='gray'>₹{Math.floor(element.price*element.discount/100)+element.price}</Text>
+
                         <Text ml='10px' fontSize='sm' color='#14DE2B'>UP TO {element.discount}% OFF</Text>
                     </Flex>
                     <Box lineHeight='25px'>
@@ -102,6 +107,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                         <Text>6 months Warranty T&C Apply</Text>
                        </Box>
                     </Grid>
+
                     <Divider   borderColor = 'orange.500' w='90%' mb='20px' />
                
 
@@ -110,6 +116,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                          a later Delivery Date means greater Savings!</Text>
                        <Text as='b'> Please choose your preferences</Text>
                        <RadioGroup m='20px' w='70%' display='none'>
+
                          <Stack direction='row'>
                            <Radio value='1'>Black</Radio>
                            <Radio value='2'>White</Radio>
@@ -120,8 +127,10 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                        </RadioGroup>
                       
                        <Flex gap='10px' justifyContent='center' mt='25px' mb='25px'>
+
                             <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>Addtocart(element)}>
                               ADD TO CART 
+
                             </Button>
                             <Button w='40%' height='48px' colorScheme='orange'>
                               BUY NOW
@@ -147,7 +156,8 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                            <TabPanel>
                            <Heading mb='10px' fontSize={{base:'md',md:'lg'}} >Product Details</Heading>
                         <UnorderedList> 
-                        {element.details.split("\n").map((l,i)=> <ListItem key ={i} >{l}</ListItem>)}  
+
+
                         </UnorderedList> 
                             </TabPanel>
                            <TabPanel>Red, yellow and blue.</TabPanel>

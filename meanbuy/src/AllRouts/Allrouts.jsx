@@ -4,6 +4,9 @@ import ProductDetail from "../pages/Productdetail";
 import Privateroute from "../AuthContext/Privateroute";
 import Cart from "../pages/Cartpg";
 import Login from "../pages/Login";
+
+
+
 const Allrouts = () => {
 
     return(

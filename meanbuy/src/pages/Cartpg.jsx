@@ -1,4 +1,7 @@
+
 import {Box,VStack,Heading} from "@chakra-ui/react"
+
+
 
 const Cart = () => {
 
@@ -10,3 +13,4 @@ const Cart = () => {
 }
 
 export default Cart
+
