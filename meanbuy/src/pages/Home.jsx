@@ -64,11 +64,11 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
 
         // FetchFilter(Data,'Bluetooth Earphone')
          FetchFilter(Data,'Makeup Accessories')
-        // FetchFilter(Data,'Kitchen Wares')
+         FetchFilter(Data,'Kitchen Wares')
         // FetchFilter(Data,'Stiletto Heels & Slip On')
          FetchFilter(Data,'Action Figures')
          FetchFilter(Data,'Clothing')
-        // FetchFilter(Data,'NEW ARRIVALS')
+         FetchFilter(Data,'Disney')
     },[Data])
 
     let FetchFilter = (Data,str) => {
@@ -118,7 +118,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         if(str  ==="Clothing"){
               setClothing(FilterData)
         }
-        if(str  ==="NEW ARRIVALS"){
+        if(str  ==="Disney"){
                setNew(FilterData)
         }
         if(str  ===""){}
