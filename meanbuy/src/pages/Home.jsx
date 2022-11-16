@@ -1,5 +1,5 @@
   
-import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,GridItem,Divider,SimpleGrid,Stack} from "@chakra-ui/react"
+import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
  import {useState,useEffect} from "react"
 import "./Home.css"
 import {sliderimg,slidername} from "../Componunt/objects"
@@ -127,33 +127,26 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
 //console.log(HDdata)
 
     return(
-        <Box pt='150px'>
-           <Box w='100%'>
-             <Image src={Screensever} alt={Screensever} className="Img"  />
-           </Box>
 
-           {/* <Box w='95%' m='auto' >
-            <Flex alignItems='center'>
-            <Heading as='h1' size='md'>Home Decor</Heading>
-            <Divider w='80%' color='2px solid black.200' />
-            <Link bg='red'>see more</Link>
-            </Flex>
-             <Box>
-                <Productlist product={HDdata}  />
-             </Box>
-           </Box> */}
+        <Box pt='160px'>
+           <Box w='100%' transition="1s ease-in out" >
+             <Image  transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
+           </Box>
 
           {
             slidername.map((heading,i)=>{
                 return(
                     <Box w='95%' m='auto' >
-                    <Flex justifyContent='space-evenly' alignItems='center' mt='50px'>
-                    <Heading as='h3' size='sm' w='200px' textAlign='start' >{heading}</Heading>
+                    <HStack justifyContent='space-evenly' alignItems='center' mt='50px'>
+                    <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  textAlign='start' >{heading}</Heading>
                     <Divider  border='1px solid'  />
-                    <Link w='100px' textAlign='end'>see more</Link>
-                    </Flex>
-                    <Box >
-                      <Productlist product={dataheading[i]}  />
+                    <Link w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}} textAlign='end'>see more</Link>
+                    </HStack>
+                    <Box display={{base:"none",md:"block"}} >
+                      <Productlist product={dataheading[i]} num={4.3} />
+                    </Box>
+                    <Box display={{base:"block",md:"none"}} >
+                      <Productlist product={dataheading[i]} num={1.3} />
                     </Box>
                    </Box>
                 )

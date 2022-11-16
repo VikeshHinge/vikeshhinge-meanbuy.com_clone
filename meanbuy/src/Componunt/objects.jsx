@@ -7,5 +7,5 @@ export const sliderimg = ['https://d64lkarmo2mrq.cloudfront.net/img/home/interna
 
 export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','Small Appliances',
                             'Toys','Watches','Keyboards & Mouse','Bluetooth Earphone','Makeup Accessories','Kitchen Wares'
-                            ,'Stiletto Heels & Slip On','Action Figures','Clothing','NEW ARRIVALS','Featured'
+                            ,'Stiletto Heels & Slip','Action Figures','Clothing','NEW ARRIVALS','Featured'
 ]

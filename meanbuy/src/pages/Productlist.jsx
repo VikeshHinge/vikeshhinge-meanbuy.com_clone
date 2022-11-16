@@ -13,9 +13,7 @@ import "swiper/css/navigation";
 
 
 import { Pagination, Navigation } from "swiper";
-const Productlist = ({product}) => {
-
-
+const Productlist = ({product,num}) => {
 
    let handelRoue = (id) => {
       console.log(id)
@@ -23,9 +21,9 @@ const Productlist = ({product}) => {
    }
 
     return(
-        <Swiper
-        slidesPerView={4.3}
-        spaceBetween={10}
+        <Swiper  
+        slidesPerView={num}
+        spaceBetween={5}
         slidesPerGroup={2}
         loop={true}
         loopFillGroupWithBlank={true}
@@ -40,6 +38,8 @@ const Productlist = ({product}) => {
              return(
                 <SwiperSlide >
 
+                <Link to={`/products/${element.id}`} >
+
                    <Box p='10px'  onClick={()=>handelRoue(element.id)}>
                    <Image src={element.img1} alt='Dan Abramov' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
@@ -53,7 +53,7 @@ const Productlist = ({product}) => {
                  <Spacer />
                  <Text fontSize='md'>Flat{element.discount}%OFF</Text>
                  </Flex>
-                   </Box>
+                   </Box></Link>
                 </SwiperSlide>
              )
           })}
