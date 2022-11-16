@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
      <Navbar2/> 
+     {/* <Admin/> */}
        <Allrouts/>
        <Footer/>
     </div>

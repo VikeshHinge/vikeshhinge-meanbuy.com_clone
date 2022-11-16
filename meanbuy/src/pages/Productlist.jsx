@@ -41,7 +41,7 @@ const Productlist = ({product,num}) => {
                 <Link to={`/products/${element.id}`} >
 
                    <Box p='10px'  onClick={()=>handelRoue(element.id)}>
-                   <Image src={element.img1} alt='Dan Abramov' mt='10px' />
+                   <Image w='80%' src={element.img1} alt='Dan Abramov' m='auto' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
 
                 <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' ml='70%' mb='5px'>
