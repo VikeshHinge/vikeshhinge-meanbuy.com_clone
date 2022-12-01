@@ -1,4 +1,7 @@
-import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer,VStack} from "@chakra-ui/react"
+import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,
+  Link,Spacer,VStack
+} from "@chakra-ui/react"
+
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";

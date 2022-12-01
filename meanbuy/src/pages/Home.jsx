@@ -5,7 +5,7 @@ import "./Home.css"
 import {sliderimg,slidername} from "../Componunt/objects"
 import { GetData } from "../Axios/Axios"
 import Productlist from "./Productlist"
-
+//https://twisty-silly-ring.glitch.me/product
 
 const Home = ()=> {
 
@@ -43,9 +43,9 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
        },3000)
     }
    
-    useEffect(()=>{
-      screensever()
-    },[])
+    // useEffect(()=>{
+    //   screensever()
+    // },[])
     useEffect(()=> {
         GetData().then((res)=>setData(res.data))
     },[])
@@ -136,7 +136,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
           {
             slidername.map((heading,i)=>{
                 return(
-                    <Box w='95%' m='auto' >
+                    <Box w='95%' m='auto' key={i} >
                     <HStack justifyContent='space-evenly' alignItems='center' mt='50px'>
                     <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  textAlign='start' >{heading}</Heading>
                     <Divider  border='1px solid'  />
@@ -146,7 +146,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
                       <Productlist product={dataheading[i]} num={4.3} />
                     </Box>
                     <Box display={{base:"block",md:"none"}} >
-                      <Productlist product={dataheading[i]} num={1.3} />
+                      <Productlist  product={dataheading[i]} num={1.5} />
                     </Box>
                    </Box>
                 )

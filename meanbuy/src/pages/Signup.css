@@ -1,0 +1,33 @@
+.signup{
+   padding-top: 180px;
+   width: 98%;
+   margin: auto;
+   margin-bottom: 20px;
+   
+}
+.flex_signup{
+    gap: 20px;
+}
+.formcontrol{
+   text-align: left;
+}
+.header{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 30px;
+    color: #ee9b3e;
+}
+.header2{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+}
+.cart_box{
+    width: 100%;
+    padding: 15px;
+}
+
+@media all and (min-width:260px) and (max-width:720px){
+
+}
