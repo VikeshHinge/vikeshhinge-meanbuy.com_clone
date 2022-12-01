@@ -4,6 +4,7 @@ import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
+import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
@@ -45,7 +46,7 @@ let Navbar2 = () => {
             </Box>
             <Spacer  display={{base:"block",md:"block"}}/>
             <InputGroup size='sm' w="300px" h="10" ml='-20%' display={{base:"none",md:"block"}} >
-             <Input placeholder='Search' size='sm' w='300px' />
+             <Input placeholder='Search' size='sm' w='300px'/>
              <InputRightElement width='4.5rem'>
                <Button  size='sm' bg="none">
                  {/* {show ? 'Hide' : 'Show'} */}
@@ -67,7 +68,7 @@ let Navbar2 = () => {
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />
-                      <Text bg='orange' borderRadius='20px' p='2px' h='fit-content'>{DataStore && DataStore.length || 0}</Text>
+                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{DataStore && DataStore.length || 0}</Text>
                      </Flex>
                 </Box>
                

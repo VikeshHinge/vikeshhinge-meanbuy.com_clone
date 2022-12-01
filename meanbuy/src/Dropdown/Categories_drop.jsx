@@ -1,6 +1,7 @@
-import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,
-  Link,Spacer,SimpleGrid,Grid
+import {Box,Flex,Text,Image,
+  Link,SimpleGrid
 } from "@chakra-ui/react"
+
 import "./dropdown.css"
 let CategoriesDrop = () => {
 
@@ -10,7 +11,7 @@ let CategoriesDrop = () => {
     return(
       <Box className="categories"  >
          <SimpleGrid minChildWidth="120px" spacing="20px" display={{base:"none",md:'grid'}}>
-        <Box  >
+        <Box>
           <Flex className="flexlink" mb='28px'>
           <Link className="heading" >MEN</Link>
           <Link>Watches</Link>  
@@ -48,10 +49,10 @@ let CategoriesDrop = () => {
         <Flex className="flexlink">
             <Link className="heading" >FLASH SALE</Link>
             <Link>Flash Sale</Link>
-        </Flex>    
-        </Box>
-        <Box  >
-       <Flex className="flexlink">
+         </Flex>    
+          </Box>
+          <Box  >
+         <Flex className="flexlink">
             <Link className="heading">HOME & LIVING</Link>
             <Link>Bath & Storage</Link>
             <Link>Gardening</Link>
@@ -60,9 +61,9 @@ let CategoriesDrop = () => {
             <Link>Kitchen Wares</Link>
             <Link>Nordic Ceiling Lights</Link>
             </Flex>
-        </Box>
-        <Box  >
-       <Flex className="flexlink">
+          </Box>
+          <Box  >
+         <Flex className="flexlink">
           <Link className="heading" >KIDS & MOM</Link>
           <Link>Action Figures</Link>
           <Link>Discovery Adventures</Link>
@@ -71,9 +72,9 @@ let CategoriesDrop = () => {
           <Link>Marvel</Link>
           <Link>Toys</Link> 
           </Flex>
-        </Box>
-        <Box  >
-        <Flex className="flexlink">
+          </Box>
+          <Box>
+          <Flex className="flexlink">
           <Link className="heading" >MEANBUY DEALS</Link>
           <Link>Gifts</Link>
           <Link>Electronics</Link>

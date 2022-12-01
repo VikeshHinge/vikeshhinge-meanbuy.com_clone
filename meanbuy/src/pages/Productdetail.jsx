@@ -130,7 +130,6 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
 
                             <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>Addtocart(element)}>
                               ADD TO CART 
-
                             </Button>
                             <Button w='40%' height='48px' colorScheme='orange'>
                               BUY NOW

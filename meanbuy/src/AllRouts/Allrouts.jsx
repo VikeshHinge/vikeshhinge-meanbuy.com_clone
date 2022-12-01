@@ -4,7 +4,7 @@ import ProductDetail from "../pages/Productdetail";
 import Privateroute from "../AuthContext/Privateroute";
 import Cart from "../pages/Cartpg";
 import Login from "../pages/Login";
-
+import Signup from "../pages/UserLoginSignup";
 
 
 const Allrouts = () => {
@@ -15,6 +15,7 @@ const Allrouts = () => {
           <Route path="/products"></Route>
           <Route path="/products/:id" element={<ProductDetail/>}></Route>
           <Route path="/cart" element={<Cart/>}></Route>
+          <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
         </Routes>
     )
