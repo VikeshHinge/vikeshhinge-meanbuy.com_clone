@@ -4,7 +4,7 @@ import {Box,Image,Badge,Text,Divider,Flex,Spacer,Center,Square,Input,FormHelperT
 
 } from "@chakra-ui/react";
 import Login from "./Login";
-import Signup from "./Signup2";
+import Signup from "./Signup";
 
 import React,{useState} from 'react';
 import "./Signup.css";
@@ -15,7 +15,7 @@ import { useEffect } from "react";
 let initialValue = {
     email:'',
     pw:'',
-    pw_conf:''
+    pw_conf:'' 
 }
 
 const UserAuth = () => {
@@ -44,7 +44,7 @@ const UserAuth = () => {
       }
     }
 const SignupFirst = (a,b) => {
-  console.log("a",a,"b",b)
+
   alert("user not found !!")
   setUsersignup(false)
 }

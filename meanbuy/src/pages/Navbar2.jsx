@@ -63,8 +63,8 @@ let Navbar2 = () => {
                 <Link> Delivery Info </Link>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
-                    <Link>Login</Link>/
-                    <Link>Signup</Link>
+                    <Link href='/login'>Login</Link>/
+                    <Link href='/signup'>Signup</Link>
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />
@@ -88,7 +88,7 @@ let Navbar2 = () => {
           </Box>
          
           <HStack className="navop" >
-          <Text  onClick={()=>handeldropdown(1)} >Categories {categories===false?<TriangleDownIcon/>:<TriangleUpIcon/> && <CategoriesDrop/>}</Text>
+          <Link  onClick={()=>handeldropdown(1)} >Categories {categories===false?<TriangleDownIcon/>:<TriangleUpIcon/> && <CategoriesDrop/>}</Link>
           <Text>flash Sale</Text>
           <Text display={{base:'none',md:'block'}} >Best Deals</Text>
           <Text display={{base:'none',md:'block'}} >Shop by Brand</Text>

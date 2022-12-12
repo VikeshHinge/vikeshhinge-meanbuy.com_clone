@@ -47,7 +47,7 @@ const Sidedrower = () => {
             </VStack>:<VStack>
                 {cartQuantity.length>0 && cartQuantity.map((element,i)=>{
                     return(
-                        <Box overscrollY='auto'>
+                        <Box overscrollY='auto' key={i}>
                             <Flex textAlign='left' p='10px'>
                                 <Stack w='40%'>
                                 <Image src={element.img1} w='80%' m='auto' alt={element.title} />
