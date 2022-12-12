@@ -6,14 +6,16 @@ let Authcontext = createContext()
 const AuthcontextProvider = ({children}) => {
 
 const [isAuth,setAuth] = useState(false)
+console.log(isAuth,1)
 
-let toggleAuth = () => {
+let loginAuth = () => {
    setAuth(true)
-   alert(isAuth)
 }
-
+let logoutAuth = () => {
+    setAuth(false)
+}
     return(
-     <Authcontext.Provider value={{isAuth,toggleAuth}}>{children}</Authcontext.Provider>
+     <Authcontext.Provider value={{isAuth,loginAuth,logoutAuth}}>{children}</Authcontext.Provider>
     )
 }
 

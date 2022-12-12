@@ -16,7 +16,7 @@ import { Pagination, Navigation } from "swiper";
 const Productlist = ({product,num}) => {
 
    let handelRoue = (id) => {
-      console.log(id)
+      //console.log(id)
        return <Navigate to={`/products/${id}`}/>
    }
 

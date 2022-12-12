@@ -143,7 +143,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
                     <Link w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}} textAlign='end'>see more</Link>
                     </HStack>
                     <Box display={{base:"none",md:"block"}} >
-                      <Productlist product={dataheading[i]} num={4.3} />
+                      <Productlist product={dataheading[i]} num={4.5} />
                     </Box>
                     <Box display={{base:"block",md:"none"}} >
                       <Productlist  product={dataheading[i]} num={1.5} />

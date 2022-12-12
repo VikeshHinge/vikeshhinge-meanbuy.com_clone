@@ -63,7 +63,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                     <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' mb='5px'>
                     {element.rating}/5<StarIcon />
                     </Badge>
-                     <Link fontSize='xs' color='#dd6b20'>WRITE A REVIEW </Link>
+                    <Link fontSize='xs' color='#dd6b20'>WRITE A REVIEW </Link>
                      <GrFacebookOption color=" #3b5998"/>
                      <GrTwitter  size='18px' color="#00acee"/>
                      <GrPinterest size='18px' color="#E60023"/>
@@ -73,18 +73,19 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                     </Flex>
 
                     <Flex  alignItems='baseline' mt='10px'mb='10px'  >
-                        <BiRupee size='35px' color='#dd6b20'/><Text color='#dd6b20' as='b' fontSize='30px'>{element.price}.00 </Text>
+                        <BiRupee size='35px' color='#dd6b20' /><Text color='#dd6b20' as='b' fontSize='30px'>{element.price}.00 </Text>
                         <Text as='s' color='gray'>₹{Math.floor(element.price*element.discount/100)+element.price}</Text>
 
                         <Text ml='10px' fontSize='sm' color='#14DE2B'>UP TO {element.discount}% OFF</Text>
                     </Flex>
-                    <Box lineHeight='25px'>
-                    <Text>Save Up to <Text color='#dd6b20'>₹{Math.floor(element.price*element.discount/100)+element.price-element.price}</Text></Text>
+
+                   <Box lineHeight='25px'>
+                    <Text>Save Up to {' '}<Link color='#dd6b20'>₹{Math.floor(element.price*element.discount/100)+element.price-element.price}</Link></Text> 
                     <Link color='#14DE2B'><Flex><FcCheckmark/>CASH ON DELIVERY available on orders between ₹999 and ₹10,000</Flex></Link>
                     <Link><Flex><FcCheckmark/>Get up to ₹500 OFF with coupon code <Text as='b'>PREPAID</Text></Flex></Link>
                     <Link><Flex><FcCheckmark/>3 interest free payments with  ⓘ</Flex></Link>
                     <Text>Availability:<Text as='b' color='green'> In Stock</Text></Text>
-                    </Box>
+                    </Box> 
                     
                     
                     <Divider borderColor = 'orange.500' w='90%' mt='20px' />
@@ -136,7 +137,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                             </Button>
                        </Flex>
                        
-                       <Tabs onChange={(index) => setTabIndex(index)}>
+                       <Tabs onChange={(index) => setTabIndex(index)} mb='100px'>
                    
                          <TabList  >
                         
@@ -155,8 +156,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                            <TabPanel>
                            <Heading mb='10px' fontSize={{base:'md',md:'lg'}} >Product Details</Heading>
                         <UnorderedList> 
-
-
+                        {element.details !== "" && element.details.split("\n").map((l,i)=> <ListItem fontWeight='bold' key ={i} >{l}</ListItem>)}  
                         </UnorderedList> 
                             </TabPanel>
                            <TabPanel>Red, yellow and blue.</TabPanel>

@@ -19,12 +19,13 @@ const userEmail = {
 
 
 const Login = ({input,SignupFirst}) => {
-let {isAuth,toggleAuth} = useContext(Authcontext)
+
+let {isAuth,loginAuth,logoutAuth} = useContext(Authcontext)
 const [userLogin,setUserLogin] = useState(userEmail)
 const [success,setSuccess] = useState(false)
 const toast = useToast()
 
-console.log(input,"isAuth:",isAuth)
+
 
 const handelchange_Email = (e) => {
     let {name,value} = e.target;
@@ -45,6 +46,7 @@ const handelchange_Email = (e) => {
             isClosable: true,
             position: 'bottom',
             })
+            loginAuth()
             setSuccess(true)
       }
     
@@ -60,12 +62,12 @@ const handelchange_Email = (e) => {
       }
   }
 
-
-
-
-    return(
  
-        <Box w={{base:'100%',md:'65%'}} p='10px' >
+
+
+    return( 
+ 
+        <Box w={{base:'100%',md:'65%'}} p='10px'>
 
            <Box display={success?'block':'none'} >
            <Alert status='success' variant='left-accent' >
