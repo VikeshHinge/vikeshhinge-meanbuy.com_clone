@@ -19,9 +19,7 @@ function App() {
   return (
     <div className="App">
       <Navbar2/>   
-      {/* <ProductPage/> */}
        <Allrouts/> 
-      {/* <Cart/> */}
       <Footer/>
     </div>
   ); 
