@@ -44,14 +44,13 @@ const Productlist = ({product,num}) => {
                    <Image w='80%' src={element.img1} alt='Dan Abramov' m='auto' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
 
-                <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' ml='60%' mb='5px'>
+                <Badge borderRadius='20px' px='2' variant='solid' colorScheme='green' pl='10px' pr='10px' mt='5px' ml='60%' mb='5px' alignItems='center'>
                     {element.rating}/5<StarIcon />
                  </Badge>
                  <Divider mt='5px' mb='5px' />
-                 <Flex>
+                 <Flex justifyContent='space-between' pl='20px' pr='20px' >
                  <Text as='b' fontSize='xl'><Flex alignItems='center' color='#ED8936'><BiRupee color='#ED8936'/>{element.price}</Flex></Text>
-                 <Spacer />
-                 <Text fontSize='md'>Flat{element.discount}%OFF</Text>
+                 <Text fontSize='md' fontWeight='bold'>Flat{element.discount}%OFF</Text>
                  </Flex>
                    </Box></Link>
                 </SwiperSlide>

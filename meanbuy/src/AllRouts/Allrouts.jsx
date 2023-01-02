@@ -6,14 +6,14 @@ import Cart from "../pages/Cartpg";
 import Login from "../pages/Login";
 import Signup from "../pages/UserLoginSignup";
 import UserAuth from '../pages/UserLoginSignup'
-
+import ProductPage from "../pages/ProductPage";
 
 const Allrouts = () => {
 
     return( 
         <Routes>
           <Route path="/" element={<Home/>}></Route>
-          <Route path="/products"></Route>
+          <Route path="/products/categories/:cate" element={<ProductPage/>}></Route>
           <Route path="/products/:id" element={<ProductDetail/>}></Route>
           <Route path="/cart" element={<Cart/>}></Route>
           <Route path="/signup" element={<UserAuth/>}></Route>

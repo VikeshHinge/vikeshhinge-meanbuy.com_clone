@@ -8,7 +8,7 @@ import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
 
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
-import "./Navbar.css"
+import './navbar.css'
 let Navbar2 = () => {
 
 

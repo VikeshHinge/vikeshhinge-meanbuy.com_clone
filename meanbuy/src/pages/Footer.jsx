@@ -6,7 +6,7 @@ import { FaYoutube,FaInstagramSquare,FaLinkedin,FaCcVisa,FaAmazonPay,FaCcMasterc
 const Footer = () => {
 
     return(
-        <Box pt='15px' bg='#e9e9e9'>
+        <Box pt='15px' bg='#e9e9e9' zIndex='999'>
           <SimpleGrid columns={{base:"2",md:"5"}} spacing={0}>
               <Flex flexDirection='column' textAlign='left' g='10px' ml='10px'  >
                <Link fontSize='sm'   mt='20px' color='orange.500' fontWeight='bold' >OUR POLICIES</Link>

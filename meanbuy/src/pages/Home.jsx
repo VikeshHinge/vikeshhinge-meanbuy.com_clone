@@ -1,10 +1,11 @@
   
-import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
+import {VStack,Box,Text,Image,Heading,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
  import {useState,useEffect} from "react"
 import "./Home.css"
 import {sliderimg,slidername} from "../Componunt/objects"
 import { GetData } from "../Axios/Axios"
 import Productlist from "./Productlist"
+import {Navigate,Link} from 'react-router-dom'
 //https://twisty-silly-ring.glitch.me/product
 
 const Home = ()=> {
@@ -28,6 +29,9 @@ const [Actionfig,setActionfig] =useState([])
 const [Clothing,setClothing] =useState([])
 const [New,setNew] =useState([])
 
+
+
+
 const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMouse,Bluetooth,
                      MWdata,Makeup,Kitchen,Stiletto,Actionfig,Clothing,New,Watchdata]
 
@@ -43,6 +47,8 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
        },3000)
     }
    
+   
+
     // useEffect(()=>{
     //   screensever()
     // },[])
@@ -138,9 +144,9 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
                 return(
                     <Box w='95%' m='auto' key={i} >
                     <HStack justifyContent='space-evenly' alignItems='center' mt='50px'>
-                    <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  textAlign='start' >{heading}</Heading>
+                    <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  >{heading}</Heading>
                     <Divider  border='1px solid'  />
-                    <Link w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}} textAlign='end'>see more</Link>
+                    <Link to={`/products/categories/${heading}`} w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}}  >see more</Link>
                     </HStack>
                     <Box display={{base:"none",md:"block"}} >
                       <Productlist product={dataheading[i]} num={4.5} />

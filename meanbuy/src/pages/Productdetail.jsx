@@ -28,7 +28,6 @@ let imgproduct = useRef(null)
 let productid = (id)=> {
    // console.log("id",id)
    let x = GetproductbyID(id).then((res)=>setItem(res.data))
- 
 }
  useEffect(()=>{
   productid(param.id)   //******************id put here */
@@ -47,11 +46,13 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
 
     return(
          <Box pt='180px' fontSize='14px' w='99%' m='auto' mb='50px'>
+         
            {
                Item && Item.map((element,i)=>{
                     return(
                     <Flex key={i}  gap='20px' direction={{base:'column',md:'row'}} >
                     <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
+                    <Text textAlign='start' pl='30px' fontSize={{base:'sm',md:'xl'}} mb='10px'>Home {`>`} Categories {`>`} {' '}<Link color='orange'>{element.categories }</Link></Text>
                     <Image ref={imgproduct} src={element.img1} m='auto' w='90%' ></Image>
                     </Box>
   
