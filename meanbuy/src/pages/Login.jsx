@@ -7,7 +7,7 @@ import {Box,Image,Badge,Text,Divider,Flex,Spacer,Center,Square,Input,FormHelperT
 
 import {useContext} from "react"
 import Authcontext from '../AuthContext/Authcontext';
-
+import { useNavigate } from "react-router-dom";
 
 import React,{useState} from 'react';
 import "./Signup.css";
@@ -25,15 +25,17 @@ const [userLogin,setUserLogin] = useState(userEmail)
 const [success,setSuccess] = useState(false)
 const toast = useToast()
 
-
+let navigate = useNavigate()
 
 const handelchange_Email = (e) => {
-    let {name,value} = e.target;
+    let {name,value} = e.target; 
     setUserLogin({...userLogin,[name]:value})
   }
 
   const handelEmailSubmit= () => {
+
     let {Email,Pw} = userLogin;
+
     if(Email ==="" || Pw ===""){
        alert('input !!')
       }
@@ -48,6 +50,9 @@ const handelchange_Email = (e) => {
             })
             loginAuth()
             setSuccess(true)
+            // return(
+            //  navigate('/') 
+            // )
       }
     
       else {
@@ -57,7 +62,7 @@ const handelchange_Email = (e) => {
             status: 'error',
             duration: 3000,
             isClosable: true,
-            position: 'bottom',
+            position: {base:'',md:'bottom'},
             })
       }
   }

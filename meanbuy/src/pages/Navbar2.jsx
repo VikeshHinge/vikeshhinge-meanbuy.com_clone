@@ -31,8 +31,8 @@ let Navbar2 = () => {
    
     return(
        <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999'>
-         <Box bg='black' color='white'w='100%' >
-            <Flex alignItems='center' justifyContent='center'>
+         <Box bg='black' color='white'w='100%'>
+            <Flex alignItems='center' justifyContent='center' >
                New Year Beast Offer on Watches  
                <Flex>
                 <FaInstagramSquare color="#8a3ab9"/>

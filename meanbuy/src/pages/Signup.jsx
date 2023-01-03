@@ -6,7 +6,7 @@ import {Box,Image,Badge,Text,Divider,Flex,Spacer,Center,Square,Input,FormHelperT
 
 import React,{useState} from 'react';
 import "./Signup.css";
-
+ 
 
 let initialValue = {
     email:'',
@@ -18,20 +18,20 @@ const Signup = ({handelchange,handelsignup}) => {
 
   return (
         
-         <Box w={{base:'100%',md:'65%'}} p='10px' >
+         <form w={{base:'100%',md:'65%'}} p='10px' >
           <Text className="header">Login Or Create Account</Text>
 
           <Box className="formcontrol">
             <Text fontSize='12px'>Email Address</Text>
-           <Input  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'email' 
+           <Input isRequired  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'email' 
            onChange={handelchange}/>
       
            <Text fontSize='12px'>Password</Text>
-           <Input  mb='20px' borderRadius='0px'  placeholder="Password" name='pw'
+           <Input isRequired  mb='20px' borderRadius='0px'  placeholder="Password" name='pw'
            onChange={handelchange}/>
 
            <Text fontSize='12px'>Confirm Password</Text>
-           <Input   mb='20px' borderRadius='0px'  placeholder="Confirm Password" name='pw_conf'
+           <Input isRequired  mb='20px' borderRadius='0px'  placeholder="Confirm Password" name='pw_conf'
            onChange={handelchange} />
           </Box>
            
@@ -45,7 +45,7 @@ const Signup = ({handelchange,handelsignup}) => {
           <Link fontSize='xs' as='u'>Already have a MeanBuy account? Log In!</Link>
           <Text fontSize='sm' fontWeight='bold'>By signing up, you agree to our {' '} <Link color='#00B5D8' >Terms of Use & Privacy Policy</Link> </Text>
         
-        </Box>
+        </form>
 
   )
 }
