@@ -30,13 +30,13 @@ const UserAuth = () => {
         setInput({...input,[name]:value})
     }
 
-    const handelsignup = () => {
+    const handelsignup = () => { 
       let {email,pw,pw_conf} = input;
         if( pw ==='' || pw_conf===''|| email ==="" ){
             alert('put proper input')
         }
       else if(pw===pw_conf && pw !='' && pw_conf!=''){
-        console.log("yes")
+        console.log(email,pw,pw_conf,'yes')
         setUsersignup(true)
         setUInput({...Userinput,input})
       }else {
@@ -49,10 +49,10 @@ const SignupFirst = (a,b) => {
   setUsersignup(false)
 }
 
-useEffect(()=>{
-  setCount(count+1)
-  console.log(count)
-},[usersignup])
+// useEffect(()=>{
+//   setCount(count+1)
+//   console.log(count)
+// },[])
 
   return (
     <Box  className="signup">

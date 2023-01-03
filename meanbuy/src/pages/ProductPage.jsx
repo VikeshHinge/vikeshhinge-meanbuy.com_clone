@@ -9,10 +9,10 @@ import { Link,useParams } from 'react-router-dom';
 import { BiRupee } from "react-icons/bi";
 import { GetproductbyCategory } from '../Axios/Axios';
 
-//import SideDrower from './sideDrower';
+import SideDrower from './sideDrower';
 
 const ProductPage = () => {
-
+     const [brand,setBrand] = useState([])
     const [Product,setProduct] = useState([])
     const [display,setdisplay]=useState(false)
 
@@ -28,37 +28,69 @@ let threenhalf= [<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFil
 let Params_cate = useParams()
 
 
+const setbrands = (data) => {
+  let obj = {}
+  let arr = []
+  data.map(ele => {
+    if(obj[ele.brand]===undefined){
+      obj[ele.brand]=1
+      arr.push(ele.brand)
+    }
+    else{
+      obj[ele.brand]++
+    }
+  })
+  setBrand(arr)
+}
+
+
+
+
 const getproducts =async(categories) => {
-   console.log(categories)
+
    let data =await GetproductbyCategory(categories)
    setProduct(data)
+   setbrands(data)
 }
 
 useEffect (() => {
   getproducts(Params_cate.cate)
-},[])
+},[Params_cate])
 
 
 const filterRating = (e,n) => {
-//    if(e.target.checked){
-//     let newdata = Product.filter((ele)=> ele.rating >= n)
-//     setProduct(newdata)
-//    }else if(!e.target.checked){
-//     getdata()
-//    }
-//    setdisplay(false)
+   if(e.target.checked){
+    let newdata = Product.filter((ele)=> ele.rating >= n)
+    setProduct(newdata)
+   }else if(!e.target.checked){
+    getproducts(Params_cate.cate)
+   }
+   setdisplay(false)
 }
 
 const PrintsRating = (e,str)=> {
-    // if(e.target.checked){
-    //     let newdata = product.filter((ele)=> ele.prints === str)
-    //     if(newdata.length>0){
-    //       setProduct(newdata)
-    //     }
-    //    }else if(!e.target.checked){
-    //     getdata()
-    //    }
-    //    setdisplay(false)
+
+    if(e.target.checked){
+        let newdata = Product.filter((ele)=> ele.brand === str.ele)
+        if(newdata.length>0){
+          setProduct(newdata)
+        }
+       }else if(!e.target.checked){
+        getproducts(Params_cate.cate)
+       }
+       setdisplay(false)
+}
+
+const filterprice = (e,num1=0,num2=5000)=> {
+  if(e.target.checked){
+    let newdata = Product.filter((ele)=> (ele.price >= num1 && ele.price <= num2))
+    if(newdata.length>0){
+      setProduct(newdata)
+    }
+   }else if(!e.target.checked){
+    getproducts(Params_cate.cate)
+   }
+   setdisplay(false)
 }
 
 const handeldisplay = () => {
@@ -68,10 +100,10 @@ const handeldisplay = () => {
 
 
   return (
-    <Box p='5px' pt='180px' position='relative' mb='20px' >
-       
-    <Flex m='auto' gap='20px'>
-       <Box w='25%'  display={{base:'none',md:'block'}}>
+    <Box p='5px' pt={{base:'150px',md:'180px'}} position='relative' mb='20px' >
+       <Text textAlign='left' p='5px' pl='15px'>Filter</Text>
+    <Flex m='auto' gap='20px' flexDirection={{base:'column',md:'row'}}>
+       <Box w={{base:'100%',md:'25%'}} >
        
    <Accordion allowMultiple>
        <AccordionItem>
@@ -83,17 +115,17 @@ const handeldisplay = () => {
       
        <AccordionPanel pb={4} textAlign='start'>
           
-          <Checkbox>
-         Under INR 427288
+        <Checkbox onChange={(e)=>filterprice(e,0,5000)}>
+         Under INR 5000
        </Checkbox>
-       <Checkbox>
-       Under INR 427288 - INR 75662
+       <Checkbox onChange={(e)=>filterprice(e,3500,5000)}>
+       Under INR 3500 - INR 5000
        </Checkbox>
-       <Checkbox>
-       Under INR 75662 -INR 1475662
+       <Checkbox onChange={(e)=>filterprice(e,2000,3500)}>
+       Under INR 2000 -INR 3500
        </Checkbox>
-       <Checkbox>
-       Under INR 1475662
+       <Checkbox onChange={(e)=>filterprice(e,0,2000)}>
+       Under INR 2000
        </Checkbox>
      
        </AccordionPanel>
@@ -102,18 +134,17 @@ const handeldisplay = () => {
            <AccordionItem>
        
        <AccordionButton justifyContent='space-between' >
-         <Text>Prints</Text>
+         <Text>Brands</Text>
          <AccordionIcon />
        </AccordionButton>
     
      <AccordionPanel  textAlign='start'>
-        
-       <Checkbox onChange={(e)=> PrintsRating(e,'Solid') }>
-       Solid
-     </Checkbox><br />
-     <Checkbox onChange={(e)=> PrintsRating(e,'pattern') }>
-      Pattern
+     {brand && brand.map((ele,i)=>   (<Box>
+      <Checkbox key={i} onChange={(e)=> PrintsRating(e,{ele}) }>
+     {ele}
      </Checkbox>
+     </Box>)
+     )}
      </AccordionPanel>
          </AccordionItem>
          
@@ -144,30 +175,15 @@ const handeldisplay = () => {
                
                </Box>
    
-            <Box w={{base:'100%',md:"95%"}} >
-           <Box display={{base:'block',md:'none'}} border='1px solid gray' bg='white' p='5px' w='100% ' position='fixed' top='90px'> 
-   
-              <Flex  alignItems='center' p='5px' > <Text as='b' fontSize='20px'>Filter </Text><BsTextIndentRight size='25px'/></Flex>
-           {/* Here */}
-             <Box display={display?'block':'none'} >
-             {/* <SideDrower 
-             filterRating={filterRating} 
-             PrintsRating={PrintsRating}
-              one={one} two={two} 
-              three={three} four={four}
-             /> */}
-             </Box>
-           </Box>
+            <Box w={{base:'100%',md:"95%"}}>
 
              <Box >
                <Flex alignItems='center'> <Text  pl='30px' fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{Params_cate.cate}</Text></Flex>
-             <SimpleGrid columns={{base:'2',md:'3'}} spacing='10px' >
-               
+             
+             <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
                { Product && Product.map((ele)=>(
-// *****************************************************************************//
-                  
-                  
-                  <Box key={ele.id} w='70%' m='auto' >
+
+                  <Box key={ele.id}  p='5px' m='auto' >
                   
                         <Link to={`/products/${ele.id}`}>
                         <Box w='100%' >
@@ -182,9 +198,9 @@ const handeldisplay = () => {
                             </Flex>
                               <Divider/>
                               <Flex justifyContent='space-between' alignItems='center' >
-                              <Flex alignItems='center' color='#ED8936'><BiRupee color='#ED8936'/>{ele.price}</Flex>
+                              <Flex alignItems='center' color='#ED8936'><BiRupee color='#ED8936'/><Text>{ele.price}</Text></Flex>
                               <Spacer/>
-                               <Text fontSize='md' color='green'>Flat{ele.discount}%OFF</Text> 
+                               <Text color='green'>Flat{ele.discount}%OFF</Text> 
                                 </Flex>
 
                            </Box>

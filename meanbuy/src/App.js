@@ -18,9 +18,9 @@ import ProductPage from './pages/ProductPage';
 function App() {
   return (
     <div className="App">
-      <Navbar2/>   
+       <Navbar2/>
        <Allrouts/> 
-      <Footer/>
+       <Footer/> 
     </div>
   ); 
 }

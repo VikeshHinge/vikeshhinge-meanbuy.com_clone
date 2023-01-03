@@ -5,7 +5,10 @@ export const sliderimg = ['https://d64lkarmo2mrq.cloudfront.net/img/home/interna
 'https://d64lkarmo2mrq.cloudfront.net/img/home/544545_best_selling.webp','https://d64lkarmo2mrq.cloudfront.net/img/home/new-global.webp',
 'https://d64lkarmo2mrq.cloudfront.net/img/home/prepaid-order-free-watch-banner.webp']
 
-export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','Small Appliances',
-                            'Toys','Watches','Keyboards & Mouse','Bluetooth Earphone','Makeup Accessories','Kitchen Wares'
-                            ,'Stiletto Heels & Slip','Action Figures','Clothing','NEW ARRIVALS','Featured'
-]
+// export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','',
+//                             'Toys','Keyboards & Mouse','','Bluetooth Earphone','Makeup Accessories','Kitchen Wares'
+//                             ,'Stiletto Heels & Slip','Action Figures','Clothing','NEW ARRIVALS','Featured'
+// ]
+
+export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','Toys','Keyboards & Mouse',
+                           'mens watch','Makeup Accessories','Kitchen Wares','Action Figures','Clothing','Disney']

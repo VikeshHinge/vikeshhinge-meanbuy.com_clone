@@ -1,11 +1,12 @@
   
 import {VStack,Box,Text,Image,Heading,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
- import {useState,useEffect} from "react"
+ import {useState,useEffect,useContext} from "react"
 import "./Home.css"
 import {sliderimg,slidername} from "../Componunt/objects"
 import { GetData } from "../Axios/Axios"
 import Productlist from "./Productlist"
 import {Navigate,Link} from 'react-router-dom'
+import Authcontext from "../AuthContext/Authcontext"
 //https://twisty-silly-ring.glitch.me/product
 
 const Home = ()=> {
@@ -31,9 +32,8 @@ const [New,setNew] =useState([])
 
 
 
-
-const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMouse,Bluetooth,
-                     MWdata,Makeup,Kitchen,Stiletto,Actionfig,Clothing,New,Watchdata]
+const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
+                     MWdata,Makeup,Kitchen,Actionfig,Clothing,New,Watchdata]
 
     const screensever = () => {
         let count =1;
@@ -57,12 +57,11 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
     },[])
 
     useEffect(()=>{
-        FetchFilter(Data,"Home Decor")
-        FetchFilter(Data,"mens watch")
+         FetchFilter(Data,"Home Decor")
+         FetchFilter(Data,"mens watch")
          FetchFilter(Data,"Ballet Flats")
          FetchFilter(Data,"Handbags & Clutches")
          FetchFilter(Data ,"Mobiles Accessories")//*********** */
-        // FetchFilter(Data,'Small Appliances')
          FetchFilter(Data,'Toys') 
 
          FetchFilter(Data,'Watches')/*********** */
@@ -94,9 +93,9 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
         if(str==="Mobiles Accessories"){
             setMobiAdata(FilterData)
         }
-        if(str==="Small Appliances"){
-            setSmallAdata(FilterData)
-        }
+        // if(str==="Small Appliances"){
+        //     setSmallAdata(FilterData)
+        // }
         if(str==="Toys"){
            setToysdata(FilterData)
         }
@@ -142,11 +141,11 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,SmallAdata,Toysdata,keyMou
           {
             slidername.map((heading,i)=>{
                 return(
-                    <Box w='95%' m='auto' key={i} >
+                    <Box w='95%' m='auto' key={i} mb='20px'>
                     <HStack justifyContent='space-evenly' alignItems='center' mt='50px'>
                     <Heading  as='h5' size={{base:"xs",md:"sm"}}  w={{base:"300px",md:"200px"}}  >{heading}</Heading>
                     <Divider  border='1px solid'  />
-                    <Link to={`/products/categories/${heading}`} w={{base:"200px",md:"100px"}} size={{base:"xs",md:"sm"}}  >see more</Link>
+                    <Link to={`/products/categories/${heading}`} ><Text w={{base:"90px",md:"100px"}}size={{base:"xs",md:"sm"}}>see more</Text></Link>
                     </HStack>
                     <Box display={{base:"none",md:"block"}} >
                       <Productlist product={dataheading[i]} num={4.5} />

@@ -1,5 +1,5 @@
 import {Box,VStack,Image,Stack,ListItem,UnorderedList, Grid,Select,GridItem,TabPanel,Tab,TabList,TabPanels,Tabs,
-    Container,Flex,Spacer,Heading,Badge,Link,Text,Divider, HStack,Radio,RadioGroup,Button
+    Container,Flex,Spacer,Heading,Badge,Text,Divider, HStack,Radio,RadioGroup,Button
 } from "@chakra-ui/react"
 import {StarIcon} from "@chakra-ui/icons"
 import {GetproductbyID} from "../Axios/Axios"
@@ -10,8 +10,7 @@ import { FcCheckmark } from "react-icons/fc";
 import { BsWhatsapp,BsSnapchat } from "react-icons/bs";
 import {BsCashCoin, } from "react-icons/bi";
 import {FcDataProtection,FcShipped,FcMoneyTransfer,FcAssistant} from "react-icons/fc";
-import {useParams} from "react-router-dom"
-
+import {useParams,Link} from "react-router-dom";
 
 
 
@@ -27,7 +26,7 @@ let imgproduct = useRef(null)
 
 let productid = (id)=> {
    // console.log("id",id)
-   let x = GetproductbyID(id).then((res)=>setItem(res.data))
+ GetproductbyID(id).then((res)=>setItem(res.data))
 }
  useEffect(()=>{
   productid(param.id)   //******************id put here */
@@ -52,7 +51,13 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                     return(
                     <Flex key={i}  gap='20px' direction={{base:'column',md:'row'}} >
                     <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
-                    <Text textAlign='start' pl='30px' fontSize={{base:'sm',md:'xl'}} mb='10px'>Home {`>`} Categories {`>`} {' '}<Link color='orange'>{element.categories }</Link></Text>
+
+                    <Flex alignItems='center'  > 
+                    <Text fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
+                    <Link to={`/products/categories/${element.categories}`}><Text fontSize={{base:'sm',md:'xl'}} mb='30px' color='orange'>{element.categories} {`>`}</Text></Link>
+                    <Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{element.brand}</Text>
+                    </Flex>
+
                     <Image ref={imgproduct} src={element.img1} m='auto' w='90%' ></Image>
                     </Box>
   
