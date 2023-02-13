@@ -1,25 +1,20 @@
 import {useState,useEffect} from "react"
 import "./dropdown.css"
-import {
- Image,Heading,Text,Box,Stack,Flex, VStack, Divider} from '@chakra-ui/react'
+import {Image,Heading,Text,Box,Stack,Flex, VStack, Divider} from '@chakra-ui/react'
  import './dropdown.css'
-import {Navigate,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 const Sidedrower = () => {
      let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
     let [cartQuantity,setcartQuantity] = useState([])
     let [total,settotal] =useState(0)
 
     useEffect(()=>{
-     let Tprice =DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
+     DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
      setcartQuantity(DataStore)
     },[])
-   //console.log("total : " ,total)
+   
 
-  const GotoCart = () => {
-    return( <Navigate to='/cart' />)
-  }
-
-
+  
     return(
         <Box className="sidedrower">
             <Flex justifyContent='space-around' gap='0%'>

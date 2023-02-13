@@ -2,7 +2,7 @@
 import {Box,Image,Text,Divider,Flex,Square,Button} from "@chakra-ui/react";
 import Login from "./Login";
 import Signup from "./Signup";
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useContext} from 'react';
 import "./Signup.css";
 import Authcontext from "../AuthContext/Authcontext";
 import { Navigate } from "react-router-dom";
@@ -18,12 +18,12 @@ let initialValue = {
 
 const UserAuth = () => {
 
-  let {isAuth,loginAuth,logoutAuth} = useContext(Authcontext)
+  let {isAuth} = useContext(Authcontext)
     const [input, setInput] = useState(initialValue)
     const [Userinput, setUInput] = useState({})
    
     const [usersignup,setUsersignup] = useState(false)
-    const [count,setCount] = useState(0)
+   
     
     const handelchange = (e) => {
         let {name,value} = e.target;
@@ -56,18 +56,12 @@ const SignupFirst = (a,b) => {
 }
 
 
-
-useEffect(()=>{
-  setCount(count+1)
-  console.log(count)
-},[])
-
   return (
     <Box  className="signup" w='95%' m='auto'>
 
         <Flex className="flex_signup" flexDirection={{base:'column',md:'row'}} >
     
-            {/* Login or Signup */}
+ {/*--------------------------- Login or Signup ---------------*/}
          {usersignup===true?<Login  input={input} SignupFirst={SignupFirst}/>:<Signup handelchange={handelchange} handelsignup={handelsignup}/>} 
 
          <Box w={{base:'95%',md:'30%'}} m='auto' >

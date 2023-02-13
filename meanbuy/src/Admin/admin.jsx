@@ -1,6 +1,6 @@
 import axios from "axios"
 import {useState} from "react"
-import {Box,Button, Spacer} from "@chakra-ui/react"
+import {Box,Button} from "@chakra-ui/react"
 let proobj = {
     title: "",
       img1: "",

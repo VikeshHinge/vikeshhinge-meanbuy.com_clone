@@ -1,21 +1,23 @@
-
+import React,{useContext} from "react";
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
+import Authcontext from "../AuthContext/Authcontext";
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
 import './navbar.css'
-import {Navigate,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 
 let Navbar2 = () => {
 
-
+  let {logoutAuth} = useContext(Authcontext)
     let [categories,setcategories] = useState(false)
     let [sidedrower,setsidedrower] = useState(false)
+
 
     const handeldropdown = (x) => {
     if(x===1){
@@ -36,9 +38,9 @@ let Navbar2 = () => {
     return(
        <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999'>
          <Box bg='black' color='white'w='100%'>
-            <Flex alignItems='center' justifyContent='center' >
+            <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  
-               <Flex>
+               <Flex gap='5px'>
                 <FaInstagramSquare color="#8a3ab9"/>
                 <FaFacebook color="#3b5998"/>
                </Flex> 
@@ -53,7 +55,6 @@ let Navbar2 = () => {
              <Input placeholder='Search' size='sm' w='300px'/>
              <InputRightElement width='4.5rem'>
                <Button  size='sm' bg="none">
-                 {/* {show ? 'Hide' : 'Show'} */}
                  <Search2Icon/>
                </Button>
              </InputRightElement>
@@ -67,13 +68,13 @@ let Navbar2 = () => {
                 <Link> Delivery Info </Link>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
-
-                    {user?<Text color='orange' as='b'>Welcome-{email}</Text>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
+{/*---------------------- user login/logout ------------------------ */}
+                    {user?<Flex gap='3px' alignItems='center' p='5px' fontWeight='bold' fontSize='12px'><Text color='orange' >{email}/</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutAuth}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
 
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />
-                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{DataStore && DataStore.length || 0}</Text>
+                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{DataStore && DataStore.length}</Text>
                      </Flex>
                 </Box>
                
@@ -93,7 +94,7 @@ let Navbar2 = () => {
           </Box>
          
           <HStack className="navop" >
-          <Link  onClick={()=>handeldropdown(1)} >Categories {categories===false?<TriangleDownIcon/>:<TriangleUpIcon/> && <CategoriesDrop/>}</Link>
+          <Link  onClick={()=>handeldropdown(1)} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop/></>}</Link>
           <Text>flash Sale</Text>
           <Text display={{base:'none',md:'block'}} >Best Deals</Text>
           <Text display={{base:'none',md:'block'}} >Shop by Brand</Text>

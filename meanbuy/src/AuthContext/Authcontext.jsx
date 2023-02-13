@@ -1,5 +1,5 @@
 
-import { useContext,createContext, useState } from "react";
+import {createContext, useState } from "react";
 
 let Authcontext = createContext()
 
@@ -15,6 +15,9 @@ let loginAuth = () => {
 
 let logoutAuth = () => {
     setAuth(false)
+    console.log("user REmove")
+    localStorage.removeItem('User')
+    localStorage.removeItem('userInfo')
 }
     return(
      <Authcontext.Provider value={{isAuth,loginAuth,logoutAuth}}>{children}</Authcontext.Provider>

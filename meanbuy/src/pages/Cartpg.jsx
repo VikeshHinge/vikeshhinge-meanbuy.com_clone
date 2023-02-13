@@ -12,12 +12,12 @@ const Cart = () => {
 
 const [cartData,setCartdata] = useState([])
 const [total,settotal] = useState(0)
-const [count,setCount] = useState(0)
+
 
 const handeldelete = (id) => {
       let newdata = cartData.filter((ele)=> ele.id !== id)
       localStorage.setItem("CartData",JSON.stringify(newdata));
-      setCount(count+1)
+      
 }
 
 const handelcheckout = () => {
@@ -27,9 +27,8 @@ const handelcheckout = () => {
 
 
 useEffect(()=>{
-  let Tprice =DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
+  DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
   setCartdata(DataStore)
-  console.log(count)
 },[DataStore]);
 
 
