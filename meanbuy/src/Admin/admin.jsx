@@ -33,7 +33,7 @@ setprodata({...prodata,[name]:valpro})
 
 let addproduct = () => {
     //console.log(prodata)
-   axios.post(`http://localhost:4000/product`,{
+   axios.post(`https://twisty-silly-ring.glitch.me/product`,{
     title: prodata.title,
     img1: prodata.img1,
     img2:prodata.img2,

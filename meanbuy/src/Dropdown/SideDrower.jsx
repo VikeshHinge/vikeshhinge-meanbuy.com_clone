@@ -1,19 +1,9 @@
-import {useState,useRef,useEffect} from "react"
+import {useState,useEffect} from "react"
 import "./dropdown.css"
 import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,Image,
-    DrawerCloseButton,Heading,Text,
-    Button,Box,Input,FormLabel,InputGroup,InputLeftAddon,InputRightAddon,Stack,Select,Textarea, Flex,Link, VStack, Divider
-  } from '@chakra-ui/react'
- import {AddIcon} from "@chakra-ui/icons"
+ Image,Heading,Text,Box,Stack,Flex, VStack, Divider} from '@chakra-ui/react'
  import './dropdown.css'
-import { Navigate } from "react-router-dom"
-
+import {Navigate,Link} from 'react-router-dom';
 const Sidedrower = () => {
      let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
     let [cartQuantity,setcartQuantity] = useState([])
@@ -33,12 +23,12 @@ const Sidedrower = () => {
     return(
         <Box className="sidedrower">
             <Flex justifyContent='space-around' gap='0%'>
-            <Box border='1px solid' w='50%' p='5px' bg='black' color='white'><Link href="/cart">EDIT CART</Link></Box>
+            <Box border='1px solid' w='50%' p='5px' bg='black' color='white'><Link to="/cart">EDIT CART</Link></Box>
             <Box border='1px solid' w='50%' p='5px'>CHECKOUT</Box>
            </Flex>
         <Flex className="cartinfo">
-            <Link fontSize='sm'>VIEW CART({cartQuantity.length})</Link>
-            <Link fontSize='sm'>Cart Total: ₹{total>0?total:"0.00"}</Link>
+            <Link to="/cart" fontSize='sm'>VIEW CART({cartQuantity.length})</Link>
+            <Link to="/cart" fontSize='sm'>Cart Total: ₹{total>0?total:"0.00"}</Link>
         </Flex>
          {cartQuantity.length===0?
         <VStack>

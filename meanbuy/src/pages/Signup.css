@@ -6,7 +6,8 @@
    
 }
 .flex_signup{
-    gap: 20px;
+    gap: 10px;
+    margin: auto;
 }
 .formcontrol{
    text-align: left;

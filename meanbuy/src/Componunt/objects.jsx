@@ -1,9 +1,12 @@
 
-export const sliderimg = ['https://d64lkarmo2mrq.cloudfront.net/img/home/international-banner-02.webp','https://d64lkarmo2mrq.cloudfront.net/img/home/watch-offer-banner.webp',
-'https://d64lkarmo2mrq.cloudfront.net/img/home/turkey-fashion.webp','https://d64lkarmo2mrq.cloudfront.net/img/home/made-in-turkey.webp',
-'https://d64lkarmo2mrq.cloudfront.net/img/home/34535_new_arrivals.webp','https://d64lkarmo2mrq.cloudfront.net/img/home/4544_500_off.webp',
-'https://d64lkarmo2mrq.cloudfront.net/img/home/544545_best_selling.webp','https://d64lkarmo2mrq.cloudfront.net/img/home/new-global.webp',
-'https://d64lkarmo2mrq.cloudfront.net/img/home/prepaid-order-free-watch-banner.webp']
+import img1 from '../Images/slider.png'
+import img3 from '../Images/slider2.jpg'
+import img4 from '../Images/slider3.jpeg'
+import img5 from '../Images/slider4.jpg'
+
+
+
+export const sliderimg = [img1,img3,img4,img5]
 
 // export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','',
 //                             'Toys','Keyboards & Mouse','','Bluetooth Earphone','Makeup Accessories','Kitchen Wares'

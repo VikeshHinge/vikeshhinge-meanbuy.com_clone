@@ -1,13 +1,15 @@
   
-import {VStack,Box,Text,Image,Heading,Flex,Grid,GridItem,Divider,SimpleGrid,Stack, HStack} from "@chakra-ui/react"
- import {useState,useEffect,useContext} from "react"
-import "./Home.css"
-import {sliderimg,slidername} from "../Componunt/objects"
-import { GetData } from "../Axios/Axios"
-import Productlist from "./Productlist"
-import {Navigate,Link} from 'react-router-dom'
-import Authcontext from "../AuthContext/Authcontext"
-//https://twisty-silly-ring.glitch.me/product
+import {Box,Text,Image,Heading,Divider, HStack} from "@chakra-ui/react"
+ import {useState,useEffect} from "react";
+import "./Home.css";
+import {sliderimg,slidername} from "../Componunt/objects";
+import { GetData } from "../Axios/Axios";
+import Productlist from "./Productlist";
+import {Navigate,Link} from 'react-router-dom';
+import Authcontext from "../AuthContext/Authcontext";
+
+
+
 
 const Home = ()=> {
 
@@ -35,23 +37,6 @@ const [New,setNew] =useState([])
 const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
                      MWdata,Makeup,Kitchen,Actionfig,Clothing,New,Watchdata]
 
-    const screensever = () => {
-        let count =1;
-       let imgslider = setInterval(()=>{
-        if(count===8){
-            count=0
-        }
-          //console.log(count)
-          setSidedrower(sliderimg[count])
-          count++
-       },3000)
-    }
-   
-   
-
-    // useEffect(()=>{
-    //   screensever()
-    // },[])
     useEffect(()=> {
         GetData().then((res)=>setData(res.data))
     },[])
@@ -134,8 +119,8 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
     return(
 
         <Box pt='160px'>
-           <Box w='100%' transition="1s ease-in out" >
-             <Image  transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
+           <Box w='100%' m='auto' h={{base:'100px',md:'420px'}} translate="1s" >
+             <Image m='auto' transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
            </Box>
 
           {

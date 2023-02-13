@@ -1,7 +1,6 @@
 
-import {Box,VStack,Heading,Flex, HStack,Text,Image,Table,Tr,Th,Button,Square,Divider,TableContainer,
-    Tbody,Thead
-} from "@chakra-ui/react";
+import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead} from "@chakra-ui/react";
+
 import { DeleteIcon,CheckIcon } from '@chakra-ui/icons'
 import { useState,useEffect } from "react";
 
@@ -16,17 +15,22 @@ const [total,settotal] = useState(0)
 const [count,setCount] = useState(0)
 
 const handeldelete = (id) => {
-      //console.log(id)
       let newdata = cartData.filter((ele)=> ele.id !== id)
       localStorage.setItem("CartData",JSON.stringify(newdata));
       setCount(count+1)
 }
 
+const handelcheckout = () => {
+  alert('Product is ready for Checkout !!!')
+}
+
+
+
 useEffect(()=>{
   let Tprice =DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
   setCartdata(DataStore)
   console.log(count)
-},[count]);
+},[DataStore]);
 
 
 
@@ -38,7 +42,9 @@ if(DataStore.length <= 0 && cartData <= 0){
   )
 }
 
+// useEffect(()=> {
 
+// },[])
   return(
     <Flex pt='200px' w={{base:'99%',md:'90%'}} m='auto' mb='20px' gap='20px' flexDirection={{base:'column',md:'row'}} >
 
@@ -94,7 +100,7 @@ if(DataStore.length <= 0 && cartData <= 0){
       <Square size='1px' w='100%' bg='#A0AEC0' m='auto' mt='20px' mb='20px'></Square>
    
         <Text textAlign='left' mb='10px'>Cart Total: ₹{total}</Text>
-       <Button bg='orange.300' size='sm'borderRadius='0px' w='100%'>Checkout Now</Button>
+       <Button bg='orange.300' size='sm'borderRadius='0px' w='100%' onClick={handelcheckout}>Checkout Now</Button>
        </Box>
        </Box>
       </Box>

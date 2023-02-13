@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box,Button,Text,Flex, Checkbox,} from '@chakra-ui/react'
+import { Box,Text,Flex, Checkbox} from '@chakra-ui/react';
 
 const SideDrower = ({ filterRating,PrintsRating,one,two,three,four}) => {
  

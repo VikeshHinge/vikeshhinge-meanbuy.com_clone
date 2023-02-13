@@ -1,16 +1,11 @@
 
-import {Box,Image,Badge,Text,Divider,Flex,Spacer,Center,Square,Input,FormHelperText,FormErrorMessage,FormLabel,
-    FormControl,Button,Link,VStack,StackDivider,Heading,useToast,Alert,AlertIcon
-
-} from "@chakra-ui/react";
-
-
+import {Box,Text,Input,Button,useToast,Alert,AlertIcon} from "@chakra-ui/react";
 import {useContext} from "react"
 import Authcontext from '../AuthContext/Authcontext';
-import { useNavigate } from "react-router-dom";
-
+//import { useNavigate } from "react-router-dom";
 import React,{useState} from 'react';
 import "./Signup.css";
+import {Link} from 'react-router-dom';
 
 const userEmail = {
     Email:'',
@@ -25,12 +20,14 @@ const [userLogin,setUserLogin] = useState(userEmail)
 const [success,setSuccess] = useState(false)
 const toast = useToast()
 
-let navigate = useNavigate()
+//let navigate = useNavigate()
 
 const handelchange_Email = (e) => {
     let {name,value} = e.target; 
     setUserLogin({...userLogin,[name]:value})
   }
+ 
+
 
   const handelEmailSubmit= () => {
 
@@ -39,7 +36,7 @@ const handelchange_Email = (e) => {
     if(Email ==="" || Pw ===""){
        alert('input !!')
       }
-      else if(Email===input.email && Pw=== input.pw && Email !="" && Pw !=""){
+      else if(Email===input.email && Pw=== input.pw && Email !=="" && Pw !==""){
         toast({
             title: 'Account created.',
             description: "We've created your account for you.",
@@ -48,12 +45,11 @@ const handelchange_Email = (e) => {
             isClosable: true,
             position: 'bottom',
             })
+       
+          localStorage.setItem('userInfo',JSON.stringify(input))
             loginAuth()
             setSuccess(true)
-            // return(
-            //  navigate('/') 
-            // )
-      }
+          }
     
       else {
         toast({
@@ -66,9 +62,6 @@ const handelchange_Email = (e) => {
             })
       }
   }
-
- 
-
 
     return( 
  
@@ -88,7 +81,7 @@ const handelchange_Email = (e) => {
            <Input  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'Email' onChange={handelchange_Email} />
       
            <Text fontSize='12px'>Password</Text>
-           <Input  mb='20px' borderRadius='0px'  placeholder="Password" name='Pw' onChange={handelchange_Email}/>
+           <Input  mb='20px' borderRadius='0px' type={"password"}  placeholder="Password" name='Pw' onChange={handelchange_Email}/>
 
           </Box>
            

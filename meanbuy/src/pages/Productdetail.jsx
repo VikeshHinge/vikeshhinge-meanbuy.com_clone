@@ -1,5 +1,5 @@
-import {Box,VStack,Image,Stack,ListItem,UnorderedList, Grid,Select,GridItem,TabPanel,Tab,TabList,TabPanels,Tabs,
-    Container,Flex,Spacer,Heading,Badge,Text,Divider, HStack,Radio,RadioGroup,Button
+import {Box,Image,Stack,ListItem,UnorderedList, Grid,TabPanel,Tab,TabList,TabPanels,Tabs,
+    Flex,Heading,Badge,Text,Divider,Radio,RadioGroup,Button
 } from "@chakra-ui/react"
 import {StarIcon} from "@chakra-ui/icons"
 import {GetproductbyID} from "../Axios/Axios"
@@ -7,8 +7,7 @@ import { BiRupee } from "react-icons/bi";
 import { useState,useEffect,useRef } from "react"
 import { GrFacebookOption,GrTwitter,GrPinterest,GrLinkedin,GrSnapchat } from "react-icons/gr";
 import { FcCheckmark } from "react-icons/fc";
-import { BsWhatsapp,BsSnapchat } from "react-icons/bs";
-import {BsCashCoin, } from "react-icons/bi";
+import { BsWhatsapp } from "react-icons/bs";
 import {FcDataProtection,FcShipped,FcMoneyTransfer,FcAssistant} from "react-icons/fc";
 import {useParams,Link} from "react-router-dom";
 

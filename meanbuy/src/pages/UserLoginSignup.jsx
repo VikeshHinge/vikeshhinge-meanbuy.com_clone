@@ -1,16 +1,13 @@
 
-import {Box,Image,Badge,Text,Divider,Flex,Spacer,Center,Square,Input,FormHelperText,FormErrorMessage,FormLabel,
-    FormControl,Button,Link,VStack,StackDivider
-
-} from "@chakra-ui/react";
+import {Box,Image,Text,Divider,Flex,Square,Button} from "@chakra-ui/react";
 import Login from "./Login";
 import Signup from "./Signup";
-
-import React,{useState} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import "./Signup.css";
-import { useEffect } from "react";
+import Authcontext from "../AuthContext/Authcontext";
+import { Navigate } from "react-router-dom";
 
-
+let user = localStorage.getItem('User')
 
 let initialValue = {
     email:'',
@@ -18,7 +15,10 @@ let initialValue = {
     pw_conf:'' 
 }
 
+
 const UserAuth = () => {
+
+  let {isAuth,loginAuth,logoutAuth} = useContext(Authcontext)
     const [input, setInput] = useState(initialValue)
     const [Userinput, setUInput] = useState({})
    
@@ -30,37 +30,45 @@ const UserAuth = () => {
         setInput({...input,[name]:value})
     }
 
+    const gotocart = () => {
+      if(!isAuth && !user){
+        return <Navigate to='/login'/>
+      }
+    }
+
     const handelsignup = () => { 
       let {email,pw,pw_conf} = input;
         if( pw ==='' || pw_conf===''|| email ==="" ){
             alert('put proper input')
         }
-      else if(pw===pw_conf && pw !='' && pw_conf!=''){
-        console.log(email,pw,pw_conf,'yes')
+      else if(pw===pw_conf && pw !=='' && pw_conf!==''){
         setUsersignup(true)
         setUInput({...Userinput,input})
       }else {
         console.log('no')
       }
     }
+
 const SignupFirst = (a,b) => {
 
   alert("user not found !!")
   setUsersignup(false)
 }
 
-// useEffect(()=>{
-//   setCount(count+1)
-//   console.log(count)
-// },[])
+
+
+useEffect(()=>{
+  setCount(count+1)
+  console.log(count)
+},[])
 
   return (
-    <Box  className="signup">
+    <Box  className="signup" w='95%' m='auto'>
 
         <Flex className="flex_signup" flexDirection={{base:'column',md:'row'}} >
     
             {/* Login or Signup */}
-         {usersignup===true?<Login  input={input} SignupFirst={SignupFirst}/>:<Signup handelchange={handelchange} handelsignup={handelsignup}/>}   
+         {usersignup===true?<Login  input={input} SignupFirst={SignupFirst}/>:<Signup handelchange={handelchange} handelsignup={handelsignup}/>} 
 
          <Box w={{base:'95%',md:'30%'}} m='auto' >
             
@@ -75,7 +83,7 @@ const SignupFirst = (a,b) => {
           <Square size='1px' w='100%' bg='#A0AEC0' m='auto' mt='20px' mb='20px'></Square>
        
             <Text textAlign='left'>Cart Total: {0}</Text>
-            <Button colorScheme='orange' w='90%' borderRadius='0px' variant='outline' mt='15px'>EDIT CART</Button>
+            <Button onClick={gotocart} colorScheme='orange' w='90%' borderRadius='0px' variant='outline' mt='15px'>EDIT CART</Button>
            </Box>
            </Box>
 

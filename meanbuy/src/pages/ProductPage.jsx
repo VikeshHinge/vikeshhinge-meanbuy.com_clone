@@ -1,15 +1,14 @@
 
 import React,{useState,useEffect} from 'react';
-import axios from 'axios';
-import { Box,Image,Button,HStack,SimpleGrid,Text,Heading,Flex,Badge, Accordion, AccordionItem,Stack, AccordionButton, AccordionPanel, AccordionIcon,Checkbox, Divider, Spacer,
+
+import { Box,Image,SimpleGrid,Text,Flex, Accordion,AccordionItem,AccordionButton, AccordionPanel, AccordionIcon,Checkbox, Divider, Spacer,
 } from '@chakra-ui/react'
 
-import { BsStarFill,BsStarHalf,BsStar,BsTextIndentRight } from "react-icons/bs";
+import { BsStarFill,BsStarHalf,BsStar } from "react-icons/bs";
 import { Link,useParams } from 'react-router-dom';
 import { BiRupee } from "react-icons/bi";
 import { GetproductbyCategory } from '../Axios/Axios';
 
-import SideDrower from './sideDrower';
 
 const ProductPage = () => {
      const [brand,setBrand] = useState([])

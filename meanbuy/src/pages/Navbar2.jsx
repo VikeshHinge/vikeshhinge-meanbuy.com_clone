@@ -1,14 +1,16 @@
 
-import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Link,Spacer,VStack,Divider} from "@chakra-ui/react"
+import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
-import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
-
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
 import './navbar.css'
+import {Navigate,Link} from 'react-router-dom';
+
+
+
 let Navbar2 = () => {
 
 
@@ -27,8 +29,10 @@ let Navbar2 = () => {
      }
 
     }
-    let DataStore=JSON.parse(localStorage.getItem("CartData"));
-   
+    let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
+    let user = localStorage.getItem('User')||'';
+    let {email}= JSON.parse(localStorage.getItem('userInfo'))||[];
+ 
     return(
        <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999'>
          <Box bg='black' color='white'w='100%'>
@@ -42,7 +46,7 @@ let Navbar2 = () => {
         </Box>
           <Flex className="navTop" >
             <Box className="imgbox" >
-                <Link href='/'><Image w='100%' src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png"></Image></Link>
+                <Link to='/'><Image w='100%' src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png"></Image></Link>
             </Box>
             <Spacer  display={{base:"block",md:"block"}}/>
             <InputGroup size='sm' w="300px" h="10" ml='-20%' display={{base:"none",md:"block"}} >
@@ -63,8 +67,9 @@ let Navbar2 = () => {
                 <Link> Delivery Info </Link>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
-                    <Link href='/login'>Login</Link>/
-                    <Link href='/signup'>Signup</Link>
+
+                    {user?<Text color='orange' as='b'>Welcome-{email}</Text>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
+
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />

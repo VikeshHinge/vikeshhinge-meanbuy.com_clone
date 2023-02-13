@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
-import {Box,Image,Badge,Text,Divider,Flex,Spacer } from "@chakra-ui/react"
-import {Link,Navigate} from "react-router-dom"
-import {StarIcon} from "@chakra-ui/icons"
+import React from "react";
+import {Box,Image,Badge,Text,Divider,Flex, } from "@chakra-ui/react";
+import {Link,Navigate} from "react-router-dom";
+import {StarIcon} from "@chakra-ui/icons";
 import { BiRupee } from "react-icons/bi";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"; 

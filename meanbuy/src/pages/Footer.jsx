@@ -1,8 +1,9 @@
 
-import {VStack,Box,Text,Image,Heading,Link,Flex,Grid,Button,InputGroup,Input,InputRightElement,
-  Divider,Spacer,HStack,SimpleGrid
-} from "@chakra-ui/react"
+import {Text,Flex,VStack,Box,Button,InputGroup,Input,Divider,Spacer,HStack,SimpleGrid} from "@chakra-ui/react"
 import { FaYoutube,FaInstagramSquare,FaLinkedin,FaCcVisa,FaAmazonPay,FaCcMastercard,FaTwitter } from "react-icons/fa";
+import {Link} from 'react-router-dom';
+
+
 const Footer = () => {
 
     return(

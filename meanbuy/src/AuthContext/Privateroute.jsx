@@ -1,16 +1,17 @@
 import {useContext} from "react"
 import Authcontext from "./Authcontext"
-
 import {Navigate} from 'react-router-dom'
+import { useEffect } from "react"
+
+let user = localStorage.getItem('User')
 
 const Privateroute = ({children}) => {
    
     const {isAuth} = useContext(Authcontext)
 
-    console.log("entry",isAuth)
-
-   if(isAuth === false){
-    console.log('navigate',"isAuth:",isAuth)
+    console.log("privateroute-isAuth",isAuth,'user:',user)
+    
+   if(!isAuth && !user){
      return <Navigate to='/login'/>
    }
 
@@ -19,3 +20,4 @@ const Privateroute = ({children}) => {
 }
 
 export default Privateroute;
+

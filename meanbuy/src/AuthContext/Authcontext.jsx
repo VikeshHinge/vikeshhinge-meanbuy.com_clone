@@ -6,7 +6,7 @@ let Authcontext = createContext()
 const AuthcontextProvider = ({children}) => {
  
 const [isAuth,setAuth] = useState(false)
-console.log(isAuth,1)
+console.log("isAuth-Authantication",isAuth)
 
 let loginAuth = () => {
    setAuth(true)
