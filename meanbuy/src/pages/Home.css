@@ -15,6 +15,24 @@
     margin: auto;
     width: 100%;
 }
+.loading{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    animation: loading 0.5s ease-in-out infinite;
+    transition: 0.5s;
+}
+@keyframes loading {
+   0%{
+    background: white;
+   }
+   50%{
+    background-color: rgb(135, 158, 158);
+   }
+   100%{
+    background: white;
+   }
+}
 
 @media all and (min-width:260px) and (max-width:720px){
 

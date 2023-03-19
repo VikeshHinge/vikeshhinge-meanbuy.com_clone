@@ -4,7 +4,7 @@ import {Box,Image,Stack,ListItem,UnorderedList, Grid,TabPanel,Tab,TabList,TabPan
 import {StarIcon} from "@chakra-ui/icons"
 import {GetproductbyID} from "../Axios/Axios"
 import { BiRupee } from "react-icons/bi";
-import { useState,useEffect,useRef } from "react"
+import { useState,useEffect} from "react"
 import { GrFacebookOption,GrTwitter,GrPinterest,GrLinkedin,GrSnapchat } from "react-icons/gr";
 import { FcCheckmark } from "react-icons/fc";
 import { BsWhatsapp } from "react-icons/bs";
@@ -21,8 +21,6 @@ const [tabIndex, setTabIndex] = useState(0)
 const param = useParams()
 //console.log(param.id,"param")
 
-let imgproduct = useRef(null)
-
 let productid = (id)=> {
    // console.log("id",id)
  GetproductbyID(id).then((res)=>setItem(res.data))
@@ -33,9 +31,6 @@ let productid = (id)=> {
 
 
 let Addtocart = (id) => {
-// let Array = localStorage.getItem("cartdata") || []
-// Array.push(id)
-// let zip = localStorage.setItem("cartdata",JSON.stringify(Array))
 let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
 DataStore.push(id)
 localStorage.setItem("CartData",JSON.stringify(DataStore))
@@ -52,12 +47,12 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                     <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
 
                     <Flex alignItems='center'  > 
-                    <Text fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
+                    <Text className="navigate" fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
                     <Link to={`/products/categories/${element.categories}`}><Text fontSize={{base:'sm',md:'xl'}} mb='30px' color='orange'>{element.categories} {`>`}</Text></Link>
                     <Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{element.brand}</Text>
                     </Flex>
 
-                    <Image ref={imgproduct} src={element.img1} m='auto' w='90%' ></Image>
+                    <Image src={element.img1} m='auto' w='90%' alt={element.title} ></Image>
                     </Box>
   
                     <Box w='90%'m='auto' textAlign='left' h={{base:'100%',md:'500px'}} overflowY={{base:'none',md:'auto'}}>

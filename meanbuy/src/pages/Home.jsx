@@ -1,14 +1,13 @@
   
-import {Box,Text,Image,Heading,Divider, HStack} from "@chakra-ui/react"
+import {Box,Text,Image,Heading,Divider, HStack, SimpleGrid} from "@chakra-ui/react"
  import {useState,useEffect} from "react";
 import "./Home.css";
 import {sliderimg,slidername} from "../Componunt/objects";
 import { GetData } from "../Axios/Axios";
 import Productlist from "./Productlist";
 import {Navigate,Link} from 'react-router-dom';
-import Authcontext from "../AuthContext/Authcontext";
-
-
+import {useDispatch,useSelector} from 'react-redux';
+import {GetProducts} from '../Redux/Products.Redux/product.action.js';
 
 
 const Home = ()=> {
@@ -36,30 +35,36 @@ const [New,setNew] =useState([])
 
 const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
                      MWdata,Makeup,Kitchen,Actionfig,Clothing,New,Watchdata]
+let dispatch = useDispatch()
+
+let {productData:{data},loading,error} = useSelector((store)=>(store.productManager))
+console.log(data,loading)
 
     useEffect(()=> {
-        GetData().then((res)=>setData(res.data))
-    },[])
+        // GetData().then((res)=>setData(res.data))
+        GetProducts(dispatch)
+        if(data !== undefined){
+          setData(data)
+        }
+    },[dispatch])
 
     useEffect(()=>{
-         FetchFilter(Data,"Home Decor")
-         FetchFilter(Data,"mens watch")
-         FetchFilter(Data,"Ballet Flats")
-         FetchFilter(Data,"Handbags & Clutches")
-         FetchFilter(Data ,"Mobiles Accessories")//*********** */
-         FetchFilter(Data,'Toys') 
-
-         FetchFilter(Data,'Watches')/*********** */
-         FetchFilter(Data,'Keyboards & Mouse')
-
-        // FetchFilter(Data,'Bluetooth Earphone')
-         FetchFilter(Data,'Makeup Accessories')
-         FetchFilter(Data,'Kitchen Wares')
-        // FetchFilter(Data,'Stiletto Heels & Slip On')
-         FetchFilter(Data,'Action Figures')
-         FetchFilter(Data,'Clothing')
-         FetchFilter(Data,'Disney')
-    },[Data])
+      if(data !== undefined){
+        FetchFilter(data,"Home Decor")
+        FetchFilter(data,"mens watch")
+        FetchFilter(data,"Ballet Flats")
+        FetchFilter(data,"Handbags & Clutches")
+        FetchFilter(data ,"Mobiles Accessories")
+        FetchFilter(data,'Toys') 
+        FetchFilter(data,'Watches')
+        FetchFilter(data,'Keyboards & Mouse')
+        FetchFilter(data,'Makeup Accessories')
+        FetchFilter(data,'Kitchen Wares')
+        FetchFilter(data,'Action Figures')
+        FetchFilter(data,'Clothing')
+        FetchFilter(data,'Disney')
+      }
+    },[data])
 
     let FetchFilter = (Data,str) => {
         let FilterData = Data.filter((item) => item.categories === str)
@@ -78,9 +83,6 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
         if(str==="Mobiles Accessories"){
             setMobiAdata(FilterData)
         }
-        // if(str==="Small Appliances"){
-        //     setSmallAdata(FilterData)
-        // }
         if(str==="Toys"){
            setToysdata(FilterData)
         }
@@ -113,8 +115,10 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
         }
         if(str  ===""){}
     }
+    let Loading = Array(5).fill(1);
 
-//console.log(HDdata)
+
+
 
     return(
 
@@ -132,12 +136,21 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
                     <Divider  border='1px solid'  />
                     <Link to={`/products/categories/${heading}`} ><Text w={{base:"90px",md:"100px"}}size={{base:"xs",md:"sm"}}>see more</Text></Link>
                     </HStack>
-                    <Box display={{base:"none",md:"block"}} >
-                      <Productlist product={dataheading[i]} num={4.5} />
-                    </Box>
-                    <Box display={{base:"block",md:"none"}} >
-                      <Productlist  product={dataheading[i]} num={1.5} />
-                    </Box>
+                    {loading ? 
+                        <SimpleGrid columns={5} spacing={10}>
+                         {Loading.map((ele)=><Box kry={ele} className='loading'>
+                            
+                         </Box>)}
+                        </SimpleGrid>
+                    :<>
+                       <Box display={{base:"none",md:"block"}} >
+                       <Productlist product={dataheading[i]} num={4.5} />
+                       </Box>
+                       <Box display={{base:"block",md:"none"}} >
+                       <Productlist  product={dataheading[i]} num={1.5} />
+                       </Box>
+                    </>
+                    }
                    </Box>
                 )
             })
