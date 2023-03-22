@@ -10,6 +10,8 @@ import { FcCheckmark } from "react-icons/fc";
 import { BsWhatsapp } from "react-icons/bs";
 import {FcDataProtection,FcShipped,FcMoneyTransfer,FcAssistant} from "react-icons/fc";
 import {useParams,Link} from "react-router-dom";
+import {useDispatch,useSelector} from 'react-redux';
+import {AddtoCart} from '../Redux/Cart.Redux/cart.action.js'
 
 
 
@@ -17,24 +19,20 @@ const ProductDetail = () => {
 
 const [Item,setItem] = useState([])
 const [tabIndex, setTabIndex] = useState(0)
-// const bg = colors[tabIndex]
+
 const param = useParams()
-//console.log(param.id,"param")
+const dispatch = useDispatch()
+
 
 let productid = (id)=> {
    // console.log("id",id)
  GetproductbyID(id).then((res)=>setItem(res.data))
 }
+
  useEffect(()=>{
   productid(param.id)   //******************id put here */
  },[])
 
-
-let Addtocart = (id) => {
-let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
-DataStore.push(id)
-localStorage.setItem("CartData",JSON.stringify(DataStore))
-}
 
 
     return(
@@ -129,7 +127,7 @@ localStorage.setItem("CartData",JSON.stringify(DataStore))
                       
                        <Flex gap='10px' justifyContent='center' mt='25px' mb='25px'>
 
-                            <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>Addtocart(element)}>
+                            <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>AddtoCart(element,dispatch)}>
                               ADD TO CART 
                             </Button>
                             <Button w='40%' height='48px' colorScheme='orange'>

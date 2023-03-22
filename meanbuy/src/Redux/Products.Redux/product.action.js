@@ -6,7 +6,7 @@ export const GetProducts = async(dispatch) => {
     dispatch({type:GET_PRODUCTS_LOADING})
     try{
         let data = await Getdata()
-    dispatch({type:GET_PRODUCTS_SUCESS,payload:data})
+        dispatch({type:GET_PRODUCTS_SUCESS,payload:data})
     }
     catch(err){
         dispatch({type:GET_PRODUCTS_ERROR,payload:err.message})

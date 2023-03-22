@@ -5,7 +5,8 @@ import Authcontext from '../AuthContext/Authcontext';
 //import { useNavigate } from "react-router-dom";
 import React,{useState} from 'react';
 import "./Signup.css";
-import {Link} from 'react-router-dom';
+import axios from "axios";
+import {Link,useNavigate} from 'react-router-dom';
 
 const userEmail = {
     Email:'',
@@ -13,12 +14,13 @@ const userEmail = {
 }
 
 
-const Login = ({input,SignupFirst}) => {
+const Login = ({input, setUsersignup}) => {
 
 let {isAuth,loginAuth,logoutAuth} = useContext(Authcontext)
 const [userLogin,setUserLogin] = useState(userEmail)
 const [success,setSuccess] = useState(false)
-const toast = useToast()
+const toast = useToast();
+const navigate = useNavigate()
 
 //let navigate = useNavigate()
 
@@ -29,38 +31,30 @@ const handelchange_Email = (e) => {
  
 
 
-  const handelEmailSubmit= () => {
+  const handelEmailSubmit= async() => {
 
     let {Email,Pw} = userLogin;
 
     if(Email ==="" || Pw ===""){
-       alert('input !!')
+       alert('fill the data properly')
       }
-      else if(Email===input.email && Pw=== input.pw && Email !=="" && Pw !==""){
-        toast({
-            title: 'Account created.',
-            description: "We've created your account for you.",
-            status: 'warning',
+    else{
+      let {data} =await axios.get(`http://localhost:4040/users?email=${Email}`)
+        if(data.length>0 && data[0].pw === Pw){
+          toast({
+            title: 'User Login Success',
+            status: 'success',
             duration: 3000,
             isClosable: true,
             position: 'bottom',
             })
-       
-          localStorage.setItem('userInfo',JSON.stringify(input))
-            loginAuth()
-            setSuccess(true)
-          }
+            localStorage.setItem('User',true)
+            localStorage.setItem('userInfo',Email)
+            return navigate("/")
+        }
+    }
     
-      else {
-        toast({
-            title: 'User Not Found.',
-            description: "Wrong Email or Password.",
-            status: 'error',
-            duration: 3000,
-            isClosable: true,
-            position: {base:'',md:'bottom'},
-            })
-      }
+     
   }
 
     return( 
@@ -92,7 +86,7 @@ const handelchange_Email = (e) => {
            
           
           <Link fontSize='xs' as='u'>Forger Password?</Link>
-          <Text fontSize='sm' fontWeight='bold'>New to MeanBuy? {' '} <Link color='#00B5D8' >Sign Up!</Link> </Text>
+          <Text onClick={()=> setUsersignup(false)} fontSize='sm' fontWeight='bold'>New to MeanBuy? {' '} <Link color='#00B5D8' >Sign Up!</Link> </Text>
         
         </Box>
             

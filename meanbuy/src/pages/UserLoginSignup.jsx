@@ -1,11 +1,12 @@
 
-import {Box,Image,Text,Divider,Flex,Square,Button} from "@chakra-ui/react";
+import {Box,Image,Text,Divider,Flex,Square,Button,useToast} from "@chakra-ui/react";
 import Login from "./Login";
 import Signup from "./Signup";
 import React,{useState,useContext} from 'react';
 import "./Signup.css";
 import Authcontext from "../AuthContext/Authcontext";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 let user = localStorage.getItem('User')
 
@@ -21,7 +22,7 @@ const UserAuth = () => {
   let {isAuth} = useContext(Authcontext)
     const [input, setInput] = useState(initialValue)
     const [Userinput, setUInput] = useState({})
-   
+    const toast = useToast()
     const [usersignup,setUsersignup] = useState(false)
    
     
@@ -36,18 +37,50 @@ const UserAuth = () => {
       }
     }
 
-    const handelsignup = () => { 
-      let {email,pw,pw_conf} = input;
+    const handelsignup = async() => { 
+       let {email,pw,pw_conf} = input;
         if( pw ==='' || pw_conf===''|| email ==="" ){
             alert('put proper input')
+           let input = document.querySelector('#email').focus()
         }
       else if(pw===pw_conf && pw !=='' && pw_conf!==''){
-        setUsersignup(true)
-        setUInput({...Userinput,input})
+          
+        let {data} =await axios.get(`http://localhost:4040/users?email=${email}`)
+        if(data.length > 0){
+          toast({
+            title: 'User already registered with this email.',
+            status:'warning',
+            duration: 3000,
+            isClosable: true,
+            position: 'bottom',
+            })
+            return;
+        }
+      
+         await axios.post('http://localhost:4040/users',input)
+         .then(
+          toast({
+            title: 'User Register Success',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+            position: 'bottom',
+            })
+          )
+          setUsersignup(true)
       }else {
+        toast({
+          title: 'Password dosnot match !',
+          description: "Please Check your conformed Password !",
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+          position: 'bottom',
+          })
         console.log('no')
       }
     }
+
 
 const SignupFirst = (a,b) => {
 
@@ -62,7 +95,7 @@ const SignupFirst = (a,b) => {
         <Flex className="flex_signup" flexDirection={{base:'column',md:'row'}} >
     
  {/*--------------------------- Login or Signup ---------------*/}
-         {usersignup===true?<Login  input={input} SignupFirst={SignupFirst}/>:<Signup handelchange={handelchange} handelsignup={handelsignup}/>} 
+         {usersignup===true?<Login  input={input}  setUsersignup={setUsersignup}/>:<Signup  setUsersignup={setUsersignup} handelchange={handelchange} handelsignup={handelsignup}/>} 
 
          <Box w={{base:'95%',md:'30%'}} m='auto' >
             

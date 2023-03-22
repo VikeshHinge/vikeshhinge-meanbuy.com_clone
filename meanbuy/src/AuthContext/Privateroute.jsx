@@ -11,7 +11,7 @@ const Privateroute = ({children}) => {
 
     console.log("privateroute-isAuth",isAuth,'user:',user)
     
-   if(!isAuth && !user){
+   if(!localStorage.getItem('User')){
      return <Navigate to='/login'/>
    }
 

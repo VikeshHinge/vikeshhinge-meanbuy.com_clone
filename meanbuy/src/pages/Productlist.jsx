@@ -40,7 +40,7 @@ const Productlist = ({product,num}) => {
 
                 <Link to={`/products/${element.id}`} >
 
-                   <Box p='5px' onClick={()=>handelRoue(element.id)} >
+                   <Box p='5px' onClick={()=>handelRoue(element.id)}>
                    <Image w='80%' src={element.img1} alt='Dan Abramov' m='auto' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
 

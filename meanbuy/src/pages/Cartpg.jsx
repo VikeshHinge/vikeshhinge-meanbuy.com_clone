@@ -3,6 +3,8 @@ import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead} from
 
 import { DeleteIcon,CheckIcon } from '@chakra-ui/icons'
 import { useState,useEffect } from "react";
+import {GetCartData} from '../Redux/Cart.Redux/cart.action.js';
+import{useDispatch,useSelector} from 'react-redux'
 
 let DataStore=JSON.parse(localStorage.getItem("CartData"))|| [];
 
@@ -11,13 +13,14 @@ let DataStore=JSON.parse(localStorage.getItem("CartData"))|| [];
 const Cart = () => {
 
 const [cartData,setCartdata] = useState([])
-const [total,settotal] = useState(0)
+const dispatch = useDispatch()
 
+const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
+console.log({'Cart':cart})
 
 const handeldelete = (id) => {
       let newdata = cartData.filter((ele)=> ele.id !== id)
-      localStorage.setItem("CartData",JSON.stringify(newdata));
-      
+      localStorage.setItem("CartData",JSON.stringify(newdata));     
 }
 
 const handelcheckout = () => {
@@ -27,13 +30,12 @@ const handelcheckout = () => {
 
 
 useEffect(()=>{
-  DataStore && DataStore.map((item)=>settotal((prev)=>prev+item.price))
-  setCartdata(DataStore)
-},[DataStore]);
+  GetCartData(dispatch) 
+},[dispatch]);
 
 
 
-if(DataStore.length <= 0 && cartData <= 0){
+if(cart.length <= 0){
   return (
      <Box textAlign='left' p='20px' pt='200px' pb='200px'>
       <Text fontSize='20px'>Is Empty! Come on, throw something in here...</Text>
@@ -41,9 +43,6 @@ if(DataStore.length <= 0 && cartData <= 0){
   )
 }
 
-// useEffect(()=> {
-
-// },[])
   return(
     <Flex pt='200px' w={{base:'99%',md:'90%'}} m='auto' mb='20px' gap='20px' flexDirection={{base:'column',md:'row'}} >
 
@@ -59,8 +58,7 @@ if(DataStore.length <= 0 && cartData <= 0){
    </Tr>
   </Thead>
    <Tbody>
-   {cartData.map((ele)=>{
-    
+   { cart.map((ele)=>{
        return(
        <Tr key={ele.id}>
            <Th w='120px'  p='10px' textAlign='center'>
@@ -92,7 +90,7 @@ if(DataStore.length <= 0 && cartData <= 0){
      <Text className="header2" bg='#f7f7f7'>Checkout Details</Text>
      <Divider bg='#A0AEC0'/>
      <Box className='cart_box' >
-      <Text textAlign='left'>Total Items: {cartData.length}</Text>
+      <Text textAlign='left'>Total Items: {cart.length}</Text>
       
       <Text textAlign='left'>Sub Total: ₹{total}</Text>
       <Text textAlign='left' color='green.500'>Shipping:Free</Text>

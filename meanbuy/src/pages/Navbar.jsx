@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext, useEffect} from "react";
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import Authcontext from "../AuthContext/Authcontext";
@@ -17,6 +17,7 @@ let Navbar2 = () => {
   let {logoutAuth} = useContext(Authcontext)
     let [categories,setcategories] = useState(false)
     let [sidedrower,setsidedrower] = useState(false)
+    let [users,setUsers]=useState('')
 
 
     const handeldropdown = (x) => {
@@ -33,7 +34,11 @@ let Navbar2 = () => {
     }
     let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
     let user = localStorage.getItem('User')||'';
-    let {email}= JSON.parse(localStorage.getItem('userInfo'))||[];
+    let email= localStorage.getItem('userInfo')||'';
+
+    useEffect(()=>{
+       setUsers(email)
+    },[email])
  
     return(
        <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999'>
@@ -69,7 +74,7 @@ let Navbar2 = () => {
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
 {/*---------------------- user login/logout ------------------------ */}
-                    {user?<Flex gap='3px' alignItems='center' p='5px' fontWeight='bold' fontSize='12px'><Text color='orange' >{email}/</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutAuth}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
+                    {user?<Flex gap='3px' alignItems='center' p='5px' fontWeight='bold' fontSize='12px'><Text color='orange' >{users}/</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutAuth}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
 
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>

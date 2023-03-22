@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 
 
-const Signup = ({handelchange,handelsignup}) => {
+const Signup = ({handelchange,handelsignup,setUsersignup}) => {
 
   return (
         
@@ -16,7 +16,7 @@ const Signup = ({handelchange,handelsignup}) => {
 
           <Box className="formcontrol">
             <Text fontSize='12px'>Email Address</Text>
-           <Input isRequired  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'email' 
+           <Input isRequired  mb='20px' borderRadius='0px' id='email'  placeholder="Email Address" name = 'email' 
            onChange={handelchange}/>
       
            <Text fontSize='12px'>Password</Text>
@@ -35,7 +35,7 @@ const Signup = ({handelchange,handelsignup}) => {
            
           
               
-          <Link to='#' fontSize='xs' as='u'>Already have a MeanBuy account? Log In!</Link>
+          <Link to='#' fontSize='xs' as='u' onClick={()=>setUsersignup(true)}>Already have a MeanBuy account? Log In!</Link>
           <Text fontSize='sm' fontWeight='bold'>By signing up, you agree to our {' '} <Link to='#' color='#00B5D8' >Terms of Use & Privacy Policy</Link> </Text>
         
         </form>

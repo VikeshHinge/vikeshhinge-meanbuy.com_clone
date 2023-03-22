@@ -8,12 +8,11 @@ import { BsStarFill,BsStarHalf,BsStar } from "react-icons/bs";
 import { Link,useParams } from 'react-router-dom';
 import { BiRupee } from "react-icons/bi";
 import { GetproductbyCategory } from '../Axios/Axios';
+import {useDispatch,useSelector} from 'react-redux';
+import {GetProductbyId} from '../Redux/ProductPg.Redux/Items.action.js'
 
 
 const ProductPage = () => {
-     const [brand,setBrand] = useState([])
-    const [Product,setProduct] = useState([])
-    const [display,setdisplay]=useState(false)
 
 
 let four =[<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStar size='13px'/>]
@@ -26,85 +25,42 @@ let threenhalf= [<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFil
 
 let Params_cate = useParams()
 
+let {productData,loading,error} = useSelector((store)=>(store.ItemsManager))
 
-const setbrands = (data) => {
-  let obj = {}
-  let arr = []
-  data.map(ele => {
-    if(obj[ele.brand]===undefined){
-      obj[ele.brand]=1
-      arr.push(ele.brand)
-    }
-    else{
-      obj[ele.brand]++
-    }
-  })
-  setBrand(arr)
-}
+let dispatch = useDispatch()
 
 
-
-
-const getproducts =async(categories) => {
-
-   let data =await GetproductbyCategory(categories)
-   setProduct(data)
-   setbrands(data)
-}
-
-useEffect (() => {
-  getproducts(Params_cate.cate)
-},[Params_cate])
-
-
-const filterRating = (e,n) => {
-   if(e.target.checked){
-    let newdata = Product.filter((ele)=> ele.rating >= n)
-    setProduct(newdata)
-   }else if(!e.target.checked){
-    getproducts(Params_cate.cate)
-   }
-   setdisplay(false)
-}
-
-const PrintsRating = (e,str)=> {
-
-    if(e.target.checked){
-        let newdata = Product.filter((ele)=> ele.brand === str.ele)
-        if(newdata.length>0){
-          setProduct(newdata)
-        }
-       }else if(!e.target.checked){
-        getproducts(Params_cate.cate)
-       }
-       setdisplay(false)
-}
-
-const filterprice = (e,num1=0,num2=5000)=> {
-  if(e.target.checked){
-    let newdata = Product.filter((ele)=> (ele.price >= num1 && ele.price <= num2))
-    if(newdata.length>0){
-      setProduct(newdata)
-    }
-   }else if(!e.target.checked){
-    getproducts(Params_cate.cate)
-   }
-   setdisplay(false)
-}
-
-const handeldisplay = () => {
-    // setdisplay(!display)
-}
+useEffect(()=>{
+   GetProductbyId(dispatch,Params_cate)
+},[dispatch,Params_cate])
 
 
 
   return (
-    <Box p='5px' pt={{base:'150px',md:'180px'}} position='relative' mb='20px' >
+    <Box p='5px' pt={{base:'150px',md:'180px'}} position='relative' mb='20px'>
        <Text textAlign='left' p='5px' pl='15px'>Filter</Text>
-    <Flex m='auto' gap='20px' flexDirection={{base:'column',md:'row'}}>
-       <Box w={{base:'100%',md:'25%'}} >
+    <Flex m='auto' gap='20px' flexDirection={{base:'column',md:'row'}} >
+       <Box w={{base:'100%',md:'25%'}}>
        
    <Accordion allowMultiple>
+   <AccordionItem>
+       
+       <AccordionButton justifyContent='space-between' >
+         <Text>Sort</Text>
+         <AccordionIcon />
+       </AccordionButton>
+    
+     <AccordionPanel  textAlign='start'>
+     <Checkbox >
+      Price High To Low
+       </Checkbox>
+       <Checkbox >
+      Price Low To Hign
+       </Checkbox>
+     </AccordionPanel>
+         </AccordionItem>
+         
+
        <AccordionItem>
        
          <AccordionButton justifyContent='space-between' >
@@ -114,39 +70,22 @@ const handeldisplay = () => {
       
        <AccordionPanel pb={4} textAlign='start'>
           
-        <Checkbox onChange={(e)=>filterprice(e,0,5000)}>
+        <Checkbox >
          Under INR 5000
        </Checkbox>
-       <Checkbox onChange={(e)=>filterprice(e,3500,5000)}>
+       <Checkbox >
        Under INR 3500 - INR 5000
        </Checkbox>
-       <Checkbox onChange={(e)=>filterprice(e,2000,3500)}>
+       <Checkbox >
        Under INR 2000 -INR 3500
        </Checkbox>
-       <Checkbox onChange={(e)=>filterprice(e,0,2000)}>
+       <Checkbox>
        Under INR 2000
        </Checkbox>
      
        </AccordionPanel>
            </AccordionItem>
    
-           <AccordionItem>
-       
-       <AccordionButton justifyContent='space-between' >
-         <Text>Brands</Text>
-         <AccordionIcon />
-       </AccordionButton>
-    
-     <AccordionPanel  textAlign='start'>
-     {brand && brand.map((ele,i)=>   (<Box>
-      <Checkbox key={i} onChange={(e)=> PrintsRating(e,{ele}) }>
-     {ele}
-     </Checkbox>
-     </Box>)
-     )}
-     </AccordionPanel>
-         </AccordionItem>
-         
          <AccordionItem>
        
        <AccordionButton justifyContent='space-between' >
@@ -156,16 +95,16 @@ const handeldisplay = () => {
     
      <AccordionPanel pb={4} textAlign='start' >
         
-       <Checkbox onChange={(e)=> filterRating(e,4) }>
+       <Checkbox>
       <Flex gap='5px' alignItems='center'> {four}4 & up</Flex>
      </Checkbox><br />
-     <Checkbox onChange={(e)=> filterRating(e,3) }>
+     <Checkbox >
       <Flex gap='5px' alignItems='center'> {three}  3 & up</Flex>
      </Checkbox><br />
-     <Checkbox onChange={(e)=> filterRating(e,2) }>
+     <Checkbox >
       <Flex gap='5px' alignItems='center' >{two}  2 & up</Flex>
      </Checkbox><br />
-     <Checkbox onChange={(e)=> filterRating(e,1) }>
+     <Checkbox >
       <Flex gap='5px' alignItems='center'>{one}  1 & up</Flex>
      </Checkbox><br />
      </AccordionPanel>
@@ -180,7 +119,7 @@ const handeldisplay = () => {
                <Flex alignItems='center'> <Text  pl='30px' fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{Params_cate.cate}</Text></Flex>
              
              <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
-               { Product && Product.map((ele)=>(
+               { productData && productData.map((ele)=>(
 
                   <Box key={ele.id}  p='5px' m='auto' >
                   
@@ -219,6 +158,6 @@ const handeldisplay = () => {
 
     </Box>
   )
-}
+ }
 
 export default ProductPage

@@ -14,7 +14,7 @@ import Login from './pages/Login';
 import UserAuth from './pages/UserLoginSignup';
 import Cart from './pages/Cartpg';
 import ProductPage from './pages/ProductPage';
-//https://twisty-silly-ring.glitch.me/product
+// https://twisty-silly-ring.glitch.me/product
 function App() {
   return (
     <div className="App">

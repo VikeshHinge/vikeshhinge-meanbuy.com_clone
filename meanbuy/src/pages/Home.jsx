@@ -3,7 +3,6 @@ import {Box,Text,Image,Heading,Divider, HStack, SimpleGrid} from "@chakra-ui/rea
  import {useState,useEffect} from "react";
 import "./Home.css";
 import {sliderimg,slidername} from "../Componunt/objects";
-import { GetData } from "../Axios/Axios";
 import Productlist from "./Productlist";
 import {Navigate,Link} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
@@ -38,7 +37,7 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
 let dispatch = useDispatch()
 
 let {productData:{data},loading,error} = useSelector((store)=>(store.productManager))
-console.log(data,loading)
+//console.log(data,loading)
 
     useEffect(()=> {
         // GetData().then((res)=>setData(res.data))
@@ -122,7 +121,7 @@ console.log(data,loading)
 
     return(
 
-        <Box pt='160px'>
+        <Box pt='160px' className="main">
            <Box w='100%' m='auto' h={{base:'100px',md:'420px'}} translate="1s" >
              <Image m='auto' transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
            </Box>
