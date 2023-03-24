@@ -2207,45 +2207,15 @@
       "pw": "g",
       "pw_conf": "g",
       "id": 10
+    },
+    {
+      "email": "sara@gmail.com",
+      "pw": "sara@gmail.com",
+      "pw_conf": "sara@gmail.com",
+      "id": 11
     }
   ],
   "cart": [
-    {
-      "title": "Retro Jeep Model",
-      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjMyMTA4XC9Ccm9uemVfbl8xXzEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDAwLCJoZWlnaHQiOjEwMDAsImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==",
-      "categories": "Home Decor",
-      "brand": "PD",
-      "price": 1199,
-      "discount": 76,
-      "rating": 4.7,
-      "description": "Made of high quality metal material, beautiful and durable.\nExquisite workmanship and lifelike jalopy car model, creative personality design.\nOld-fashioned car model, great desk decoration and also can be used as photography props and festival gifts.\nBeautiful decoration for bedroom, living room, study, office, coffee shop, etc.",
-      "user": "vik@gmail.com",
-      "id": 1
-    },
-    {
-      "title": "Hidden Button White Tunic Shirt",
-      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjM0ODk4XC9XaGl0ZV9TXzFfMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
-      "categories": "Clothing",
-      "brand": "",
-      "price": 1800,
-      "discount": 60,
-      "rating": 4,
-      "description": "",
-      "user": "vik@gmail.com",
-      "id": 2
-    },
-    {
-      "title": "Mens Casual Business Watch",
-      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjIyMDgzXC9CZWlnZV9uXzFfMS5qcGVnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDAwLCJoZWlnaHQiOjEwMDAsImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==",
-      "categories": "mens watch",
-      "brand": "SKMEI",
-      "price": 3299,
-      "discount": 67,
-      "rating": 4.8,
-      "description": "Brand: SKMEI,\nMovement :  Digital,\nBand Material Type: Leather,\nDial Window Material Type :Glass,\nClasp Type :  Buckle,\nWater Resistance Depth: 3Bar,\nBand Length: 265mm,\nBand Width: 24mm,\nDial Diameter: 51mm,\nPackage include: 1x Watch,\nWarranty: 1 Year Manufacturer Warranty",
-      "user": "vik@gmail.com",
-      "id": 3
-    },
     {
       "title": "Mens Mechanical Wristwatch",
       "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjE5Nzc4XC9CbHVlX25fMV8xLmpwZWciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
@@ -2259,28 +2229,64 @@
       "id": 5
     },
     {
-      "title": "Terra Women Multicolored Handbag",
-      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjM1MjczXC9NdWx0aWNvbG9yZWRfU1RBTkRBUkRfMV9jYXBvbmV+dGVycmF+d29tZW5+bXVsdGljb2xvcmVkfmhhbmRiYX44MjM0fjAuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDAwLCJoZWlnaHQiOjEwMDAsImZpdCI6ImNvbnRhaW4iLCJiYWNrZ3JvdW5kIjp7InIiOjI1NSwiZyI6MjU1LCJiIjoyNTUsImFscGhhIjoxfX19fQ==",
-      "categories": "Handbags & Clutches",
+      "title": "Women Hana Trend Khaki Ballet Flats",
+      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjM1MjEyXC9LaGFraV8zNl8yX2NhcG9uZX5oYW5hfnRyZW5kfndvbWVufmtoYWtpfmJhbGxldH5mfn5iZDhlfi5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
+      "categories": "Ballet Flats",
       "brand": "Capone",
-      "price": 4600,
-      "discount": 30,
-      "rating": 4.5,
+      "price": 3999,
+      "discount": 33,
+      "rating": 4.7,
       "description": "",
-      "user": "vik@gmail.com",
-      "id": 6
+      "user": "v",
+      "id": 8
     },
     {
-      "title": "Remote Control Construction Transform",
-      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjMyNjQwXC9Ccm93bl8xXzFfMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
-      "categories": "Toys",
+      "title": "3D Craft Wall Clock",
+      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjMyMDc3XC9CbGFja18xXzFfMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
+      "categories": "Home Decor",
       "brand": "PD",
-      "price": 5499,
-      "discount": 71,
+      "price": 1200,
+      "discount": 56,
       "rating": 3.7,
+      "description": "1.The clock with mute core will not disturb you while working, studying or sleeping.\n2. movement, accurate pointer, long life\n3.Modern design, beautiful and durable\n4.Suitable for bedroom, living room, study, office and more\n5.Beautiful and exquisite, unique style, good gift for friends and relatives.",
+      "user": "v",
+      "id": 9
+    },
+    {
+      "title": "Women Hana Trend Black Ballet Flats",
+      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjM1Mjk1XC9CbGFja18zNl83X2NhcG9uZX5oYW5hfnRyZW5kfndvbWVufmJsYWNrfmJhbGxldH5mfjlkNThmMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEwMDAsImhlaWdodCI6MTAwMCwiZml0IjoiY29udGFpbiIsImJhY2tncm91bmQiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYWxwaGEiOjF9fX19",
+      "categories": "Ballet Flats",
+      "brand": "Capone",
+      "price": 4499,
+      "discount": 25,
+      "rating": 3.9,
       "description": "",
-      "user": "g",
-      "id": 7
+      "user": "vik@gmail.com",
+      "id": 10
+    },
+    {
+      "title": "X450 Remote Control Wing Plane",
+      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjM2MDU2XC9Vbmtub3duX25fMV8xLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MTAwMCwiaGVpZ2h0IjoxMDAwLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=",
+      "categories": "Toys",
+      "brand": "MB",
+      "price": 8999,
+      "discount": 25,
+      "rating": 4.9,
+      "description": "",
+      "user": "vik@gmail.com",
+      "id": 11
+    },
+    {
+      "title": "Silicone Steel Sports Watch",
+      "img1": "https://dbnzj30o7hucx.cloudfront.net/eyJidWNrZXQiOiJtZWFuYnV5LWltYWdlcyIsImtleSI6IjIxOTQ4XC9SZWRfbl8xXzEuanBlZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6MTAwMCwiaGVpZ2h0IjoxMDAwLCJmaXQiOiJjb250YWluIiwiYmFja2dyb3VuZCI6eyJyIjoyNTUsImciOjI1NSwiYiI6MjU1LCJhbHBoYSI6MX19fX0=",
+      "categories": "mens watch",
+      "brand": "MB",
+      "price": 2899,
+      "discount": 71,
+      "rating": 4.5,
+      "description": "Brand: CAGARNY\nMovement: Quartz\nType:Analog Watches\nMaterial:Alloy,Silicone\nStyle:Trendy\nColor:Red\nWater Resistant: 30m\nLenght: 23cm\nWidth of the Belt: 2.5cm\nThe Diameter of the dial:5.5cm\nWeight: 89g\nWarranty: 1 Year Manufacturer Warranty\nPackage include: 1x Watch",
+      "user": "vik@gmail.com",
+      "id": 17
     }
   ]
 }

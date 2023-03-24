@@ -25,6 +25,13 @@ export const AddToCart = async(item) => {
    
     
    let res = await axios.post(`http://localhost:4040/cart`,product)
+   .then(
+    alert('product added in cart!')
+   )
    console.log(res)
    return res.data
+}
+
+export const DeleteCart = async(id)=>{
+   await axios.delete(`http://localhost:4040/cart/${id}`).then(res => console.log(res))
 }

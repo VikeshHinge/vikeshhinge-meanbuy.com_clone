@@ -2,27 +2,16 @@
 import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead} from "@chakra-ui/react";
 
 import { DeleteIcon,CheckIcon } from '@chakra-ui/icons'
-import { useState,useEffect } from "react";
-import {GetCartData} from '../Redux/Cart.Redux/cart.action.js';
-import{useDispatch,useSelector} from 'react-redux'
-
-let DataStore=JSON.parse(localStorage.getItem("CartData"))|| [];
-
-
+import { useState,useEffect,useContext} from "react";
+import {GetCartData,DeletefromCart} from '../Redux/Cart.Redux/cart.action.js';
+import{useDispatch,useSelector} from 'react-redux';
+import Authcontext from "../AuthContext/Authcontext";
 
 const Cart = () => {
 
-const [cartData,setCartdata] = useState([])
 const dispatch = useDispatch()
-
+let {setcarttotal} = useContext(Authcontext)
 const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
-console.log({'Cart':cart})
-
-const handeldelete = (id) => {
-      let newdata = cartData.filter((ele)=> ele.id !== id)
-      localStorage.setItem("CartData",JSON.stringify(newdata));     
-}
-
 const handelcheckout = () => {
   alert('Product is ready for Checkout !!!')
 }
@@ -60,7 +49,7 @@ if(cart.length <= 0){
    <Tbody>
    { cart.map((ele)=>{
        return(
-       <Tr key={ele.id}>
+       <Tr key={ele.id} >
            <Th w='120px'  p='10px' textAlign='center'>
                <Image w='100%'src={ele.img1}/>
              <Text display={{base:'block',md:'none'}} color='green.500'>Price: ₹{ele.price}.00</Text>
@@ -69,7 +58,7 @@ if(cart.length <= 0){
            <Text fontSize={{base:'12px',md:'15px'}} color='black'>{ele.title}</Text>
            <Text>COLOR: {ele.color}</Text>
            <Text color='green.300'><CheckIcon/>{' '}FREE DELIVERY</Text>
-            <DeleteIcon onClick={()=>handeldelete(ele.id)} />
+            <DeleteIcon onClick={()=>DeletefromCart(ele.id,dispatch)} />
            </Th>
            <Th className="th"  fontSize='15px'>
            <Text  as='s' color='gray'>₹{Math.floor(ele.price*ele.discount/100)+ele.price}.00</Text>
@@ -78,6 +67,7 @@ if(cart.length <= 0){
            ₹ {ele.price}.00
            </Th>
        </Tr>
+      
        )
    })}
    </Tbody>

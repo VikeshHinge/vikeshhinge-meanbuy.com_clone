@@ -35,6 +35,7 @@ const Productlist = ({product,num}) => {
         className="mySwiper"
       >
           {product.map((element)=>{
+
              return(
                 <SwiperSlide key={element.id} >
 

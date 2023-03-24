@@ -12,7 +12,6 @@ import {GetProducts} from '../Redux/Products.Redux/product.action.js';
 const Home = ()=> {
 
 const [Screensever,setSidedrower] = useState(sliderimg[0])
-const [Data,setData] = useState([])
 const [HDdata,setHDdata] = useState([])
 const [MWdata,setMWdata] =useState([])
 const [BFdata,setBFdata] =useState([])
@@ -37,14 +36,9 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
 let dispatch = useDispatch()
 
 let {productData:{data},loading,error} = useSelector((store)=>(store.productManager))
-//console.log(data,loading)
 
     useEffect(()=> {
-        // GetData().then((res)=>setData(res.data))
         GetProducts(dispatch)
-        if(data !== undefined){
-          setData(data)
-        }
     },[dispatch])
 
     useEffect(()=>{

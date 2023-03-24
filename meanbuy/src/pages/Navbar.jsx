@@ -7,35 +7,36 @@ import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { useState } from "react";
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
-import './navbar.css'
-import {Link} from 'react-router-dom';
+import './navbar.css';
+import {Link,useNavigate} from 'react-router-dom';
 
 
 
 let Navbar2 = () => {
 
-  let {logoutAuth} = useContext(Authcontext)
+  let {logoutAuth,carttotal} = useContext(Authcontext)
     let [categories,setcategories] = useState(false)
     let [sidedrower,setsidedrower] = useState(false)
     let [users,setUsers]=useState('')
+    let Navigate = useNavigate()
 
-
-    const handeldropdown = (x) => {
-    if(x===1){
-        setsidedrower(false)
+    const handeldropdown = () => {
         setcategories(!categories)
     }
-     // console.log(categories)
-     if(x===2){
-        setcategories(false)  
-        setsidedrower(!sidedrower) 
-     }
-
+    
+    const GotoCart = ()=>{
+     return Navigate('/cart')
     }
-    let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
-    let user = localStorage.getItem('User')||'';
-    let email= localStorage.getItem('userInfo')||'';
 
+    const logoutUser = () => {
+      setUsers('')
+      logoutAuth()
+    }
+console.log(carttotal,898989898)
+
+    let DataStore=JSON.parse(localStorage.getItem("CartData"))||[];
+    let email= localStorage.getItem('userInfo')||'';
+    let cartTotal = localStorage.getItem('cartTotal')
     useEffect(()=>{
        setUsers(email)
     },[email])
@@ -56,8 +57,8 @@ let Navbar2 = () => {
                 <Link to='/'><Image w='100%' src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png"></Image></Link>
             </Box>
             <Spacer  display={{base:"block",md:"block"}}/>
-            <InputGroup size='sm' w="300px" h="10" ml='-20%' display={{base:"none",md:"block"}} >
-             <Input placeholder='Search' size='sm' w='300px'/>
+            <InputGroup size='sm' w="350px" h="10"  display={{base:"none",md:"block"}} >
+             <Input placeholder='Search' size='sm' w='350px'/>
              <InputRightElement width='4.5rem'>
                <Button  size='sm' bg="none">
                  <Search2Icon/>
@@ -65,7 +66,7 @@ let Navbar2 = () => {
              </InputRightElement>
               </InputGroup>
             <Spacer  display={{base:"block",md:"block"}}/>
-            <Flex  alignContent='flex-end' pr='10px' >
+            <Flex alignItems='center'gap='20px' mr='10px'>
                 <Box fontSize='12px' display={{base:"none",md:"block"}}>
                 <Link>Seller's Corner </Link>|
                 <Link> Feedback </Link>|
@@ -74,16 +75,17 @@ let Navbar2 = () => {
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
 {/*---------------------- user login/logout ------------------------ */}
-                    {user?<Flex gap='3px' alignItems='center' p='5px' fontWeight='bold' fontSize='12px'><Text color='orange' >{users}/</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutAuth}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
+                    {users?<Flex gap='3px'justifyContent='end' p='5px' alignItems='center' fontWeight='bold'><Text fontSize='18px' color='orange' >{users}</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutUser}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
 
                     <Flex ml='10px'>
-                      <Text fontWeight='bold' mr='10px' >WELCOME GUEST</Text>
-                      <IoIosCart color="F38F2F" size='30px'  onClick={()=>handeldropdown(2)}  />
-                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{DataStore && DataStore.length}</Text>
+                      <Text fontWeight='bold' mr='10px' >WELCOME</Text>
+                      <IoIosCart color="F38F2F" size='30px'  onClick={GotoCart}  />
+                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{cartTotal}</Text>
                      </Flex>
                 </Box>
                
              </Flex>
+ {/* ------------------cartside drower --------------*/}
              {sidedrower === true ?  <Sidedrower/> : ""}
           </Flex>
 
@@ -99,7 +101,7 @@ let Navbar2 = () => {
           </Box>
          
           <HStack className="navop" >
-          <Link  onClick={()=>handeldropdown(1)} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop/></>}</Link>
+          <Link  onClick={handeldropdown} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop/></>}</Link>
           <Text>flash Sale</Text>
           <Text display={{base:'none',md:'block'}} >Best Deals</Text>
           <Text display={{base:'none',md:'block'}} >Shop by Brand</Text>

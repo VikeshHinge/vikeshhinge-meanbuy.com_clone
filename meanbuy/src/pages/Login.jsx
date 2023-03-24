@@ -16,9 +16,8 @@ const userEmail = {
 
 const Login = ({input, setUsersignup}) => {
 
-let {isAuth,loginAuth,logoutAuth} = useContext(Authcontext)
+let {setUsername,loginAuth} = useContext(Authcontext)
 const [userLogin,setUserLogin] = useState(userEmail)
-const [success,setSuccess] = useState(false)
 const toast = useToast();
 const navigate = useNavigate()
 
@@ -41,6 +40,7 @@ const handelchange_Email = (e) => {
     else{
       let {data} =await axios.get(`http://localhost:4040/users?email=${Email}`)
         if(data.length>0 && data[0].pw === Pw){
+         
           toast({
             title: 'User Login Success',
             status: 'success',
@@ -48,9 +48,17 @@ const handelchange_Email = (e) => {
             isClosable: true,
             position: 'bottom',
             })
-            localStorage.setItem('User',true)
-            localStorage.setItem('userInfo',Email)
+            setUsername(Email)
+            loginAuth(Email)
             return navigate("/")
+        }else{
+          toast({
+            title: 'User not found, Signup first !',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+            position: 'bottom',
+            })
         }
     }
     
@@ -60,13 +68,6 @@ const handelchange_Email = (e) => {
     return( 
  
         <Box w={{base:'100%',md:'65%'}} p='10px'>
-
-           <Box display={success?'block':'none'} >
-           <Alert status='success' variant='left-accent' >
-             <AlertIcon />
-              Login Sucess !!
-             </Alert>
-           </Box>
          
           <Text className="header">Login Or Create Account</Text>
 

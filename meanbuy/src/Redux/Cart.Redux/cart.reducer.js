@@ -48,12 +48,19 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                 }
             }
             case DELETE_CART :{
-                let newcart = state.filter((ele)=>ele.id !==payload)
+                console.log(payload)
+                let newcart = state.cart.filter((ele)=>ele.id !== payload)
+                let Total = 0;
+                for(let i=0; i<newcart.length; i++){
+                   Total+=newcart[i].price
+                }
+                console.log(newcart)
                 return{
                     ...state,
                     error:false,
                     loading:false,
-                    cart:newcart
+                    cart:newcart,
+                    total:Total
                 }
             }
             default:{
