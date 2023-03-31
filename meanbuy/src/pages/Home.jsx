@@ -132,7 +132,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
                     {loading ? 
                         <SimpleGrid columns={5} spacing={10}>
                          {Loading.map((ele)=><Box kry={ele} className='loading'>
-                            
+                            loading ....
                          </Box>)}
                         </SimpleGrid>
                     :<>

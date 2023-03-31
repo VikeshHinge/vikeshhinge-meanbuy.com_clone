@@ -1,5 +1,5 @@
 import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART,DELETE_CART} from './cart.type.js';
-import {GetCartItem,AddToCart,DeleteCart} from './cart.API.js'
+import {GetCartItem,AddToCart,DeleteCart} from './cart.API.js';
 
 
 export const GetCartData = async(dispatch) => {
@@ -21,8 +21,9 @@ export const GetCartData = async(dispatch) => {
      }
 }
 
-export const AddtoCart =async (product,dispatch) => {
-   await AddToCart (product)
+export const AddtoCart =(item)=>async (dispatch) => {
+  // console.log(item)
+   await AddToCart (item)
 }
 
 export const DeletefromCart = async(id,dispatch) => {

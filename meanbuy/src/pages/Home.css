@@ -21,10 +21,11 @@
     border-radius: 5px;
     animation: loading 0.5s ease-in-out infinite;
     transition: 0.5s;
+    text-align: center;
 }
 @keyframes loading {
    0%{
-    background: white;
+    background: rgb(255, 255, 255);
    }
    50%{
     background-color: rgb(135, 158, 158);

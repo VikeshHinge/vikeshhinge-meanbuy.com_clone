@@ -2,6 +2,7 @@ import {GET_ITEMS_SUCESS,GET_ITEMS_LOADING,GET_ITEMS_ERROR} from './pg.type.js';
 
 let initialvalue = {
     productData:[],
+    brand:[],
     loading:false,
     error:false,
 }
@@ -18,10 +19,10 @@ export const ProductPgReducer = (state=initialvalue,{type,payload}) =>{
            }
         }
         case GET_ITEMS_SUCESS :{
-            //console.log({'reducer':payload})
             return {
                 ...state,
-                productData:payload,
+                productData:payload[0],
+                Brand:payload[1],
                 loading:false,
                 error:false
             }

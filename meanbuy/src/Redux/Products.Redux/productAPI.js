@@ -6,9 +6,9 @@ export const Getdata = async() => {
  return data;
 }
 
-export const GetByID = async(query) => {
+export const GetByID = async(query,params) => {
     let category = query.cate
-    let {data} = await axios.get(`http://localhost:4040/product?categories=${category}`)
-    //console.log(data)
+    console.log(query,params)
+    let {data} = await axios.get(`http://localhost:4040/product?categories=${category}`,params)
     return data;
 }
