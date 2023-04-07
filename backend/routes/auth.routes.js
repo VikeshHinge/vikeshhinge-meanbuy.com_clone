@@ -3,6 +3,7 @@ const {userModel} = require('../models/user.model.js')
 const userRouter = express.Router()
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const { CartAuthantication } = require('../middleware/cartAuth.js')
 
 userRouter.get('/', async(req,res)=>{
     try{
@@ -64,5 +65,21 @@ userRouter.post('/login',async(req,res)=>{
         res.send({'msg':err.message})
     }
 })
+
+
+//update____________________
+
+userRouter.post('/updateuser',CartAuthantication,async(req,res)=>{
+    let id = req.body.user;
+     let data = req.body
+    try{
+        let user = await userModel.findOneAndUpdate({_id:id},data)
+        res.send("user updated")
+    }catch(err){
+        res.send({'msg':err.message})
+    }
+
+})
+
 
 module.exports = {userRouter}
