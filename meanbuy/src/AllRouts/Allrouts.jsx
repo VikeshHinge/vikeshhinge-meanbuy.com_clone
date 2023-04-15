@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/UserLoginSignup";
 import UserAuth from '../pages/UserLoginSignup'
 import ProductPage from "../pages/ProductPage";
+import UserPage from "../pages/UserPage";
  
 const Allrouts = () => {
 
@@ -14,10 +15,11 @@ const Allrouts = () => {
         <Routes>
           <Route path="/" element={<Home/>}></Route>
           <Route path="/products/categories/:cate" element={<ProductPage/>}></Route>
-          <Route path="/products/:id" element={<ProductDetail/>}></Route>
+          <Route path="/product/:id" element={<ProductDetail/>}></Route>
           <Route path="/cart" element={<Privateroute><Cart/></Privateroute>}></Route>
           <Route path="/signup" element={<UserAuth/>}></Route>
           <Route path="/login" element={<UserAuth/>}></Route>
+          <Route path="/userprofile" element={<UserPage/>}> </Route>
         </Routes>
     )
 }

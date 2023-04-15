@@ -1,10 +1,12 @@
 
-import {GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING,GET_PRODUCTS_SUCESS} from './product.type.js';
+import {GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING,GET_PRODUCTS_SUCESS,GET_PRODUCTS_CATEGORY} from './product.type.js';
+
 
 let initialvalue = {
     productData:[],
     loading:false,
     error:false,
+    Brand:[]
 }
 
 export const productReducer = (state=initialvalue,{type,payload}) =>{
@@ -24,7 +26,16 @@ switch(type){
             ...state,
             productData:payload,
             loading:false,
-            error:false
+            error:false,
+        }
+    }
+    case GET_PRODUCTS_CATEGORY:{
+       // console.log(payload)
+        return{
+            ...state,
+            productData:payload,
+            loading:false,
+            error:false,
         }
     }
     case GET_PRODUCTS_ERROR :{

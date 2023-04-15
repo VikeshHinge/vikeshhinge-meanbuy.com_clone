@@ -19,3 +19,36 @@ export const two= [<BsStarFill  size='13px'/>,<BsStarFill  size='13px'/>,<BsStar
 export const one= [<BsStarFill  size='13px'/>,<BsStar size='13px'/>,<BsStar size='13px'/>,<BsStar size='13px'/>,<BsStar size='13px'/>]
 export const three = [<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStar size='13px'/>,<BsStar size='13px'/>]
 export const threenhalf= [<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStarHalf size='13px'/>,<BsStar size='13px'/>]
+
+export const userInfo = {
+    Profile:` <Box  boxShadow='md' border='1px solid gray' p='10px'>
+    <table>
+         <tr>
+             <th>My Details</th>
+             <td>Edit</td>
+         </tr>
+         <tr>
+             <th>Name</th>
+             <td>Vikesh Hinge</td>
+         </tr>
+         <tr>
+             <th>Mobile Number</th>
+             <td>98234523266</td>
+         </tr>
+         <tr>
+             <th>Email Id</th>
+             <td>vikeshvhinge@gmail.com</td>
+         </tr>
+     </table>
+    </Box>
+    <Box mt='20px'  p='10px'  boxShadow='md' border='1px solid gray'>
+      <table>
+      <tr>
+             <th>Address</th>
+             <td>Vikesh Hinge</td>
+     </tr>
+      </table>
+    </Box>`,
+Order:``,
+Cart:``
+}

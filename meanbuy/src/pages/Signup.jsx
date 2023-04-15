@@ -15,16 +15,21 @@ const Signup = ({handelchange,handelsignup,setUsersignup}) => {
           <Text className="header">Login Or Create Account</Text>
 
           <Box className="formcontrol">
+
+          <Text fontSize='12px'>Name</Text>
+           <Input isRequired  mb='20px' borderRadius='0px' type={"text"}   placeholder="Enter your name" name='name'
+           onChange={handelchange}/>
+
+           <Text fontSize='12px'>Contact Number</Text>
+           <Input isRequired  mb='20px' borderRadius='0px' type={"text"}   placeholder="Enter contact" name='contact'
+           onChange={handelchange}/>
+
             <Text fontSize='12px'>Email Address</Text>
            <Input isRequired  mb='20px' borderRadius='0px' id='email'  placeholder="Email Address" name = 'email' 
            onChange={handelchange}/>
-      
-           <Text fontSize='12px'>Password</Text>
-           <Input isRequired  mb='20px' borderRadius='0px' type={"password"}   placeholder="Password" name='pw'
-           onChange={handelchange}/>
 
-           <Text fontSize='12px'>Confirm Password</Text>
-           <Input isRequired  mb='20px' borderRadius='0px' type={"password"}   placeholder="Confirm Password" name='pw_conf'
+           <Text fontSize='12px'> Password</Text>
+           <Input isRequired  mb='20px' borderRadius='0px' type={"password"}   placeholder="Password" name='password'
            onChange={handelchange} />
           </Box>
            
@@ -35,7 +40,7 @@ const Signup = ({handelchange,handelsignup,setUsersignup}) => {
            
           
               
-          <Link to='#' fontSize='xs' as='u' onClick={()=>setUsersignup(true)}>Already have a MeanBuy account? Log In!</Link>
+          <Link to='#' fontSize='xs' as='u' onClick={()=>setUsersignup(false)}>Already have a MeanBuy account? Log In!</Link>
           <Text fontSize='sm' fontWeight='bold'>By signing up, you agree to our {' '} <Link to='#' color='#00B5D8' >Terms of Use & Privacy Policy</Link> </Text>
         
         </form>

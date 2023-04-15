@@ -1,16 +1,16 @@
-import React,{useContext, useEffect} from "react";
+import React,{useCallback, useContext, useEffect,useState} from "react";
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
 import Authcontext from "../AuthContext/Authcontext";
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
-import { useState } from "react";
+import { HiUserCircle } from "react-icons/hi2";
 import CategoriesDrop from "../Dropdown/Categories_drop";
 import Sidedrower from "../Dropdown/SideDrower";
 import './navbar.css';
 import {Link,useNavigate} from 'react-router-dom';
-import {useDispatch,useSelector} from 'react-redux'
-
+import {useDispatch,useSelector} from 'react-redux';
+import Search from "./Search";
 
 
 let Navbar2 = () => {
@@ -18,6 +18,7 @@ let Navbar2 = () => {
   let {logoutAuth,carttotal} = useContext(Authcontext)
     let [categories,setcategories] = useState(false)
     let [sidedrower,setsidedrower] = useState(false)
+  
     let [users,setUsers]=useState('')
     let Navigate = useNavigate()
     let dispatch = useDispatch()
@@ -37,7 +38,7 @@ let Navbar2 = () => {
     }
 
     
-    let email= localStorage.getItem('userInfo')||'';
+    let email= localStorage.getItem('user')||'';
     let cartTotal = localStorage.getItem('cartTotal')
     
     useEffect(()=>{
@@ -60,14 +61,11 @@ let Navbar2 = () => {
                 <Link to='/'><Image w='100%' src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png"></Image></Link>
             </Box>
             <Spacer  display={{base:"block",md:"block"}}/>
-            <InputGroup size='sm' w="350px" h="10"  display={{base:"none",md:"block"}} >
-             <Input onChange={(e)=>console.log(e.target.value)} placeholder='Search'  size='sm' w='350px'/>
-             <InputRightElement width='4.5rem'>
-               <Button  size='sm' bg="none">
-                 <Search2Icon/>
-               </Button>
-             </InputRightElement>
-              </InputGroup>
+
+            {/*-------------- search ---------------------*/}
+              <Search  />
+
+
             <Spacer  display={{base:"block",md:"block"}}/>
             <Flex alignItems='center'gap='20px' mr='10px'>
                 <Box fontSize='12px' display={{base:"none",md:"block"}}>
@@ -77,8 +75,9 @@ let Navbar2 = () => {
                 <Link> Delivery Info </Link>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
+
 {/*---------------------- user login/logout ------------------------ */}
-                    {email?<Flex gap='3px'justifyContent='end' p='5px' alignItems='center' fontWeight='bold'><Text fontSize='18px' color='orange' >{users}</Text><Box bg='orange' borderRadius='5px'  p='5px' cursor={"pointer"} onClick={logoutUser}>Logout</Box></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
+                    {email?<Flex gap='3px'justifyContent='end' p='5px' alignItems='center' fontWeight='bold'><Text fontSize='18px' color='orange' >{users}</Text><Link to='/userprofile'><HiUserCircle color='#f38f2f' size='25px'/></Link></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
 
                     <Flex ml='10px'>
                       <Text fontWeight='bold' mr='10px' >WELCOME</Text>

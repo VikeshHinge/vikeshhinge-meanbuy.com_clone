@@ -1,0 +1,10 @@
+table{
+    width: 100%;
+}
+table th{
+    text-align: start;
+    color: orange;
+}
+table td{
+    text-align: end;
+}

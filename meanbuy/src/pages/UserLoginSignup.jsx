@@ -11,9 +11,9 @@ import axios from "axios";
 let user = localStorage.getItem('User')
 
 let initialValue = {
+    name:'',
     email:'',
-    pw:'',
-    pw_conf:'' 
+    password:""
 }
 
 
@@ -38,47 +38,27 @@ const UserAuth = () => {
     }
 
     const handelsignup = async() => { 
-       let {email,pw,pw_conf} = input;
-        if( pw ==='' || pw_conf===''|| email ==="" ){
+       let {email,password,name,contact} = input;
+        if( password ===''|| name===''|| email ==="" ){
             alert('put proper input')
            let input = document.querySelector('#email').focus()
         }
-      else if(pw===pw_conf && pw !=='' && pw_conf!==''){
-          
-        let {data} =await axios.get(`http://localhost:4040/users?email=${email}`)
-        if(data.length > 0){
-          toast({
-            title: 'User already registered with this email.',
-            status:'warning',
-            duration: 3000,
-            isClosable: true,
-            position: 'bottom',
-            })
-            return;
-        }
-      
-         await axios.post('http://localhost:4040/users',input)
-         .then(
-          toast({
-            title: 'User Register Success',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-            position: 'bottom',
-            })
-          )
-          setUsersignup(true)
-      }else {
+      else {
+        console.log(input)
+       const {data} = await axios.post('http://localhost:4040/user/register',{email,password,name,contact})
+       if(data.msg){
         toast({
-          title: 'Password dosnot match !',
-          description: "Please Check your conformed Password !",
-          status: 'error',
+          title:data.msg,
+          description: "go for user login !!!",
+          status: 'success',
           duration: 3000,
           isClosable: true,
-          position: 'bottom',
-          })
-        console.log('no')
+        })
+        // setUsersignup(true)
+       }
       }
+      
+         
     }
 
 
@@ -90,12 +70,12 @@ const SignupFirst = (a,b) => {
 
 
   return (
-    <Box  className="signup" w='95%' m='auto'>
+    <Box  className="signup" w='95%' m='auto' pb='50px'>
 
         <Flex className="flex_signup" flexDirection={{base:'column',md:'row'}} >
     
  {/*--------------------------- Login or Signup ---------------*/}
-         {usersignup===true?<Login  input={input}  setUsersignup={setUsersignup}/>:<Signup  setUsersignup={setUsersignup} handelchange={handelchange} handelsignup={handelsignup}/>} 
+         {usersignup===true?<Signup  setUsersignup={setUsersignup} handelchange={handelchange} handelsignup={handelsignup}/>:<Login  input={input}  setUsersignup={setUsersignup}/>} 
 
          <Box w={{base:'95%',md:'30%'}} m='auto' >
             

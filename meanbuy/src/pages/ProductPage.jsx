@@ -6,37 +6,40 @@ import { Box,Image,SimpleGrid,Text,Flex, Divider, Spacer} from '@chakra-ui/react
 import {one,two,three,four,five,fournhalf,threenhalf} from '../Componunt/objects'
 import { Link,useParams,useLocation,useSearchParams } from 'react-router-dom';
 import { BiRupee } from "react-icons/bi";
-import { GetproductbyCategory } from '../Axios/Axios';
+// import { GetproductbyCategory } from '../Axios/Axios';
 import FilterSidebox from './product.filter';
 import {useDispatch,useSelector} from 'react-redux';
-import {GetProductbyId} from '../Redux/ProductPg.Redux/Items.action.js'
+import {GetProductBycategory} from '../Redux/Products.Redux/product.action.js';
+
+
+let Brand=['SKMEI','Marvel','Sanddunes','citizen','MB']
 
 
 const ProductPage = () => {
 
 
-let Params_cate = useParams()
+let categories = useParams()
+
 let location = useLocation()
 const [page,setPage]=useState(1)
 const [searchParams] = useSearchParams()
-let {productData,loading,error,Brand} = useSelector((store)=>(store.ItemsManager))
 
 let dispatch = useDispatch()
 
-//console.log(searchParams.getAll('brand'))
+console.log(searchParams.getAll('brand','price','rating','sort'))//8888888888************errr
+const {productData,error,loading} = useSelector((store)=>store.productManager)
+
 
 useEffect(()=>{
-  //console.log(Params_cate)
-  //console.log(location)
-  
-  let paramobj = {
-    params:{
-      brand:searchParams.getAll('brand')
-    }
-  }
-
-   dispatch(GetProductbyId({Params_cate,paramobj}))
-},[dispatch,location.search,Params_cate])
+  //console.log(categories,location)
+  console.log(location.search)
+  // let paramobj = {
+  //   params:{
+  //     brand:searchParams.getAll('brand')
+  //   }
+  // }
+ dispatch(GetProductBycategory(categories,location.search))
+},[dispatch,categories,location])
 
 
 
@@ -48,19 +51,19 @@ useEffect(()=>{
             {/* _______________filter box__________________ */}
             <FilterSidebox   Brand={Brand}/>
             {/* ________________display____________________ */}
-            <Box w={{base:'100%',md:"95%"}} bg='orange.100'>
-               <Box>{}</Box>
+            <Box w={{base:'100%',md:"95%"}} >
              <Box >
-               <Flex alignItems='center'> <Text  pl='30px' fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{Params_cate.cate}</Text></Flex>
+               <Flex cursor='pointer' alignItems='center' fontSize='md'> <Text  pl='30px' fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'md'}}>{categories.cate}</Text></Flex>
              
              <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
-               { productData && productData.map((ele)=>(
+               { productData.length>=0 && productData.map((ele)=>(
 
-                  <Box key={ele.id}  p='5px' m='auto' >
+                  <Box key={ele.id}  p='5px' m='auto' bg='orange.100' >
                   
-                        <Link to={`/products/${ele.id}`}>
-                        <Box w='100%' >
+                        <Link to={`/product/${ele._id}`}>
+                        <Box position='relative' w='100%' fontWeight='bold' color='white' >
                         <Image w='100%' h='90%' src={ele.img1} alt={ele.img1}/>
+                        <Text bg='green.500' fontSize='12px' borderRadius='5px' p='3px' position='absolute' top='0px'>{ele.discount}% OFF</Text>
                         </Box>
                         <Flex p='10px' textAlign='left' gap='5px'>
                            <Box fontSize={{base:'sm',md:'lg'}}>
@@ -70,10 +73,10 @@ useEffect(()=>{
                             {ele.rating===1?one:'' ||ele.rating===2?two:'' ||ele.rating ===3?three:''|| ele.rating >=3.1 && ele.rating<4 ?threenhalf:'' || ele.rating ===4 ?four:'' || ele.rating >=4.1 ? fournhalf:'' }
                             </Flex>
                               <Divider/>
-                              <Flex justifyContent='space-between' alignItems='center' >
-                              <Flex alignItems='center' color='#ED8936'><BiRupee color='#ED8936'/><Text>{ele.price}</Text></Flex>
+                              <Flex justifyContent='space-between' alignItems='center' w='100%'>
+                              <Flex alignItems='center' justifyContent='space-evenly'  as='b' color='#ED8936'><BiRupee color='#ED8936'/><Text>{ele.price}</Text></Flex>
                               <Spacer/>
-                               <Text color='green'>Flat{ele.discount}%OFF</Text> 
+                               <Text color='green' fontSize='15px' fontWeight='bold'>{ele.brand}</Text> 
                                 </Flex>
 
                            </Box>

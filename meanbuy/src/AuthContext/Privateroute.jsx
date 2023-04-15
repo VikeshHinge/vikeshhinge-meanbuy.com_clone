@@ -1,19 +1,21 @@
 import {useContext} from "react"
 import Authcontext from "./Authcontext"
-import {Navigate} from 'react-router-dom'
-import { useEffect } from "react"
+import {useNavigate} from 'react-router-dom'
+
 
 let user = localStorage.getItem('User')
 
 const Privateroute = ({children}) => {
-   
-    const {isAuth} = useContext(Authcontext)
-
-    console.log("privateroute-isAuth",isAuth,'user:',user)
+    const Navigate = useNavigate()
+   let token = localStorage.getItem('token')
     
-   if(!localStorage.getItem('User')){
-     return <Navigate to='/login'/>
+   if(token ==='' || token===undefined || token === null){
+    alert('user need to login')
+    return Navigate('/login')
+
    }
+
+  
 
     return children
 

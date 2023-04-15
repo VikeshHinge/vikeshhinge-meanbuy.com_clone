@@ -2,13 +2,12 @@ import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART
 import {GetCartItem,AddToCart,DeleteCart} from './cart.API.js';
 
 
+//GetCart_________________________________
 export const GetCartData = async(dispatch) => {
      dispatch ({type:GET_CART_LOADING})
 
      try{
-      let email = localStorage.getItem('userInfo')
-  
-      let cart = await GetCartItem(email)
+      let cart = await GetCartItem()
       let total = 0;
        for(let i=0; i<cart.length; i++){
          total+=cart[i].price;
@@ -21,12 +20,23 @@ export const GetCartData = async(dispatch) => {
      }
 }
 
+
+//AddtoCart______________________________
 export const AddtoCart =(item)=>async (dispatch) => {
   // console.log(item)
-   await AddToCart (item)
+  try{
+   let {data} = await AddToCart (item)
+     alert(data.msg)
+     dispatch({type:ADD_CART,payload:item})
+  }catch(err){
+     dispatch({type:GET_CART_ERROR,payload:err.message})
+  }
+
 }
 
-export const DeletefromCart = async(id,dispatch) => {
+
+//DeleteCart_________________________________
+export const DeletefromCart =(id)=>async(dispatch) => {
        console.log(id)
       try{
          await DeleteCart(id)

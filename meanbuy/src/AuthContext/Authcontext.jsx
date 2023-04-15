@@ -20,8 +20,8 @@ let loginAuth = (Email) => {
 let logoutAuth = () => {
     setAuth(false)
     console.log("user REmove")
-    localStorage.removeItem('User')
-    localStorage.removeItem('userInfo')
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
     setUsername('')
 }
     return(

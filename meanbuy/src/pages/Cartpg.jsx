@@ -49,7 +49,7 @@ if(cart.length <= 0){
    <Tbody>
    { cart.map((ele)=>{
        return(
-       <Tr key={ele.id} >
+       <Tr key={ele._id} >
            <Th w='120px'  p='10px' textAlign='center'>
                <Image w='100%'src={ele.img1}/>
              <Text display={{base:'block',md:'none'}} color='green.500'>Price: ₹{ele.price}.00</Text>
@@ -58,7 +58,7 @@ if(cart.length <= 0){
            <Text fontSize={{base:'12px',md:'15px'}} color='black'>{ele.title}</Text>
            <Text>COLOR: {ele.color}</Text>
            <Text color='green.300'><CheckIcon/>{' '}FREE DELIVERY</Text>
-            <DeleteIcon onClick={()=>DeletefromCart(ele.id,dispatch)} />
+            <DeleteIcon onClick={()=>dispatch(DeletefromCart(ele._id))} />
            </Th>
            <Th className="th"  fontSize='15px'>
            <Text  as='s' color='gray'>₹{Math.floor(ele.price*ele.discount/100)+ele.price}.00</Text>

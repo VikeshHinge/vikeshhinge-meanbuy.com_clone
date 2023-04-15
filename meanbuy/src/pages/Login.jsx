@@ -6,11 +6,11 @@ import Authcontext from '../AuthContext/Authcontext';
 import React,{useState} from 'react';
 import "./Signup.css";
 import axios from "axios";
-import {Link,useNavigate} from 'react-router-dom';
+import {Link,json,useNavigate} from 'react-router-dom';
 
 const userEmail = {
-    Email:'',
-    Pw:''
+    email:'',
+    password:''
 }
 
 
@@ -19,9 +19,9 @@ const Login = ({input, setUsersignup}) => {
 let {setUsername,loginAuth} = useContext(Authcontext)
 const [userLogin,setUserLogin] = useState(userEmail)
 const toast = useToast();
-const navigate = useNavigate()
+const Navigate = useNavigate()
 
-//let navigate = useNavigate()
+
 
 const handelchange_Email = (e) => {
     let {name,value} = e.target; 
@@ -32,34 +32,28 @@ const handelchange_Email = (e) => {
 
   const handelEmailSubmit= async() => {
 
-    let {Email,Pw} = userLogin;
+    let {email,password} = userLogin;
 
-    if(Email ==="" || Pw ===""){
+    if(email ==="" || password ===""){
        alert('fill the data properly')
+       return;
       }
     else{
-      let {data} =await axios.get(`http://localhost:4040/users?email=${Email}`)
-        if(data.length>0 && data[0].pw === Pw){
-         
-          toast({
-            title: 'User Login Success',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-            position: 'bottom',
-            })
-            setUsername(Email)
-            loginAuth(Email)
-            return navigate("/")
-        }else{
-          toast({
-            title: 'User not found, Signup first !',
-            status: 'error',
-            duration: 3000,
-            isClosable: true,
-            position: 'bottom',
-            })
-        }
+       const {data} = await axios.post('http://localhost:4040/user/login',userLogin)
+       console.log(data)
+       if(data.msg){
+        alert(data.msg)
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('user',data.name)
+        return Navigate('/')
+       }
+       else if(data.sug){
+        alert(data.sug)
+        return Navigate('/login')
+       }
+       else{
+        alert(data.err)
+       }
     }
     
      
@@ -67,16 +61,16 @@ const handelchange_Email = (e) => {
 
     return( 
  
-        <Box w={{base:'100%',md:'65%'}} p='10px'>
+        <Box w={{base:'100%',md:'45%'}} p='10px'>
          
           <Text className="header">Login Or Create Account</Text>
 
           <Box className="formcontrol">
             <Text fontSize='12px'>Email Address</Text>
-           <Input  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'Email' onChange={handelchange_Email} />
+           <Input  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'email' onChange={handelchange_Email} />
       
            <Text fontSize='12px'>Password</Text>
-           <Input  mb='20px' borderRadius='0px' type={"password"}  placeholder="Password" name='Pw' onChange={handelchange_Email}/>
+           <Input  mb='20px' borderRadius='0px' type={"password"}  placeholder="Password" name='password' onChange={handelchange_Email}/>
 
           </Box>
            
@@ -87,7 +81,7 @@ const handelchange_Email = (e) => {
            
           
           <Link fontSize='xs' as='u'>Forger Password?</Link>
-          <Text onClick={()=> setUsersignup(false)} fontSize='sm' fontWeight='bold'>New to MeanBuy? {' '} <Link color='#00B5D8' >Sign Up!</Link> </Text>
+          <Text onClick={()=> setUsersignup(true)} fontSize='sm' fontWeight='bold'>New to MeanBuy? {' '} <Link color='#00B5D8' >Sign Up!</Link> </Text>
         
         </Box>
             

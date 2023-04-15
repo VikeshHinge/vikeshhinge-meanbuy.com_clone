@@ -1,6 +1,6 @@
 import React from "react";
 import {Box,Image,Badge,Text,Divider,Flex, } from "@chakra-ui/react";
-import {Link,Navigate} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import {StarIcon} from "@chakra-ui/icons";
 import { BiRupee } from "react-icons/bi";
 // Import Swiper React components
@@ -15,9 +15,11 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 const Productlist = ({product,num}) => {
 
+   const Navigate = useNavigate()
+
    let handelRoue = (id) => {
-      //console.log(id)
-       return <Navigate to={`/products/${id}`}/>
+      console.log(id)
+     return Navigate(`product/${id}`)
    }
 
     return(
@@ -39,9 +41,9 @@ const Productlist = ({product,num}) => {
              return(
                 <SwiperSlide key={element.id} >
 
-                <Link to={`/products/${element.id}`} >
+                
 
-                   <Box p='5px' onClick={()=>handelRoue(element.id)}>
+                   <Box p='5px' onClick={()=>handelRoue(element._id)}>
                    <Image w='80%' src={element.img1} alt='Dan Abramov' m='auto' mt='10px' />
                 <Text fontSize='sm' lineHeight='15px' mt='10px' w='100%'>{element.title}</Text>
 
@@ -53,7 +55,7 @@ const Productlist = ({product,num}) => {
                  <Text as='b' fontSize='xl'><Flex alignItems='center' color='#ED8936'><BiRupee color='#ED8936'/>{element.price}</Flex></Text>
                  <Text fontSize='md' fontWeight='bold'>Flat{element.discount}%OFF</Text>
                  </Flex>
-                   </Box></Link>
+                   </Box>
                 </SwiperSlide>
              )
           })}

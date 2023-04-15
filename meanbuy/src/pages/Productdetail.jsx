@@ -2,7 +2,8 @@ import {Box,Image,Stack,ListItem,UnorderedList, Grid,TabPanel,Tab,TabList,TabPan
     Flex,Heading,Badge,Text,Divider,Radio,RadioGroup,Button
 } from "@chakra-ui/react"
 import {StarIcon} from "@chakra-ui/icons"
-import {GetproductbyID} from "../Axios/Axios"
+import {GetProductbyId} from "../Redux/ProductPg.Redux/Items.action.js"
+import {GetByID} from '../Redux/Products.Redux/productAPI'
 import { BiRupee } from "react-icons/bi";
 import { useState,useEffect} from "react"
 import { GrFacebookOption,GrTwitter,GrPinterest,GrLinkedin,GrSnapchat } from "react-icons/gr";
@@ -24,24 +25,23 @@ const param = useParams()
 const dispatch = useDispatch()
 const Navigate = useNavigate()
 
-let productid = (id)=> {
- GetproductbyID(id).then((res)=>setItem(res.data))
-}
 
 const addToCart = (item) => {
-  console.log(item)
-  const user = localStorage.getItem('User')
-  console.log(user)
-  if(user === undefined || user ==='' || user === null){
-    alert('user needs to login !')
+  //console.log(item)
+  let token = localStorage.getItem('token')
+  if(token ==='' || token ===null || token === undefined ){
+    alert('user need to login first !')
     return Navigate('/login')
   }
   dispatch(AddtoCart(item))
 }
 
+let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
+
+
  useEffect(()=>{
-  productid(param.id)   //******************id put here */
- },[])
+  dispatch(GetProductbyId(param.id))  
+ },[param.id])
 
 
 
@@ -49,7 +49,7 @@ const addToCart = (item) => {
          <Box pt='180px' fontSize='14px' w='99%' m='auto' mb='50px'>
          
            {
-               Item && Item.map((element,i)=>{
+                 productData && productData.map((element,i)=>{
                     return(
                     <Flex key={i}  gap='20px' direction={{base:'column',md:'row'}} >
                     <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
