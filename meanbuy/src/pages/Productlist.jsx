@@ -39,7 +39,7 @@ const Productlist = ({product,num}) => {
           {product.map((element)=>{
 
              return(
-                <SwiperSlide key={element.id} >
+                <SwiperSlide key={element._id} >
 
                 
 

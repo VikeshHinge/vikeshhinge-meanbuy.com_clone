@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken')
 
 const CartAuthantication = (req,res,next) => {
-
-    const token = req.headers.authorization;
-
+     
+     const token = req.headers.authorization ;
+    //console.log(token)
     if(token){
        jwt.verify(token,'meanbuy',(err,decoded)=>{
-        //console.log(decoded)
+       // console.log(decoded)
         if(decoded){
            req.body.user = decoded.userId
            req.body.quantity=1
@@ -16,7 +16,7 @@ const CartAuthantication = (req,res,next) => {
         }
        })
     }else{
-        res.send({'msg':'Please Login for Cart !'})
+        res.send({'sug':'Please Login for Cart !'})
     }
 
 }

@@ -1,12 +1,12 @@
 
 import {createContext, useState } from "react";
-
 let Authcontext = createContext()
 
 const AuthcontextProvider = ({children}) => {
  const [username,setUsername] = useState('')
 const [isAuth,setAuth] = useState(false)
 const [carttotal,setCarttotal] =useState([])
+
 console.log(carttotal)
 // console.log("isAuth-Authantication",isAuth)
 // console.log({'username':username})

@@ -1,9 +1,8 @@
-
 const express = require('express')
 
 const mongoose = require('mongoose')
 
-const cartSchma = mongoose.Schema({
+const orderSchema = mongoose.Schema({
     title:{type:String,required:true},
     img1:{type:String,required:true},
     categories:{type:String,required:true},
@@ -11,13 +10,14 @@ const cartSchma = mongoose.Schema({
     price:{type:Number,required:true},
     discount:{type:Number,required:true},
     rating:{type:Number,required:true},
-    description:{type:String},
     user:{type:String,required:true},
     product_quantity:{type:Number},
-    quantity:{type:Number}
+    quantity:{type:Number},
+    orderdate:{type:String,required:true},
+    trackingID:{type:Number,required:true},
+    status:{type:String,required:true}
 })
 
+const orderModel = mongoose.model('order',orderSchema)
 
-const cartModel = mongoose.model('cart',cartSchma)
-
-module.exports = {cartModel}
+module.exports = {orderModel}

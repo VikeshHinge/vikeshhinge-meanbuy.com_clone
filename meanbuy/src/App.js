@@ -15,13 +15,13 @@ import UserAuth from './pages/UserLoginSignup';
 import Cart from './pages/Cartpg';
 import ProductPage from './pages/ProductPage';
 import UserPage from './pages/UserPage';
+import CheckoutPage from './pages/Checkout/CheckoutPage';
 // https://twisty-silly-ring.glitch.me/product
 function App() {
   return (
     <div className="App">
        <Navbar/>
        <Allrouts/> 
-       {/* <UserPage/> */}
        <Footer/> 
     </div>
   ); 

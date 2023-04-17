@@ -17,8 +17,6 @@ import {AddtoCart} from '../Redux/Cart.Redux/cart.action.js'
 
 
 const ProductDetail = () => {
-
-const [Item,setItem] = useState([])
 const [tabIndex, setTabIndex] = useState(0)
 
 const param = useParams()
@@ -27,13 +25,21 @@ const Navigate = useNavigate()
 
 
 const addToCart = (item) => {
-  //console.log(item)
   let token = localStorage.getItem('token')
   if(token ==='' || token ===null || token === undefined ){
     alert('user need to login first !')
     return Navigate('/login')
   }
   dispatch(AddtoCart(item))
+}
+
+const handelBuy = (item) => {
+  console.log(item)
+  // let token = localStorage.getItem('token')
+  // if(token){
+  
+  // }
+
 }
 
 let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
@@ -46,17 +52,17 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
 
 
     return(
-         <Box pt='180px' fontSize='14px' w='99%' m='auto' mb='50px'>
+         <Box pt='180px' fontSize='14px' w={{base:'98%',md:'90%'}} m='auto' mb='50px'>
          
            {
-                 productData && productData.map((element,i)=>{
+                 productData && productData.map((element)=>{
                     return(
-                    <Flex key={i}  gap='20px' direction={{base:'column',md:'row'}} >
+                    <Flex key={element._id}  gap='20px' direction={{base:'column',md:'row'}} >
                     <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
 
-                    <Flex alignItems='center'  > 
-                    <Text className="navigate" fontSize={{base:'sm',md:'xl'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
-                    <Link to={`/products/categories/${element.categories}`}><Text fontSize={{base:'sm',md:'xl'}} mb='30px' color='orange'>{element.categories} {`>`}</Text></Link>
+                    <Flex alignItems='center'   fontSize={{base:'sm',md:'md'}}> 
+                    <Text className="navigate" fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
+                    <Link to={`/products/categories/${element.categories}`}><Text fontSize={{base:'sm',md:'md'}} mb='30px' color='orange'>{element.categories} {`>`}</Text></Link>
                     <Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{element.brand}</Text>
                     </Flex>
 
@@ -140,7 +146,7 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                             <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>addToCart(element)}>
                               ADD TO CART 
                             </Button>
-                            <Button w='40%' height='48px' colorScheme='orange'>
+                            <Button w='40%' height='48px' colorScheme='orange' onClick={()=>handelBuy(element)}>
                               BUY NOW
                             </Button>
                        </Flex>

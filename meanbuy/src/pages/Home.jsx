@@ -46,15 +46,15 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
         FetchFilter(data,"Home Decor")
         FetchFilter(data,"mens watch")
         FetchFilter(data,"Ballet Flats")
-        FetchFilter(data,"Handbags & Clutches")
+        FetchFilter(data,"HandbagsClutches")
         FetchFilter(data ,"Mobiles Accessories")
         FetchFilter(data,'Toys') 
         FetchFilter(data,'Watches')
-        FetchFilter(data,'Keyboards & Mouse')
+        FetchFilter(data,'electronics')
         FetchFilter(data,'Makeup Accessories')
         FetchFilter(data,'Kitchen Wares')
         FetchFilter(data,'Action Figures')
-        FetchFilter(data,'Clothing')
+        FetchFilter(data,'clothing')
         FetchFilter(data,'Disney')
       }
     },[data])
@@ -70,7 +70,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
         if(str==="Ballet Flats"){
             setBFdata(FilterData)
         }
-        if(str==="Handbags & Clutches"){
+        if(str==="HandbagsClutches"){
             setHbagdata(FilterData)
         }
         if(str==="Mobiles Accessories"){
@@ -82,7 +82,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
         if(str==="Watches"){
             setWatchdata(FilterData)
         }
-        if(str==="Keyboards & Mouse"){
+        if(str==="electronics"){
              setKeyMouse(FilterData)
         }
         if(str==="Bluetooth Earphone"){
@@ -100,7 +100,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
         if(str ==="Action Figures"){
                setActionfig(FilterData)
         }
-        if(str  ==="Clothing"){
+        if(str  ==="clothing"){
               setClothing(FilterData)
         }
         if(str  ==="Disney"){
@@ -116,8 +116,8 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
     return(
 
         <Box pt='160px' className="main">
-           <Box w='100%' m='auto' h={{base:'100px',md:'420px'}} translate="1s" >
-             <Image m='auto' transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
+           <Box w='100%' m='auto'  translate="1s" >
+             <Image m='auto' h={{base:'150px',md:'420px'}} transition="1s ease-in out" src={Screensever} alt={Screensever} className="Img"  />
            </Box>
 
           {

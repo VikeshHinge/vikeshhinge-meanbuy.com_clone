@@ -10,9 +10,9 @@ import { BiRupee } from "react-icons/bi";
 import FilterSidebox from './product.filter';
 import {useDispatch,useSelector} from 'react-redux';
 import {GetProductBycategory} from '../Redux/Products.Redux/product.action.js';
+import { brands } from '../Componunt/objects';
 
 
-let Brand=['SKMEI','Marvel','Sanddunes','citizen','MB']
 
 
 const ProductPage = () => {
@@ -21,44 +21,57 @@ const ProductPage = () => {
 let categories = useParams()
 
 let location = useLocation()
-const [page,setPage]=useState(1)
+const [Brand,setBrand] = useState([])
 const [searchParams] = useSearchParams()
 
 let dispatch = useDispatch()
 
-console.log(searchParams.getAll('brand','price','rating','sort'))//8888888888************errr
+//console.log(searchParams.getAll('brand','price','rating','sort'))
 const {productData,error,loading} = useSelector((store)=>store.productManager)
 
 
 useEffect(()=>{
-  //console.log(categories,location)
-  console.log(location.search)
+  console.log(categories,location)
+  //console.log(location.search)
   // let paramobj = {
   //   params:{
   //     brand:searchParams.getAll('brand')
   //   }
   // }
+
+  if(categories.cate){
+   setBrand(brands[categories.cate])
+  }
+ 
  dispatch(GetProductBycategory(categories,location.search))
 },[dispatch,categories,location])
 
+let Loading = Array(5).fill(1);
 
 
   return (
     <Box p='5px' pt={{base:'150px',md:'180px'}} position='relative' mb='20px'>
-       <Text textAlign='left' p='5px' pl='15px'>Filter</Text>
-    <Flex m='auto' gap='20px' flexDirection={{base:'column',md:'row'}} >
+    
+    <Flex m='auto' gap='20px'w={{base:'100%',md:'98%'}} flexDirection={{base:'column',md:'row'}}>
       
             {/* _______________filter box__________________ */}
             <FilterSidebox   Brand={Brand}/>
             {/* ________________display____________________ */}
-            <Box w={{base:'100%',md:"95%"}} >
+            <Box w={{base:'100%',md:"95%"}}>
              <Box >
                <Flex cursor='pointer' alignItems='center' fontSize='md'> <Text  pl='30px' fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'md'}}>{categories.cate}</Text></Flex>
              
-             <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
+               {loading ? 
+                        <SimpleGrid columns={5} spacing={10}>
+                         {Loading.map((ele,i)=><Box kry={i} className='loading'>
+                            loading ....
+                         </Box>)}
+                        </SimpleGrid>
+                    :<>
+                    <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
                { productData.length>=0 && productData.map((ele)=>(
 
-                  <Box key={ele.id}  p='5px' m='auto' bg='orange.100' >
+                  <Box key={ele._id}  p='5px' m='auto' bg='orange.100' >
                   
                         <Link to={`/product/${ele._id}`}>
                         <Box position='relative' w='100%' fontWeight='bold' color='white' >
@@ -87,6 +100,8 @@ useEffect(()=>{
                   
                ))}
            </SimpleGrid> 
+                    </>}
+             
              </Box>
                
             </Box>

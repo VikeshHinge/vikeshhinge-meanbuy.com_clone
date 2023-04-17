@@ -8,8 +8,8 @@ import img5 from '../Images/slider4.jpg'
 
 export const sliderimg = [img1,img3,img4,img5]
 
-export const slidername = ['Home Decor','Ballet Flats','Handbags & Clutches','Mobiles Accessories','Toys','Keyboards & Mouse',
-                           'mens watch','Makeup Accessories','Kitchen Wares','Action Figures','Clothing','Disney'];
+export const slidername = ['Home Decor','Ballet Flats','HandbagsClutches','Mobiles Accessories','Toys','electronics',
+                           'mens watch','Makeup Accessories','Kitchen Wares','Action Figures','clothing','Disney'];
 
 
 export const four =[<BsStarFill  size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStarFill size='13px'/>,<BsStar size='13px'/>]
@@ -52,3 +52,19 @@ export const userInfo = {
 Order:``,
 Cart:``
 }
+
+export const brands={
+    clothing:['MB','LONCA','PD'],
+    electronics:['Lofree','Logitech','Xiaomi','MB'],
+    'mens watch':['SKMEI','Marvel','Sanddunes','citizen','MB'],
+    'Makeup Accessories':['PD','MB','Neway'],
+    'womens watch':['MB','Sand Dunes','CURREN'],
+    'Ballet Flats':['Capone'],
+    'Home Decor':['PD','MB'],
+    'Kitchen Wares':['PD','MB'],
+    'Mobiles Accessories':['Baseus','Baseus','PD'],
+    'Action Figures':['PD','MB'],
+     HandbagsClutches:['Capone'],
+     Toys:['MD','MB','PD'],
+     Disney:['Disney']
+ }

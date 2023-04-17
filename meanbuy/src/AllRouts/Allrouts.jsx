@@ -8,6 +8,7 @@ import Signup from "../pages/UserLoginSignup";
 import UserAuth from '../pages/UserLoginSignup'
 import ProductPage from "../pages/ProductPage";
 import UserPage from "../pages/UserPage";
+import CheckoutPage from "../pages/Checkout/CheckoutPage";
  
 const Allrouts = () => {
 
@@ -20,6 +21,7 @@ const Allrouts = () => {
           <Route path="/signup" element={<UserAuth/>}></Route>
           <Route path="/login" element={<UserAuth/>}></Route>
           <Route path="/userprofile" element={<UserPage/>}> </Route>
+          <Route path="/checkout" element={<CheckoutPage/>}  ></Route>
         </Routes>
     )
 }

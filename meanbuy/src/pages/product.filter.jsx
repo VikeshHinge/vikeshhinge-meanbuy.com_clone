@@ -3,7 +3,7 @@ import React,{useState,useEffect} from 'react';
 import { Box,Text,Flex, Accordion,AccordionItem,AccordionButton, AccordionPanel, AccordionIcon,Checkbox} from '@chakra-ui/react'
 import {one,two,three,four} from '../Componunt/objects';
 import Pricerange from '../Componunt/Pricerange';
-import {useSearchParams} from 'react-router-dom'
+import {useSearchParams} from 'react-router-dom';
 
 const Filtersidebar = ({Brand}) => {
 
@@ -56,7 +56,6 @@ const Filtersidebar = ({Brand}) => {
       }
     }
 
- console.log(price,brand,rating,sort)
 
 
     useEffect(()=>{
@@ -72,19 +71,20 @@ const Filtersidebar = ({Brand}) => {
 
 
   return (
-    <Box w={{base:'100%',md:'25%'}}>
+    <Box w={{base:'100%',md:'28%'}} >
 
-      <Pricerange/>
-       
-   <Accordion defaultIndex={[0,1,2,3]} allowMultiple>
+{/* price --------range---- */}
+      {/* <Pricerange/> */}
+      <Text textAlign='left' p='5px' pl='15px' border='1px solid gray' borderBottom='none' >Filter</Text>
+   <Accordion defaultIndex={[0,1,2,3]} allowMultiple border='1px solid gray' >
    <AccordionItem>
        
-       <AccordionButton justifyContent='space-between' >
+       <AccordionButton justifyContent='space-between'>
          <Text>Sort</Text>
          <AccordionIcon />
        </AccordionButton>
     
-     <AccordionPanel  textAlign='start'>
+     <AccordionPanel  textAlign='start'  >
      <Checkbox onChange={()=>handelsorting('hightolow')} isChecked={sort.includes('hightolow')}>
       Price High To Low
        </Checkbox>
@@ -95,7 +95,7 @@ const Filtersidebar = ({Brand}) => {
         </AccordionItem>
          
     {/* -------------------Brand-------------------- */}
-    <AccordionItem>
+    <AccordionItem >
        <AccordionButton justifyContent='space-between' >
          <Text>Brand</Text>
          <AccordionIcon />
@@ -113,7 +113,7 @@ const Filtersidebar = ({Brand}) => {
          </AccordionItem>
        {/* --------------------filter Price-------------- */}
 
-       <AccordionItem>
+       <AccordionItem >
     
          <AccordionButton justifyContent='space-between' >
            <Text>Price</Text>
@@ -138,7 +138,7 @@ const Filtersidebar = ({Brand}) => {
        </AccordionPanel>
            </AccordionItem>
    
-         <AccordionItem>
+         <AccordionItem  >
        
        <AccordionButton justifyContent='space-between' >
          <Text>Customer Ratings</Text>

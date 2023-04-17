@@ -1,19 +1,27 @@
 
-import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead} from "@chakra-ui/react";
+import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead, border} from "@chakra-ui/react";
 
 import { DeleteIcon,CheckIcon } from '@chakra-ui/icons'
 import { useState,useEffect,useContext} from "react";
 import {GetCartData,DeletefromCart} from '../Redux/Cart.Redux/cart.action.js';
-import{useDispatch,useSelector} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import Authcontext from "../AuthContext/Authcontext";
+import { upgradeQuantity } from "../Redux/Cart.Redux/cart.action.js";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
 
 const dispatch = useDispatch()
-let {setcarttotal} = useContext(Authcontext)
+const {setcarttotal} = useContext(Authcontext)
 const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
+const Navigate = useNavigate()
+
 const handelcheckout = () => {
-  alert('Product is ready for Checkout !!!')
+ if(cart.length>0){
+  return Navigate('/checkout')
+ }else{
+  console.log('cart is empty')
+ }
 }
 
 
@@ -22,7 +30,13 @@ useEffect(()=>{
   GetCartData(dispatch) 
 },[dispatch]);
 
-
+if(loading){
+  return(
+     <Box m='auto'>
+        <Image src='https://thumbs.gfycat.com/GeneralUnpleasantApisdorsatalaboriosa-size_restricted.gif' alt='loading ...'/>
+     </Box>
+  )
+}
 
 if(cart.length <= 0){
   return (
@@ -35,8 +49,8 @@ if(cart.length <= 0){
   return(
     <Flex pt='200px' w={{base:'99%',md:'90%'}} m='auto' mb='20px' gap='20px' flexDirection={{base:'column',md:'row'}} >
 
- <Box border='1px solid gray' m='auto'  w={{base:'99%',md:'100%'}}>
-    <Table >
+ <Box border='1px solid gray'  w={{base:'99%',md:'100%'}} h='fit-content'>
+    <Table>
    
   <Thead>
   <Tr bg='#f7f7f7'>
@@ -47,18 +61,28 @@ if(cart.length <= 0){
    </Tr>
   </Thead>
    <Tbody>
-   { cart.map((ele)=>{
+   {cart && cart.map((ele)=>{
        return(
        <Tr key={ele._id} >
            <Th w='120px'  p='10px' textAlign='center'>
                <Image w='100%'src={ele.img1}/>
              <Text display={{base:'block',md:'none'}} color='green.500'>Price: ₹{ele.price}.00</Text>
            </Th>
-           <Th lineHeight={{base:'15px',md:'22px'}}>
+           <Th lineHeight={{base:'15px',md:'22px'}} >
            <Text fontSize={{base:'12px',md:'15px'}} color='black'>{ele.title}</Text>
-           <Text>COLOR: {ele.color}</Text>
-           <Text color='green.300'><CheckIcon/>{' '}FREE DELIVERY</Text>
-            <DeleteIcon onClick={()=>dispatch(DeletefromCart(ele._id))} />
+           <Text>BRAND: {ele.brand}</Text>
+           <Text color='green.300'><CheckIcon />{' '}FREE DELIVERY</Text>
+           <Flex gap='20px' alignItems='center' mt='5px'>
+  
+       {/* ------------Cart dispatch-delete & update------------- */}
+
+           <DeleteIcon fontSize='15px' onClick={()=>dispatch(DeletefromCart(ele._id))} />
+              <Flex gap='3px' cursor={'pointer'}>
+               <button style={{backgroundColor:'orange',width:'28px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===ele.product_quantity} onClick={()=>dispatch(upgradeQuantity(ele._id,1,ele.quantity))} border='1px solid' pl='3px' pr='3px'>inc</button>
+               <button style={{width:'28px',fontWeight:'bold',border:'1px solid orange'}} border='1px solid' pl='3px' pr='3px'>{ele.quantity}</button>
+               <button style={{backgroundColor:'orange',width:'28px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===1} onClick={()=>dispatch(upgradeQuantity(ele._id,-1,ele.quantity))}  border='1px solid' pl='3px' pr='3px'>dec</button>
+              </Flex>
+           </Flex>
            </Th>
            <Th className="th"  fontSize='15px'>
            <Text  as='s' color='gray'>₹{Math.floor(ele.price*ele.discount/100)+ele.price}.00</Text>

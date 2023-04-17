@@ -17,8 +17,8 @@ let CategoriesDrop = () => {
           <Flex className="flexlink">
           <Link className="heading" >WOMEN</Link>
           <Link to={`/products/categories/Makeup Accessories`}>Makeup Accessories</Link>
-          <Link to={`/products/categories/Clothing`}>Clothing</Link>
-          <Link  to={`/products/categories/Handbags & Clutches`}>Handbags & Clutches</Link>
+          <Link to={`/products/categories/clothing`}>Clothing</Link>
+          <Link  to={`/products/categories/HandbagsClutches`}>Handbags & Clutches</Link>
           <Link to={`/products/categories/womens watch`}>Watches</Link>
           <Link  to={`/products/categories/Ballet Flats`}>Ballet Flats</Link>
           <Link  to={`/products/categories/Ballet Flats`}>Sandals</Link>
@@ -28,18 +28,18 @@ let CategoriesDrop = () => {
         <Box  >
         <Flex className="flexlink">
           <Link className="heading" >ELECTRONICS</Link>
-          <Link to={`/products/categories/Keyboards & Mouse`}>Gaming Accessories</Link>
-          <Link to={`/products/categories/Keyboards & Mouse`}>Keyboards & Mouse</Link>
-          <Link to={`/products/categories/Keyboards & Mouse`}>Small Appliances</Link>
+          <Link to={`/products/categories/electronics`}>Gaming Accessories</Link>
+          <Link to={`/products/categories/electronics?categories=Mobiles Accessories`}>electronics</Link>
+          <Link to={`/products/categories/electronics`}>Small Appliances</Link>
           </Flex>
         </Box>
         <Box >
         <Flex className="flexlink">
             <Link className="heading" >ESSENTIALS</Link>
-            <Link  to={`/products/categories/Keyboards & Mouse`}>Home Essentials</Link>
-            <Link to={`/products/categories/Keyboards & Mouse`}>Men's Essentials</Link>
-            <Link to={`/products/categories/Keyboards & Mouse`}>School Backpacks</Link>
-            <Link to={`/products/categories/Keyboards & Mouse`}>Sports Essentials</Link>
+            <Link  to={`/products/categories/electronics`}>Home Essentials</Link>
+            <Link to={`/products/categories/mens watch?categories=electronics`}>Men's Essentials</Link>
+            <Link to={`/products/categories/Disney`}>School Backpacks</Link>
+            <Link to={`/products/categories/electronics`}>Sports Essentials</Link>
             <Link to={`/products/categories/Makeup Accessories`}>Women Essentials</Link>
         </Flex>    
         </Box>
@@ -65,8 +65,8 @@ let CategoriesDrop = () => {
           <Link className="heading" >KIDS & MOM</Link>
           <Link to={`/products/categories/Action Figures`}>Action Figures</Link>
           <Link to={`/products/categories/Action Figures`}>Discovery Adventures</Link>
-          <Link to={`/products/categories/Action Figures`}>Disney</Link>
-          <Link to={`/products/categories/Action Figures`}>Hello Kitty</Link>
+          <Link to={`/products/categories/Disney`}>Disney</Link>
+          <Link to={`/products/categories/Disney`}>Hello Kitty</Link>
           <Link to={`/products/categories/Action Figures`}>Marvel</Link>
           <Link to={`/products/categories/Toys`}>Toys</Link> 
           </Flex>
@@ -111,7 +111,7 @@ let CategoriesDrop = () => {
          </Box>
         </Link>
 
-         <Link to={`/products/categories/Keyboards & Mouse`}><Box w='70%'m='auto'>
+         <Link to={`/products/categories/electronics`}><Box w='70%'m='auto'>
          <Image m='auto' w='90%' src='https://www.meanbuy.com/assets/img/india/icons/cats/Electronics.png'></Image>
           <Text>Electronics</Text>
          </Box>

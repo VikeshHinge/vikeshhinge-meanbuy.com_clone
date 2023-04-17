@@ -46,7 +46,7 @@ let Navbar2 = () => {
     },[logoutAuth])
  
     return(
-       <Box m='0px' position='fixed' w='100%' bg='white' zIndex='9999' borderBottom='2px solid orange'>
+       <Box m='0px' position='fixed' w='100%' bg='white' zIndex='999' borderBottom='2px solid orange'>
          <Box bg='black' color='white'w='100%'>
             <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  

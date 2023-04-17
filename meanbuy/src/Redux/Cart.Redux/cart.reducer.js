@@ -13,7 +13,7 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
        
         switch(type){
             case GET_CART_SUCESS :{
-                console.log(payload)
+              
                 return{
                     ...state,
                     error:false,
@@ -48,11 +48,11 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                 }
             }
             case DELETE_CART :{
-                console.log(payload)
+                //console.log(payload)
                 let newcart = state.cart.filter((ele)=>ele._id !== payload)
                 let Total = 0;
                 for(let i=0; i<newcart.length; i++){
-                   Total+=newcart[i].price
+                   Total+=(newcart[i].price*newcart[i].quantity)
                 }
                 console.log(newcart)
                 return{
@@ -62,6 +62,36 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                     cart:newcart,
                     total:Total
                 }
+            }
+            case GET_CART_UPDATE :{
+                // console.log(payload)
+                // console.log(state)
+                let newcart = state.cart.map((ele)=>{
+                    if(ele._id===payload._id){
+                        return{
+                            ...ele,
+                            quantity:payload.value
+                        }
+                    }else{
+                        return{
+                            ...ele
+                        }
+                    }
+                })
+                //console.log(newcart)
+                let Total = 0;
+                for(let i=0; i<newcart.length; i++){
+                   Total+=(newcart[i].price*newcart[i].quantity)
+                }
+
+                return {
+                    ...state,
+                    error:false,
+                    loading:false,
+                    cart:newcart,
+                    total:Total
+                }
+
             }
             default:{
                 return state;

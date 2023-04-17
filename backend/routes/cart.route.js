@@ -2,10 +2,12 @@
 const express = require('express')
 const cartRoute = express.Router()
 const {cartModel} = require('../models/cart.model.js')
+const {CartAuthantication} = require('../middleware/cartAuth.js')
 
 //get___________________
-cartRoute.get('/',async(req,res)=>{
+cartRoute.get('/',CartAuthantication,async(req,res)=>{
     let cartuser = req.body.user
+    
     try{
         let data = await cartModel.find({user:cartuser})
         res.send(data)
@@ -13,31 +15,42 @@ cartRoute.get('/',async(req,res)=>{
         res.send({'err':err.message})
     }
 })
+//admin side cart---------------------
+cartRoute.get('/getallcart',CartAuthantication,async(req,res)=>{
+    let query = req.query
+    try{
+        let data = await cartModel.find(query)
+        res.send(data)
+    }catch(err){
+        res.send({'err':err.message})
+    }
+})
 
 //addtocart______________________
-cartRoute.post('/addtocart',async(req,res)=>{
+cartRoute.post('/addtocart',CartAuthantication,async(req,res)=>{
     let product = req.body;
+    console.log(req.body)
     try{
        let item = await cartModel.find({title:product.title,user:product.user})
        if(item.length > 0){
-        res.send('Product is present in cart already')
+        res.send({msg:'Product is present in cart already'})
        }else{
         let data = new cartModel(product)
         await data.save()
-        res.send('product added to cart')
+         res.send({msg:'product added to cart'})
        }
     }catch(err){
         res.send({'err':err.message})
     }
 })
 
-//update___________________________
-cartRoute.patch('/updatecart/:id',async(req,res)=>{
+//update___________________________cd
+cartRoute.patch('/updatecart/:id',CartAuthantication,async(req,res)=>{
     let id = req.params.id
-    //console.log(req.body)
+    console.log(id,req.body)
     try{
-     await cartModel.findOneAndUpdate({_id:id,user:req.body.user},{quantity:req.body.count})
-        res.send('updated!')
+    let item = await cartModel.findOneAndUpdate({_id:id,user:req.body.user},{quantity:req.body.value})
+        res.send(item)
     }catch(err){
         res.send({'err':err.message})
     }
@@ -45,12 +58,12 @@ cartRoute.patch('/updatecart/:id',async(req,res)=>{
 
 
 //delete________________________________
-cartRoute.delete('/deletecart/:id',async(req,res)=>{
+cartRoute.delete('/deletecart/:id',CartAuthantication,async(req,res)=>{
     let id = req.params.id
     let user = req.body.user
     try{
         await cartModel.findOneAndDelete({_id:id,user})
-        res.send('product removed prom cart')
+        res.send({msg:'product removed prom cart'})
     }catch(err){
         res.send({'err':err.message})
     }
