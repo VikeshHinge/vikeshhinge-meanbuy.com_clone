@@ -93,12 +93,16 @@ if(loading){
       <Box  >
       address:
         <Box p='10px' bg='orange.100'>
+        
          <Input onChange={handelchange}  name='roomnum' value={userinfo.roomnum}  bg='white'  type='text' placeholder='building/room number' size='sm' />
         <Input onChange={handelchange}  name='landmark' value={userinfo.landmark} bg='white' type='text' placeholder='landmark' size='sm' />
         <Input onChange={handelchange}  name='city'   bg='white' value={userinfo.city} type='text' placeholder='city' size='sm' />
         <Input onChange={handelchange}  name='state'  bg='white' value={userinfo.state}  type='text' placeholder='state' size='sm' />
         <Input onChange={handelchange}  name='pincode'  bg='white' value={userinfo.pincode} type='text' placeholder='pincode' size='sm' />
-        <Button mt='10px' bg='orange' w='50%' onClick={handelSubmit}>Update</Button>
+         <Flex gap='10px'>
+         <Button mt='10px' bg='orange' w='50%' onClick={handelSubmit}>Update</Button> 
+         <Button bg='red' mt='10px' onClick={()=>setToggle(false)}>Close</Button>
+         </Flex>
         </Box>
       </Box>
       }

@@ -27,7 +27,7 @@ useEffect(()=>{
         <Link to='/cart'><Text as='b'>My Cart</Text></Link><br /><br />
         <Button onClick={logoutAuth} bg='#f38f2f' w='100%'>Log Out</Button>
     </Box>
-    <Box w={{base:'100%',md:'80%'}}>
+    <Box w={{base:'100%',md:'85%'}}>
       {!status? <Myprofile/> : <Myoredr/>}
     </Box>
 </Flex>

@@ -53,9 +53,6 @@ orderRoute.post('/buynow',OrderAuthantication,async(req,res)=>{
     }
 })
 
-//Mini Foldable Keyboard"-55-1
-//Spider-Man Black Swing Model-45-4
-//Disney Foldable Trampoline For Kids-40-1
 
 //checkout _________________________________
 orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
@@ -75,5 +72,17 @@ orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
    res.send({msg:err.message})
   }
 })
+
+
+// orderRoute.delete('/deleteorders',async(req,res)=>{
+//     let body = {user:'642c61599d288a1c143b3806'}
+//     try{
+//         let data = await orderModel.findOneAndDelete(body)
+//         res.send({msg:'Order Delete Sucess!'})
+//        }
+//        catch(err){
+//        res.send({msg:err.message})
+//       }
+// })
 
 module.exports = {orderRoute}

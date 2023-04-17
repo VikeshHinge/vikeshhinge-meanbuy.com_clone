@@ -98,7 +98,7 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                     <Link color='#14DE2B'><Flex><FcCheckmark/>CASH ON DELIVERY available on orders between ₹999 and ₹10,000</Flex></Link>
                     <Link><Flex><FcCheckmark/>Get up to ₹500 OFF with coupon code <Text as='b'>PREPAID</Text></Flex></Link>
                     <Link><Flex><FcCheckmark/>3 interest free payments with  ⓘ</Flex></Link>
-                    <Text>Availability:<Text as='b' color='green'> In Stock</Text></Text>
+                    <Text>Availability:{element.product_quantity>=5?<Text fontSize='15px' as='b' color='green'> In Stock</Text>:<Text as='b' color='red' fontSize='20px'> Hurryup only {element.product_quantity} left</Text>}</Text>
                     </Box> 
                     
                     

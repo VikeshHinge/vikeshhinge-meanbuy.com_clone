@@ -8,7 +8,7 @@ import {
   AccordionPanel,
   AccordionIcon,
 } from '@chakra-ui/react'
-
+import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { GetCartData } from '../../Redux/Cart.Redux/cart.action';
 import { getProfile } from '../../Redux/Uer.Redux/User.action';
@@ -19,6 +19,7 @@ import { PlaceUrOrder } from '../../Redux/Order.redux/order.action';
 
 const CheckoutPage = () => {
  const [payment,setPayment] = useState(false)
+ const Navigate = useNavigate()
  const dispatch = useDispatch()
  const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
 
@@ -33,6 +34,7 @@ const CheckoutPage = () => {
   if(payment){
    dispatch( PlaceUrOrder(cart))
    alert('Order Placed Sucess !!')
+   return Navigate('/')
   }else{
    alert('payment not done yet!')
   }

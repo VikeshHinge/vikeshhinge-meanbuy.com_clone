@@ -14,6 +14,7 @@ const orderSchema = mongoose.Schema({
     product_quantity:{type:Number},
     quantity:{type:Number},
     orderdate:{type:String,required:true},
+    deliverydate:{type:String,required:true},
     trackingID:{type:Number,required:true},
     status:{type:String,required:true}
 })
