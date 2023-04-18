@@ -143,7 +143,7 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                        </RadioGroup>
                       
                       {element.product_quantity >=1?
-                          <Flex gap='10px' justifyContent='center' mt='25px' mb='25px'>
+                          <Flex color='black' gap='10px' justifyContent='center' mt='25px' mb='25px'>
 
                           <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>addToCart(element)}>
                             ADD TO CART 

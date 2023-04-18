@@ -4,7 +4,7 @@ import { Search2Icon } from '@chakra-ui/icons';
 import {Link,useNavigate} from 'react-router-dom'
 import { GetSearchData } from "../Redux/Products.Redux/productAPI";
 
-const Search = () => {
+const Search = ({bg}) => {
     const [searchData,setSearchData] = useState([])
     const [searchKey,setSearchkey] = useState('')
     const Navigate = useNavigate()
@@ -60,7 +60,7 @@ const Search = () => {
              </InputRightElement>
           </InputGroup>
 
-          <Box display={searchData.length>0?'block':'none'} position='absolute' w="350px" height='350px' overflowY='scroll'  p='5px' zIndex='9999' bg='white' boxShadow={'2px 2px 10px rgba(0, 0, 0, 0.3)'}>
+          <Box display={searchData.length>0?'block':'none'} position='absolute' w="350px" height='350px' overflowY='scroll'  p='5px' zIndex='9999' bg={ !bg?'#1a202c':'white'} boxShadow={'2px 2px 10px rgba(0, 0, 0, 0.3)'}>
             {searchData.length>0 && searchData.map((ele)=>(
                 <Box key={ele._id} border='1px solid' mt='3px' cursor={'pointer'}>
                   

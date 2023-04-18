@@ -99,7 +99,7 @@ if(cart.length <= 0){
 </Table>
  </Box>   
 
-   <Box w={{base:'99%',md:'30%'}} >
+   <Box w={{base:'99%',md:'30%'}} color='black' bg='white'>
      
      <Box border='1px solid #A0AEC0' h='fit-content'  fontWeight='bold'>
      <Text className="header2" bg='#f7f7f7'>Checkout Details</Text>

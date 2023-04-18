@@ -62,7 +62,7 @@ const Navbar2 = ({changeTheme,bg}) => {
             <Spacer  display={{base:"block",md:"block"}}/>
 
             {/*-------------- search ---------------------*/}
-              <Search  />
+              <Search bg={bg}/>
 
 
             <Spacer  display={{base:"block",md:"block"}}/>

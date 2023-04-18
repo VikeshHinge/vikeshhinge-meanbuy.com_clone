@@ -83,18 +83,17 @@ if(loading){
     <Box w='70%' pt='180px'>
       <Flex w='100%' gap='10px' mb='20px'>
     {/* ____________Price____________ */}
-     <Box w={{base:'99%',md:'40%'}} >
+     <Box w={{base:'99%',md:'40%'}} color='black'>
      <Box border='1px solid #A0AEC0' h='fit-content'  fontWeight='bold'>
-     <Text className="header2" bg='#f7f7f7'>Checkout Details</Text>
-     <Divider bg='#A0AEC0'/>
-     <Box className='cart_box' >
-      <Text textAlign='left'>Total Items: {cart.length}</Text>
-      
-      <Text textAlign='left'>Sub Total: ₹{total}</Text>
-      <Text textAlign='left' color='green.500'>Shipping:Free</Text>
+     <Text p='10px' bg='#f7f7f7'>Checkout Details</Text>
+     <Divider mb='10px' bg='#A0AEC0'/>
+     <Box >
+      <Flex justifyContent='space-between' pr='10px' pl='10px' ><Text textAlign='left'>Total Items: </Text><Text>{cart.length}</Text></Flex>
+      <Flex justifyContent='space-between' pr='10px' pl='10px'> <Text textAlign='left'>Sub Total:</Text> <Text>₹{total}</Text></Flex>
+      <Flex justifyContent='space-between' pr='10px' pl='10px' color='green.500'><Text textAlign='left' >Shipping:</Text><Text>Free</Text></Flex>
       <Square size='1px' w='100%' bg='#A0AEC0' m='auto' mt='20px' mb='20px'></Square>
    
-        <Text textAlign='left' mb='10px'>Cart Total: ₹{total}</Text>
+        <Flex color='orange' justifyContent='space-between' pr='10px' pl='10px'><Text textAlign='left' mb='10px'>Cart Total:</Text><Text>₹{total}</Text></Flex>
        </Box>
        </Box>
       </Box>
