@@ -52,6 +52,7 @@ const UserAuth = () => {
           description: "go for user login !!!",
           status: 'success',
           duration: 3000,
+          position:'top',
           isClosable: true,
         })
         // setUsersignup(true)

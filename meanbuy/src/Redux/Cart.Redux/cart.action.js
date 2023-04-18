@@ -26,10 +26,12 @@ export const AddtoCart =(item)=>async (dispatch) => {
   // console.log(item)
   try{
    let {data} = await AddToCart (item)
-     console.log(data)
-     alert(data.msg)
-     dispatch({type:ADD_CART,payload:item})
+     alert(data.msg || data.sug)
+    if(data.msg){
+      dispatch({type:ADD_CART,payload:item})
+    }
   }catch(err){
+    console.log(err.message)
      dispatch({type:GET_CART_ERROR,payload:err.message})
   }
 

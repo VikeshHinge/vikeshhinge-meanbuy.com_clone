@@ -29,11 +29,11 @@ cartRoute.get('/getallcart',CartAuthantication,async(req,res)=>{
 //addtocart______________________
 cartRoute.post('/addtocart',CartAuthantication,async(req,res)=>{
     let product = req.body;
-    console.log(req.body)
+    console.log(req.body,'cart')
     try{
        let item = await cartModel.find({title:product.title,user:product.user})
        if(item.length > 0){
-        res.send({msg:'Product is present in cart already'})
+        res.send({sug:'Product is present in cart already'})
        }else{
         let data = new cartModel(product)
         await data.save()

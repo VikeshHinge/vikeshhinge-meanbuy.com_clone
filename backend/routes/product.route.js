@@ -26,8 +26,6 @@ productRoute.get('/',async(req,res)=>{
        }
        delete query.sort
     }
-    console.log(query,sorting)
-
     try{
       let data = await productModel.find(query).sort(sorting)
 

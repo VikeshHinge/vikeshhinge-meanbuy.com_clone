@@ -31,7 +31,7 @@ const {productData,error,loading} = useSelector((store)=>store.productManager)
 
 
 useEffect(()=>{
-  console.log(categories,location)
+  //console.log(categories,location)
   //console.log(location.search)
   // let paramobj = {
   //   params:{

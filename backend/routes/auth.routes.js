@@ -53,7 +53,7 @@ userRouter.post('/login',async(req,res)=>{
         bcrypt.compare(password, user[0].password, (err, result)=>{
             if(result){
                 let token = jwt.sign({ userId:user[0]._id }, 'meanbuy');
-                res.send({'msg':'User Login Sucess!','name':user[0].name,"token":token})
+                res.send({msg:'User Login Sucess!','name':user[0].name,"token":token})
                 }
                 else{
                   console.log('wrong pw')
@@ -61,10 +61,10 @@ userRouter.post('/login',async(req,res)=>{
                 }
         })
        }else{
-        res.send('User not exist, Signup first')
+        res.send({sug:'User not exist, Signup first'})
        }
    }catch(err){
-        res.send({'msg':err.message})
+        res.send({msg:err.message})
     }
 })
 

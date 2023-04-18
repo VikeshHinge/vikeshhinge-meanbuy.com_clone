@@ -98,7 +98,8 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                     <Link color='#14DE2B'><Flex><FcCheckmark/>CASH ON DELIVERY available on orders between ₹999 and ₹10,000</Flex></Link>
                     <Link><Flex><FcCheckmark/>Get up to ₹500 OFF with coupon code <Text as='b'>PREPAID</Text></Flex></Link>
                     <Link><Flex><FcCheckmark/>3 interest free payments with  ⓘ</Flex></Link>
-                    <Text>Availability:{element.product_quantity>=5?<Text fontSize='15px' as='b' color='green'> In Stock</Text>:<Text as='b' color='red' fontSize='20px'> Hurryup only {element.product_quantity} left</Text>}</Text>
+                    <Text>Availability:{element.product_quantity<=0?<Text as='b' color='red' fontSize='2xl'> Out Of Stock</Text>:element.product_quantity>=5?<Text fontSize='15px' as='b' color='green'> In Stock</Text>:<Text as='b' color='red' fontSize='20px'> Hurryup only {element.product_quantity} left</Text>}
+                    </Text>
                     </Box> 
                     
                     
@@ -141,15 +142,23 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                          </Stack>
                        </RadioGroup>
                       
-                       <Flex gap='10px' justifyContent='center' mt='25px' mb='25px'>
+                      {element.product_quantity >=1?
+                          <Flex gap='10px' justifyContent='center' mt='25px' mb='25px'>
 
-                            <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>addToCart(element)}>
-                              ADD TO CART 
-                            </Button>
-                            <Button w='40%' height='48px' colorScheme='orange' onClick={()=>handelBuy(element)}>
-                              BUY NOW
-                            </Button>
-                       </Flex>
+                          <Button height='48px'  w='40%' border='1px' borderColor='orange.500' bg='white'onClick={()=>addToCart(element)}>
+                            ADD TO CART 
+                          </Button>
+                          <Button w='40%' height='48px' colorScheme='orange' onClick={()=>handelBuy(element)}>
+                            BUY NOW
+                          </Button>
+                       </Flex>:
+                          <Flex gap='10px' mt='25px' mb='25px'>
+                            <Button height='48px' bg='red.300' w='40%' border='1px' borderColor='orange.500' >
+                             Notify Me
+                           </Button>
+                         </Flex>
+                      }
+                   
                        
                        <Tabs onChange={(index) => setTabIndex(index)} mb='100px'>
                    

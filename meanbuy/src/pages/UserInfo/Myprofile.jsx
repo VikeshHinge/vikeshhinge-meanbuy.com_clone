@@ -43,7 +43,7 @@ if(loading){
 }
 
   return (
-     <Box w='70%'>
+     <Box w={{base:'100%',md:'70%'}}>
       {user.length>0 && user.map((ele)=>(
          <Box key={ele._id}>
         <Box  boxShadow='md' border='1px solid gray' p='15px'>

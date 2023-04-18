@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken')
 
 const OrderAuthantication = (req,res,next) => {
      const token = req.headers.authorization ;
-     //console.log(req.originalUrl)
+     
+    //  delete req.body[_id]  //removing repetative ID
 
      let dates = []
      let currentDate = new Date();
@@ -27,6 +28,7 @@ const OrderAuthantication = (req,res,next) => {
                 ele.deliverydate=dates[1]
                 ele.status = 'ordered'
                 ele.trackingID = Math.floor(Math.random()*10**7)
+                delete ele._id
             })
             next()
            }
@@ -35,7 +37,8 @@ const OrderAuthantication = (req,res,next) => {
             req.body.orderdate = dates[0]
             req.body.deliverydate=dates[1]
             req.body.status = 'ordered'
-            req.trackingID = Math.floor(Math.random()*10**7)
+            req.body.trackingID = Math.floor(Math.random()*10**7)
+            delete req.body._id
             next()
            }
           

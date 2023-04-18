@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState ,useContext} from 'react';
 import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead} from "@chakra-ui/react";
-import {Link,useParams,useLocation} from 'react-router-dom';
+import {Link,useParams,useLocation,useNavigate} from 'react-router-dom';
 import style from './UserPage.module.css'//its working ;
 import Myprofile from './UserInfo/Myprofile';
 import Myoredr from './UserInfo/Myoredr';
@@ -12,6 +12,12 @@ const [status,setstatus] = useState(false)
 let {logoutAuth,carttotal} = useContext(Authcontext)
 let Param = useParams()
 let Location = useLocation()
+let Navigate = useNavigate()
+
+const handelLogout = () => {
+  logoutAuth()
+  return Navigate('/login')
+}
 
 useEffect(()=>{
    //console.log(Param)
@@ -25,7 +31,7 @@ useEffect(()=>{
         <Text>Update profile and details</Text><br />
        <Text onClick={()=>setstatus(true)} as='b'>My Orders</Text><br/>
         <Link to='/cart'><Text as='b'>My Cart</Text></Link><br /><br />
-        <Button onClick={logoutAuth} bg='#f38f2f' w='100%'>Log Out</Button>
+        <Button onClick={handelLogout} bg='#f38f2f' w='100%'>Log Out</Button>
     </Box>
     <Box w={{base:'100%',md:'85%'}}>
       {!status? <Myprofile/> : <Myoredr/>}

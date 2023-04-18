@@ -57,7 +57,7 @@ orderRoute.post('/buynow',OrderAuthantication,async(req,res)=>{
 //checkout _________________________________
 orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
   let products = req.body;
-  console.log(products)
+  console.log(products,'order-1')
   try{
     let data = await orderModel.insertMany(products)
   
@@ -65,6 +65,7 @@ orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
         let qty = ele.product_quantity - ele.quantity
         let item = await productModel.findOneAndUpdate({title:ele.title},{product_quantity:qty})
         let cart = await cartModel.deleteOne({title:ele.title},{user:ele.user})
+        console.log(cart)
     })
     res.send({msg:'Checkout Success !'})
    }

@@ -1,27 +1,29 @@
 
 import './App.css';
-import Admin from './Admin/admin';
-import Home from "./pages/Home";
-import ProductDetail from './pages/Productdetail';
-import Productlist from "./pages/Productlist"
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Footer from './pages/Footer';
 import Allrouts from './AllRouts/Allrouts';
-import Signup from './pages/UserLoginSignup'; 
 import Navbar from './pages/Navbar';
-import Login from './pages/Login';
-import UserAuth from './pages/UserLoginSignup';
-import Cart from './pages/Cartpg';
-import ProductPage from './pages/ProductPage';
-import UserPage from './pages/UserPage';
-import CheckoutPage from './pages/Checkout/CheckoutPage';
+import Admin from './Admin/Dashboard';
+import { useState } from 'react';
+let light = {backgroundColor:'#ffffff'}
 // https://twisty-silly-ring.glitch.me/product
 function App() {
+  const [bg,setBg] = useState(true)
+
+   let darkmode = {color:'white',backgroundColor:'#1a202c'}
+
+   const changeTheme = () => {
+        console.log(bg)
+       bg?setBg(false):setBg(true)
+   }
+
   return (
-    <div className="App">
-       <Navbar/>
-       <Allrouts/> 
+    <div className="App" style={bg?light:darkmode}>
+       <Navbar changeTheme={changeTheme} bg={bg}/>
+       {/* <Admin/> */}
+        <Allrouts/>  
        <Footer/> 
     </div>
   ); 

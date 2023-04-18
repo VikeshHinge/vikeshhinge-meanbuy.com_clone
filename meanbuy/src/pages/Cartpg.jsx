@@ -40,14 +40,15 @@ if(loading){
 
 if(cart.length <= 0){
   return (
-     <Box textAlign='left' p='20px' pt='200px' pb='200px'>
-      <Text fontSize='20px'>Is Empty! Come on, throw something in here...</Text>
+     <Box textAlign='left' p='20px' pt='180px' pb='100px'>
+      <Text fontSize='20px'>Is Empty! Come on, throw something in here ...</Text>
+      <Image m='auto' src='https://images.squarespace-cdn.com/content/v1/5a9d990755b02c16eef28423/1522958745117-C9FZPNWFRB9HHO3IK1TD/animat-shopping-cart-color.gif' alt='Empty !'/>
      </Box>
   )
 }
 
   return(
-    <Flex pt='200px' w={{base:'99%',md:'90%'}} m='auto' mb='20px' gap='20px' flexDirection={{base:'column',md:'row'}} >
+    <Flex pt='200px' w={{base:'99%',md:'90%'}} m='auto' mb='100px' gap='20px' flexDirection={{base:'column',md:'row'}} >
 
  <Box border='1px solid gray'  w={{base:'99%',md:'100%'}} h='fit-content'>
     <Table>

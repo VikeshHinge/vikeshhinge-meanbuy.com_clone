@@ -11,18 +11,21 @@ import './navbar.css';
 import {Link,useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import Search from "./Search";
+import { MoonIcon,SunIcon } from '@chakra-ui/icons';
+import { GetCartData } from "../Redux/Cart.Redux/cart.action.js";
 
 
-let Navbar2 = () => {
-
-  let {logoutAuth,carttotal} = useContext(Authcontext)
-    let [categories,setcategories] = useState(false)
-    let [sidedrower,setsidedrower] = useState(false)
+const Navbar2 = ({changeTheme,bg}) => {
   
-    let [users,setUsers]=useState('')
-    let Navigate = useNavigate()
-    let dispatch = useDispatch()
-
+ 
+    const {logoutAuth,carttotal} = useContext(Authcontext)
+    const [categories,setcategories] = useState(false)
+    const [sidedrower,setsidedrower] = useState(false)
+  
+    const [users,setUsers]=useState('')
+    const Navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
     const handeldropdown = () => {
         setcategories(!categories)
     }
@@ -31,22 +34,18 @@ let Navbar2 = () => {
      return Navigate('/cart')
     }
 
-    const logoutUser = () => {
-      setUsers('')
-      logoutAuth()
-      return Navigate('/')
-    }
-
-    
+ 
+    console.log('navbar render')
     let email= localStorage.getItem('user')||'';
-    let cartTotal = localStorage.getItem('cartTotal')
+  
     
     useEffect(()=>{
+      GetCartData(dispatch)
       setUsers(email)
-    },[logoutAuth])
+    },[dispatch,logoutAuth,users,email])
  
     return(
-       <Box m='0px' position='fixed' w='100%' bg='white' zIndex='999' borderBottom='2px solid orange'>
+       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'gray'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
          <Box bg='black' color='white'w='100%'>
             <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  
@@ -69,20 +68,22 @@ let Navbar2 = () => {
             <Spacer  display={{base:"block",md:"block"}}/>
             <Flex alignItems='center'gap='20px' mr='10px'>
                 <Box fontSize='12px' display={{base:"none",md:"block"}}>
-                <Link>Seller's Corner </Link>|
-                <Link> Feedback </Link>|
-                <Link> Blog </Link>|
-                <Link> Delivery Info </Link>
+                  <Flex gap='5px'>
+                  <Link>Seller's Corner </Link>|
+                  <Link> Feedback </Link>|
+                  <Link> Delivery Info </Link>| 
+                  <Text cursor='pointer' onClick={changeTheme} >{bg?<SunIcon color='orange' boxSize={6}/>:<MoonIcon boxSize={6}/>}</Text>
+                  </Flex>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
 
 {/*---------------------- user login/logout ------------------------ */}
                     {email?<Flex gap='3px'justifyContent='end' p='5px' alignItems='center' fontWeight='bold'><Text fontSize='18px' color='orange' >{users}</Text><Link to='/userprofile'><HiUserCircle color='#f38f2f' size='25px'/></Link></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
 
-                    <Flex ml='10px'>
+                    <Flex ml='10px' >
                       <Text fontWeight='bold' mr='10px' >WELCOME</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={GotoCart}  />
-                      <Text bg='orange' fontWeight='bold' borderRadius='20px' p='2px' h='fit-content'>{cartTotal}</Text>
+                      <Text borderRadius='10px' bg='orange' as='b' fontSize='md' h='fit-content' >{cart.length}</Text>
                      </Flex>
                 </Box>
                

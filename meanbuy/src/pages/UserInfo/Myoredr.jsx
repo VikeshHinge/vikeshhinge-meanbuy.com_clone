@@ -44,20 +44,20 @@ if(orders.length === 0){
   return (
     <Box w='100%'>
   <TableContainer boxShadow='base'>
-  <Table variant='striped' colorScheme='orange' p='5px'>
+  <Table variant='striped' colorScheme='orange' color='black' p='5px'>
 
-    <Thead w='100%' bg='orange.300'>
+    <Thead w='100%' bg='orange.300' color='black'>
       <Tr>
         <Th >Product</Th>
         <Th > Dates</Th>
         <Th>Tracking ID</Th>
       </Tr>
     </Thead>
-    <Tbody>
+    <Tbody bg='green.100'>
         {orders.map((ele)=>{
           return(
            <Tr key={ele._id} >
-           <Link to={`/product/${ele._id}`}>
+           {/* <Link to={`/product/${ele._id}`}> */}
            <Td p='5px'>
                <Flex gap='10px'  >
                 <Image w='70px' src={ele.img1} alt={ele.title}/>
@@ -69,7 +69,7 @@ if(orders.length === 0){
                 </Box>
                </Flex>
             </Td>
-           </Link>
+           {/* </Link> */}
             <Td>
               <Text as='b'>{ele.deliverydate}</Text>
               <Text fontSize='15px'>ordered:{ele.orderdate}</Text>

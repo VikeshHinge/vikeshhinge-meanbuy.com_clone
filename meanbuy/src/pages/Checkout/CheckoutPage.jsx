@@ -57,11 +57,11 @@ if(loading){
 
 
   return (
-  <Box pt='150px' w='98%' m='auto'>
+  <Box  m='auto'>
 
-   <Flex m='auto' gap='10px' mb='40px' mt='50px' w='95%'>
+   <Flex m='auto' gap='10px' mb='40px'  w='95%'>
 
-   <Box width='35%' p='10px' borderRight='1px solid gray'>
+   <Box width='35%'  borderRight='1px solid gray' pt='180px'>
       {cart && cart.map((ele)=>(
         <Box key={ele._id} textAlign='left' m='10px' bg='orange.200' p='5px'>
            <Flex gap='20px'>
@@ -80,7 +80,7 @@ if(loading){
     </Box>
 
 
-    <Box w='70%'>
+    <Box w='70%' pt='180px'>
       <Flex w='100%' gap='10px' mb='20px'>
     {/* ____________Price____________ */}
      <Box w={{base:'99%',md:'40%'}} >

@@ -7,9 +7,6 @@ const AuthcontextProvider = ({children}) => {
 const [isAuth,setAuth] = useState(false)
 const [carttotal,setCarttotal] =useState([])
 
-console.log(carttotal)
-// console.log("isAuth-Authantication",isAuth)
-// console.log({'username':username})
 
 let loginAuth = (Email) => {
    setAuth(true)
@@ -19,7 +16,6 @@ let loginAuth = (Email) => {
 
 let logoutAuth = () => {
     setAuth(false)
-    console.log("user REmove")
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     setUsername('')

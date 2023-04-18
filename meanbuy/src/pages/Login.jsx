@@ -40,16 +40,26 @@ const handelchange_Email = (e) => {
       }
     else{
        const {data} = await axios.post('http://localhost:4040/user/login',userLogin)
-       console.log(data)
        if(data.msg){
-        alert(data.msg)
+    
+        toast({
+          title: data.msg,
+          status: 'success',
+          position:'top',
+          isClosable: true,
+        })
         localStorage.setItem('token', data.token)
         localStorage.setItem('user',data.name)
         return Navigate('/')
        }
        else if(data.sug){
-        alert(data.sug)
-        return Navigate('/login')
+        toast({
+          title: data.sug,
+          status:'warning',
+          position:'top',
+          isClosable: true,
+        })
+        // return Navigate('/login')
        }
        else{
         alert(data.err)
