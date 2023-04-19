@@ -18,6 +18,17 @@ userRouter.get('/profile',CartAuthantication, async(req,res)=>{
 })
 
 
+//admin get _____________________________
+userRouter.get('/allusers',CartAuthantication, async(req,res)=>{
+    console.log(req.body)
+    try{
+        let userdata = await userModel.find()
+        res.send(userdata)
+    }catch(err){
+        res.send({"err":err.message})
+    }
+})
+
 //Register_________________________________
 userRouter.post('/register',async(req,res)=>{
     let {name,email,password,contact}=req.body
