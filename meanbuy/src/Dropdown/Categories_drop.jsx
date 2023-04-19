@@ -4,10 +4,9 @@ import "./dropdown.css"
 let CategoriesDrop = () => {
 
 
-    
-
+  
     return(
-      <Box className="categories"  >
+      <Box className="categories"  color='black' >
          <SimpleGrid minChildWidth="120px" spacing="20px" display={{base:"none",md:'grid'}}>
         <Box>
           <Flex className="flexlink" mb='28px'>

@@ -6,7 +6,7 @@ import Cart from "../pages/Cartpg";
 import Login from "../pages/Login";
 import Signup from "../pages/UserLoginSignup";
 import UserAuth from '../pages/UserLoginSignup'
-import ProductPage from "../pages/ProductPage";
+import ProductPage from "../pages/ProductPg/ProductPage";
 import UserPage from "../pages/UserPage";
 import CheckoutPage from "../pages/Checkout/CheckoutPage";
  

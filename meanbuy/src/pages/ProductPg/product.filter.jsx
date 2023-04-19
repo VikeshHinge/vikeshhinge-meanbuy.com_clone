@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react';
 
 import { Box,Text,Flex, Accordion,AccordionItem,AccordionButton, AccordionPanel, AccordionIcon,Checkbox} from '@chakra-ui/react'
-import {one,two,three,four} from '../Componunt/objects';
-import Pricerange from '../Componunt/Pricerange';
+import {one,two,three,four} from '../../Componunt/objects';
+import Pricerange from '../../Componunt/Pricerange';
 import {useSearchParams} from 'react-router-dom';
 
 const Filtersidebar = ({Brand}) => {
@@ -71,7 +71,7 @@ const Filtersidebar = ({Brand}) => {
 
 
   return (
-    <Box w={{base:'100%',md:'28%'}} >
+    <Box w={{base:'100%',md:'28%'}} h='fit-content' position={{base:'static',md:'sticky'}} top='10px' >
 
 {/* price --------range---- */}
       {/* <Pricerange/> */}

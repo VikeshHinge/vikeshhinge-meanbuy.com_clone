@@ -24,7 +24,7 @@ function App() {
        <Navbar changeTheme={changeTheme} bg={bg}/>
        {/* <Admin/> */}
         <Allrouts/>  
-       <Footer/> 
+       <Footer bg={bg}/> 
     </div>
   ); 
 }

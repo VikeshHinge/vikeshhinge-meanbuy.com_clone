@@ -12,7 +12,7 @@ import {Link,useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import Search from "./Search";
 import { MoonIcon,SunIcon } from '@chakra-ui/icons';
-import { GetCartData } from "../Redux/Cart.Redux/cart.action.js";
+import { GetCartData,GetCartNum} from "../Redux/Cart.Redux/cart.action.js";
 
 
 const Navbar2 = ({changeTheme,bg}) => {
@@ -20,7 +20,6 @@ const Navbar2 = ({changeTheme,bg}) => {
  
     const {logoutAuth,carttotal} = useContext(Authcontext)
     const [categories,setcategories] = useState(false)
-    const [sidedrower,setsidedrower] = useState(false)
   
     const [users,setUsers]=useState('')
     const Navigate = useNavigate()
@@ -40,12 +39,12 @@ const Navbar2 = ({changeTheme,bg}) => {
   
     
     useEffect(()=>{
-      GetCartData(dispatch)
+      GetCartNum(dispatch)
       setUsers(email)
     },[dispatch,logoutAuth,users,email])
  
     return(
-       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'gray'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
+       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'#282834'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
          <Box bg='black' color='white'w='100%'>
             <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  
@@ -55,7 +54,7 @@ const Navbar2 = ({changeTheme,bg}) => {
                </Flex> 
             </Flex>
         </Box>
-          <Flex className="navTop" >
+          <Flex className="navTop"> 
             <Box className="imgbox" >
                 <Link to='/'><Image w='100%' src="https://d64lkarmo2mrq.cloudfront.net/baselogo.png"></Image></Link>
             </Box>
@@ -72,7 +71,7 @@ const Navbar2 = ({changeTheme,bg}) => {
                   <Link>Seller's Corner </Link>|
                   <Link> Feedback </Link>|
                   <Link> Delivery Info </Link>| 
-                  <Text cursor='pointer' onClick={changeTheme} >{bg?<SunIcon color='orange' boxSize={6}/>:<MoonIcon boxSize={6}/>}</Text>
+                  <Text cursor='pointer' onClick={changeTheme} >{bg?<SunIcon color='orange' boxSize={6}/>:<MoonIcon color='orange' boxSize={6}/>}</Text>
                   </Flex>
                 </Box>
                 <Box fontSize={{base:"10px",md:"13px"}} p={{base:"5px",md:"0px"}}>
@@ -89,7 +88,7 @@ const Navbar2 = ({changeTheme,bg}) => {
                
              </Flex>
  {/* ------------------cartside drower --------------*/}
-             {sidedrower === true ?  <Sidedrower/> : ""}
+        
           </Flex>
 
           <Box bg='orange' p='10px' display={{base:'block',md:"none"}} >
@@ -104,7 +103,7 @@ const Navbar2 = ({changeTheme,bg}) => {
           </Box>
          
           <HStack className="navop" >
-          <Link  onClick={handeldropdown} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop/></>}</Link>
+          <Link  onClick={handeldropdown} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop /></>}</Link>
           <Link><Text>flash Sale</Text></Link>
           <Link> <Text display={{base:'none',md:'block'}} >Best Deals</Text></Link>
           <Link><Text display={{base:'none',md:'block'}} >Shop by Brand</Text></Link>

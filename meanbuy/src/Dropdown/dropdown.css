@@ -17,6 +17,11 @@
  flex-wrap: wrap;
 }
 
+.flexlink>a:hover {
+    color: orange;
+    font-weight: bold;
+}
+
 .heading{
    font-size: 14px;
    font-weight: bold;
@@ -46,7 +51,6 @@
     justify-content: space-around;
     font-weight: 500;
 }
-
 
 @media all and (min-width:260px) and (max-width:720px){
     .categories{

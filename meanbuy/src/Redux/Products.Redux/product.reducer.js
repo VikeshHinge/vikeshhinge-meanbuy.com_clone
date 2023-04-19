@@ -33,7 +33,7 @@ switch(type){
        // console.log(payload)
         return{
             ...state,
-            productData:payload,
+            productData:payload.data,
             loading:false,
             error:false,
         }

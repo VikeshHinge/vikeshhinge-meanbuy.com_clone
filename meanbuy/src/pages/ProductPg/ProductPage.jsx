@@ -3,23 +3,23 @@ import React,{useState,useEffect} from 'react';
 
 import { Box,Image,SimpleGrid,Text,Flex, Divider, Spacer} from '@chakra-ui/react'
 
-import {one,two,three,four,five,fournhalf,threenhalf} from '../Componunt/objects'
+import {one,two,three,four,five,fournhalf,threenhalf} from '../../Componunt/objects'
 import { Link,useParams,useLocation,useSearchParams } from 'react-router-dom';
 import { BiRupee } from "react-icons/bi";
 // import { GetproductbyCategory } from '../Axios/Axios';
 import FilterSidebox from './product.filter';
 import {useDispatch,useSelector} from 'react-redux';
-import {GetProductBycategory} from '../Redux/Products.Redux/product.action.js';
-import { brands } from '../Componunt/objects';
-
+import {GetProductBycategory} from '../../Redux/Products.Redux/product.action.js';
+import { brands } from '../../Componunt/objects';
+import Pagination from './Pagination';
 
 
 
 const ProductPage = () => {
 
-
+const [currpage,setCurrPage] = useState(1)
+const [postPerPage,setPostPerPage] = useState(6)
 let categories = useParams()
-
 let location = useLocation()
 const [Brand,setBrand] = useState([])
 const [searchParams] = useSearchParams()
@@ -30,46 +30,55 @@ let dispatch = useDispatch()
 const {productData,error,loading} = useSelector((store)=>store.productManager)
 
 
+const lastindex = currpage*postPerPage;
+const firstindex = lastindex - postPerPage;
+const currPost = productData.slice(firstindex,lastindex)
+
 useEffect(()=>{
-  //console.log(categories,location)
-  //console.log(location.search)
-  // let paramobj = {
-  //   params:{
-  //     brand:searchParams.getAll('brand')
-  //   }
-  // }
 
   if(categories.cate){
    setBrand(brands[categories.cate])
   }
  
  dispatch(GetProductBycategory(categories,location.search))
-},[dispatch,categories,location])
+},[dispatch,categories,location,currpage])
 
 let Loading = Array(5).fill(1);
 
+
+if(error){
+  return(
+    <Box>
+      <Image  src='https://i0.wp.com/learn.onemonth.com/wp-content/uploads/2017/08/1-10.png?fit=845%2C503&ssl=1' err='404 Error'/>
+    </Box>
+  )
+}
 
   return (
     <Box p='5px' pt={{base:'150px',md:'180px'}} position='relative' mb='20px'>
     
     <Flex m='auto' gap='20px'w={{base:'100%',md:'98%'}} flexDirection={{base:'column',md:'row'}}>
       
-            {/* _______________filter box__________________ */}
+ {/* _______________filter box__________________ */}
             <FilterSidebox   Brand={Brand}/>
-            {/* ________________display____________________ */}
+{/* ________________display____________________ */}
             <Box w={{base:'100%',md:"95%"}}>
              <Box >
-               <Flex cursor='pointer' alignItems='center' fontSize='md'> <Text  pl='30px' fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text><Text mb='30px' color='orange' fontSize={{base:'sm',md:'md'}}>{categories.cate}</Text></Flex>
-             
+            <Flex alignItems='center' justifyContent='space-between' flexDirection={{base:'column',md:'row'}} mb='30px'>
+                  <Flex> <Text as='b' color='#0a66c2'  pl='30px' fontSize={{base:'sm',md:'md'}} >Home {`>`} Categories {`>`}</Text><Text as='b' color='orange'>{categories.cate}</Text></Flex>
+ {/* ________________Pagination___________________ */}                 
+                  <Pagination productData={productData} postPerPage={postPerPage} setCurrPage={setCurrPage} currpage={currpage}/>
+            </Flex>
+ 
                {loading ? 
-                        <SimpleGrid columns={5} spacing={10}>
-                         {Loading.map((ele,i)=><Box kry={i} className='loading'>
+                        <SimpleGrid columns={4} spacing={10}>
+                         {Loading.map((ele,i)=>(<Box kry={i} className='loading'>
                             loading ....
-                         </Box>)}
+                         </Box>))}
                         </SimpleGrid>
-                    :<>
+                    :
                     <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
-               { productData.length>=0 && productData.map((ele)=>(
+               { currPost.length>=0 && currPost.map((ele)=>(
 
                   <Box key={ele._id}  p='5px' m='auto' bg='orange.100' >
                   
@@ -100,7 +109,7 @@ let Loading = Array(5).fill(1);
                   
                ))}
            </SimpleGrid> 
-                    </>}
+                    }
              
              </Box>
                

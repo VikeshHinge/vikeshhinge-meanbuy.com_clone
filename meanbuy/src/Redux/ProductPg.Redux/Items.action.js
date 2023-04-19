@@ -9,7 +9,7 @@ export const GetProductbyId =(id)=>async(dispatch) => {
     //    console.log(id)
       dispatch({type:GET_ITEMS_LOADING})
      try{
-     let data = await GetByID(id)
+     let {data} = await GetByID(id)
     //  console.log(data)
        dispatch({type:GET_ITEMS_SUCESS,payload:data})
     }

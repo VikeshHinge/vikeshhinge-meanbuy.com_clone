@@ -3,7 +3,6 @@ import {Box,Image,Stack,ListItem,UnorderedList, Grid,TabPanel,Tab,TabList,TabPan
 } from "@chakra-ui/react"
 import {StarIcon} from "@chakra-ui/icons"
 import {GetProductbyId} from "../Redux/ProductPg.Redux/Items.action.js"
-import {GetByID} from '../Redux/Products.Redux/productAPI'
 import { BiRupee } from "react-icons/bi";
 import { useState,useEffect} from "react"
 import { GrFacebookOption,GrTwitter,GrPinterest,GrLinkedin,GrSnapchat } from "react-icons/gr";
@@ -12,7 +11,8 @@ import { BsWhatsapp } from "react-icons/bs";
 import {FcDataProtection,FcShipped,FcMoneyTransfer,FcAssistant} from "react-icons/fc";
 import {useParams,Link,useNavigate} from "react-router-dom";
 import {useDispatch,useSelector} from 'react-redux';
-import {AddtoCart} from '../Redux/Cart.Redux/cart.action.js'
+import {AddtoCart} from '../Redux/Cart.Redux/cart.action.js';
+
 
 
 
@@ -52,16 +52,15 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
 
 
     return(
-         <Box pt='180px' fontSize='14px' w={{base:'98%',md:'90%'}} m='auto' mb='50px'>
-         
+
+         <Box pt='180px' fontSize='14px' w={{base:'98%',md:'90%'}} m='auto' mb='50px' >
            {
                  productData && productData.map((element)=>{
                     return(
                     <Flex key={element._id}  gap='20px' direction={{base:'column',md:'row'}} >
-                    <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   >
-
+                    <Box m='auto' mt='0px' w={{base:'90%',md:'60%'}}   position={{base:'static',md:'sticky'}} top='150px'>
                     <Flex alignItems='center'   fontSize={{base:'sm',md:'md'}}> 
-                    <Text className="navigate" fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
+                    <Text color='#0a66c2' className="navigate" fontSize={{base:'sm',md:'md'}} mb='30px'>Home {`>`} Categories {`>`}</Text>
                     <Link to={`/products/categories/${element.categories}`}><Text fontSize={{base:'sm',md:'md'}} mb='30px' color='orange'>{element.categories} {`>`}</Text></Link>
                     <Text mb='30px' color='orange' fontSize={{base:'sm',md:'xl'}}>{element.brand}</Text>
                     </Flex>
@@ -69,8 +68,8 @@ let {error,loading,productData} = useSelector((store)=>store.ItemsManager)
                     <Image src={element.img1} m='auto' w='90%' alt={element.title} ></Image>
                     </Box>
   
-                    <Box w='90%'m='auto' textAlign='left' h={{base:'100%',md:'500px'}} overflowY={{base:'none',md:'auto'}}>
-
+                    {/* <Box w='90%'m='auto' textAlign='left' h={{base:'100%',md:'500px'}} overflowY={{base:'none',md:'auto'}}> */}
+         <Box w='90%'m='auto' textAlign='left' >
                     <Heading as='h3' mt='10px' mb='10px' size='lg'>{element.title}</Heading>
 
                     <Flex h='30px' w='100%'  gap='5px' alignItems='center'>

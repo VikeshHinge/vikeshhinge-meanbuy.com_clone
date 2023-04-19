@@ -1,4 +1,4 @@
-import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART,DELETE_CART} from './cart.type.js';
+import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART,DELETE_CART,GET_CART_NUM} from './cart.type.js';
 import {GetCartItem,AddToCart,DeleteCart,cartUpdate} from './cart.API.js';
 
 
@@ -20,7 +20,9 @@ export const GetCartData = async(dispatch) => {
      }
 }
 
-
+export const GetCartNum = (dispatch) => {
+   dispatch({type:GET_CART_NUM})
+}
 //AddtoCart______________________________
 export const AddtoCart =(item)=>async (dispatch) => {
   // console.log(item)

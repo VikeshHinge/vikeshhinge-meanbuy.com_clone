@@ -19,12 +19,11 @@ const Search = ({bg}) => {
           timer = setTimeout(()=>{
             timer = null;
             func.apply(context,args)
-          },900)
+          },800)
         }
       }
       
       const handelSearch = (value) => {
-        console.log(value)
            if(value !=='') {
             GetSearchData(value).then((res)=>setSearchData(res))
            }else{
@@ -62,11 +61,11 @@ const Search = ({bg}) => {
 
           <Box display={searchData.length>0?'block':'none'} position='absolute' w="350px" height='350px' overflowY='scroll'  p='5px' zIndex='9999' bg={ !bg?'#1a202c':'white'} boxShadow={'2px 2px 10px rgba(0, 0, 0, 0.3)'}>
             {searchData.length>0 && searchData.map((ele)=>(
-                <Box key={ele._id} border='1px solid' mt='3px' cursor={'pointer'}>
+                <Box key={ele._id} border='1px solid' mt='3px' cursor={'pointer'} _hover={{border:'1px solid orange',color:'orange'}}>
                   
-                    <Flex alignItems='center' textAlign='left' gap='5px' onClick={()=>GotoSearchProduct(ele._id)}>
+                    <Flex alignItems='center' textAlign='left' gap='5px' onClick={()=>GotoSearchProduct(ele._id)}  >
                      <Image src={ele.img1} alt={ele.title} w='50px' />
-                      <Text as='b'>{ele.title}</Text>
+                      <Text as='b'>{ele.title.split(' ').slice(0,4).join(' ')}</Text>
                     </Flex>
                    
                 </Box>
