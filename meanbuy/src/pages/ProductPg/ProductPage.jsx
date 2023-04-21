@@ -23,16 +23,15 @@ let categories = useParams()
 let location = useLocation()
 const [Brand,setBrand] = useState([])
 const [searchParams] = useSearchParams()
-
 let dispatch = useDispatch()
 
-//console.log(searchParams.getAll('brand','price','rating','sort'))
-const {productData,error,loading} = useSelector((store)=>store.productManager)
+console.log(searchParams.getAll('brand','price','rating','sort','page'))
+const {productData,total,error,loading} = useSelector((store)=>store.productManager)
 
 
 const lastindex = currpage*postPerPage;
 const firstindex = lastindex - postPerPage;
-const currPost = productData.slice(firstindex,lastindex)
+
 
 useEffect(()=>{
 
@@ -40,7 +39,8 @@ useEffect(()=>{
    setBrand(brands[categories.cate])
   }
  
- dispatch(GetProductBycategory(categories,location.search))
+ dispatch(GetProductBycategory(categories,location.search,firstindex,lastindex))
+
 },[dispatch,categories,location,currpage])
 
 let Loading = Array(5).fill(1);
@@ -67,7 +67,7 @@ if(error){
             <Flex alignItems='center' justifyContent='space-between' flexDirection={{base:'column',md:'row'}} mb='30px'>
                   <Flex> <Text as='b' color='#0a66c2'  pl='30px' fontSize={{base:'sm',md:'md'}} >Home {`>`} Categories {`>`}</Text><Text as='b' color='orange'>{categories.cate}</Text></Flex>
  {/* ________________Pagination___________________ */}                 
-                  <Pagination productData={productData} postPerPage={postPerPage} setCurrPage={setCurrPage} currpage={currpage}/>
+                  <Pagination Total={total} postPerPage={postPerPage} setCurrPage={setCurrPage} currpage={currpage}/>
             </Flex>
  
                {loading ? 
@@ -78,7 +78,7 @@ if(error){
                         </SimpleGrid>
                     :
                     <SimpleGrid columns={{base:'2',md:'3'}} gap='10px' w='90%' m='auto' >
-               { currPost.length>=0 && currPost.map((ele)=>(
+               { productData.length>=0 && productData.map((ele)=>(
 
                   <Box key={ele._id}  p='5px' m='auto' bg='orange.100' >
                   

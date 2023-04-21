@@ -15,10 +15,11 @@ export const GetProducts = async(dispatch) => {
 }
 
 
-export const GetProductBycategory =(category,key) => async(dispatch)=> {
+export const GetProductBycategory =(category,key,start,end) => async(dispatch)=> {
   try{
     let {data,Total} = await GetBy_category(category,key)
-    
+    data = data.slice(start,end)
+    console.log(data,start,end,Total)
     dispatch({type:GET_PRODUCTS_CATEGORY,payload:{data,Total}})
   }
   catch(err){

@@ -2,7 +2,6 @@ import {GET_ITEMS_SUCESS,GET_ITEMS_LOADING,GET_ITEMS_ERROR} from './pg.type.js';
 
 let initialvalue = {
     productData:[],
-    brand:[],
     loading:false,
     error:false,
 }

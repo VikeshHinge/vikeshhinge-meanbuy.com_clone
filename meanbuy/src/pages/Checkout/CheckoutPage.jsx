@@ -57,13 +57,13 @@ if(loading){
 
 
   return (
-  <Box  m='auto'>
+  <Box  m='auto' >
 
-   <Flex m='auto' gap='10px' mb='40px'  w='95%'>
+   <Flex m='auto' gap='10px'   w='95%'>
 
    <Box width='35%'  borderRight='1px solid gray' pt='180px'>
       {cart && cart.map((ele)=>(
-        <Box key={ele._id} textAlign='left' m='10px' bg='orange.200' p='5px'>
+        <Box color='black' key={ele._id} textAlign='left' m='10px' bg='orange.100' border='3px solid orange' p='5px'>
            <Flex gap='20px'>
             <Image w='120px' src={ele.img1} alt={ele.title}/>
             <Box>
@@ -80,20 +80,21 @@ if(loading){
     </Box>
 
 
-    <Box w='70%' pt='180px'>
+    <Box w='70%' pt='180px' pb='40px'>
       <Flex w='100%' gap='10px' mb='20px'>
     {/* ____________Price____________ */}
-     <Box w={{base:'99%',md:'40%'}} color='black'>
+     <Box w={{base:'99%',md:'40%'}} >
      <Box border='1px solid #A0AEC0' h='fit-content'  fontWeight='bold'>
-     <Text p='10px' bg='#f7f7f7'>Checkout Details</Text>
+     <Text color='black' p='10px' bg='#f7f7f7'>Checkout Details</Text>
      <Divider mb='10px' bg='#A0AEC0'/>
      <Box >
       <Flex justifyContent='space-between' pr='10px' pl='10px' ><Text textAlign='left'>Total Items: </Text><Text>{cart.length}</Text></Flex>
       <Flex justifyContent='space-between' pr='10px' pl='10px'> <Text textAlign='left'>Sub Total:</Text> <Text>₹{total}</Text></Flex>
+      <Flex justifyContent='space-between' pr='10px' pl='10px'> <Text textAlign='left'>Total Tax:</Text> <Text>₹{Math.floor(total*(cart.length*(1+0.18)))-total}</Text></Flex>
       <Flex justifyContent='space-between' pr='10px' pl='10px' color='green.500'><Text textAlign='left' >Shipping:</Text><Text>Free</Text></Flex>
       <Square size='1px' w='100%' bg='#A0AEC0' m='auto' mt='20px' mb='20px'></Square>
    
-        <Flex color='orange' justifyContent='space-between' pr='10px' pl='10px'><Text textAlign='left' mb='10px'>Cart Total:</Text><Text>₹{total}</Text></Flex>
+        <Flex color='orange' justifyContent='space-between' pr='10px' pl='10px'><Text textAlign='left' mb='10px'>Cart Total:</Text><Text>₹{Math.floor(total*(cart.length*(1+0.18)))}</Text></Flex>
        </Box>
        </Box>
       </Box>

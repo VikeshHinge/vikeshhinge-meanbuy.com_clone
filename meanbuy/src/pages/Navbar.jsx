@@ -44,7 +44,7 @@ const Navbar2 = ({changeTheme,bg}) => {
     },[dispatch,logoutAuth,users,email])
  
     return(
-       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'#282834'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
+       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'#2d3748'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
          <Box bg='black' color='white'w='100%'>
             <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  

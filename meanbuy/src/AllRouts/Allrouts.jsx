@@ -7,7 +7,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/UserLoginSignup";
 import UserAuth from '../pages/UserLoginSignup'
 import ProductPage from "../pages/ProductPg/ProductPage";
-import UserPage from "../pages/UserPage";
+import UserPage from "../pages/UserInfo/UserPage";
 import CheckoutPage from "../pages/Checkout/CheckoutPage";
  
 const Allrouts = () => {

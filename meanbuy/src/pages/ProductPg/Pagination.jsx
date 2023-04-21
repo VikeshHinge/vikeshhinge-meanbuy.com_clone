@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {Image,Heading,Text,Box,Stack,Flex, Button} from '@chakra-ui/react';
 import { useSearchParams } from 'react-router-dom';
 
-const Pagination = ({productData,postPerPage,setCurrPage,currpage}) => {
+const Pagination = ({Total,postPerPage,setCurrPage,currpage}) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const initialstate = searchParams.getAll('page')
@@ -10,19 +10,20 @@ const Pagination = ({productData,postPerPage,setCurrPage,currpage}) => {
 
 let arr = []
 
-for(let i=0; i<Math.ceil(productData.length/postPerPage); i++){
+for(let i=0; i<Math.ceil(Total/postPerPage); i++){
   arr.push(i+1)
 }
-
+console.log(searchParams)
 
 const handelPage = (num) => {
   if(!page.includes(num)){
      setPage([num])
      setCurrPage(num)
   }
+  //setCurrPage(num)
 }
 const handelAction = (num)=>{
-
+    // setCurrPage((prev)=>prev+num)
   if(page.length>0){
     setCurrPage((prev)=>prev+num)
    let Prev = parseInt(page);
@@ -34,13 +35,13 @@ const handelAction = (num)=>{
     setPage([Prev+num])
   }
 }
-
-useEffect(()=>{
-  const paraam ={
-   page
-  }
-    setSearchParams(paraam)
-},[page])
+// let page=[]
+// useEffect(()=>{
+//   const paraam ={
+//   page
+//   }
+//     setSearchParams(paraam)
+// },[currpage])
 
   return (
     <Box w='fit-content' cursor='default' fontWeight='bold'>

@@ -5,8 +5,8 @@ import {GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING,GET_PRODUCTS_SUCESS,GET_PRODUCT
 let initialvalue = {
     productData:[],
     loading:false,
-    error:false,
-    Brand:[]
+    total:0,
+    error:false
 }
 
 export const productReducer = (state=initialvalue,{type,payload}) =>{
@@ -34,6 +34,7 @@ switch(type){
         return{
             ...state,
             productData:payload.data,
+            total:payload.Total,
             loading:false,
             error:false,
         }

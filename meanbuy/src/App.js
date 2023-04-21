@@ -5,7 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Footer from './pages/Footer';
 import Allrouts from './AllRouts/Allrouts';
 import Navbar from './pages/Navbar';
-import Admin from './Admin/Dashboard';
+import Admin from './pages/Admin/Dashboard';
+
 import { useState } from 'react';
 let light = {backgroundColor:'#ffffff'}
 // https://twisty-silly-ring.glitch.me/product
@@ -22,9 +23,9 @@ function App() {
   return (
     <div className="App" style={bg?light:darkmode}>
        <Navbar changeTheme={changeTheme} bg={bg}/>
-       {/* <Admin/> */}
-        <Allrouts/>  
-       <Footer bg={bg}/> 
+             <Admin/>
+        {/* <Allrouts/>   */}
+       {/* <Footer bg={bg}/>  */}
     </div>
   ); 
 }

@@ -41,7 +41,7 @@ if(loading){
 if(cart.length <= 0){
   return (
      <Box textAlign='left' p='20px' pt='180px' pb='100px'>
-      <Text fontSize='20px'>Is Empty! Come on, throw something in here ...</Text>
+      <Text as='a' fontSize='20px' color='orange'>Is Empty! Come on, throw something in here ...</Text>
       <Image m='auto' src='https://images.squarespace-cdn.com/content/v1/5a9d990755b02c16eef28423/1522958745117-C9FZPNWFRB9HHO3IK1TD/animat-shopping-cart-color.gif' alt='Empty !'/>
      </Box>
   )
@@ -53,8 +53,8 @@ if(cart.length <= 0){
  <Box border='1px solid gray'  w={{base:'99%',md:'100%'}} h='fit-content'>
     <Table>
    
-  <Thead>
-  <Tr bg='#f7f7f7'>
+  <Thead >
+  <Tr bg='#f7f7f7' >
        <Th ><Text  pt='8px' pb='8px'   textAlign='left'> </Text></Th>
        <Th><Text  pt='8px' pb='8px'  textAlign='left'>Product Details</Text></Th>
        <Th display={{base:'none',md:'block'}}><Text  pt='8px' pb='8px'  textAlign='left'>Our Price</Text></Th>
@@ -70,18 +70,18 @@ if(cart.length <= 0){
              <Text display={{base:'block',md:'none'}} color='green.500'>Price: ₹{ele.price}.00</Text>
            </Th>
            <Th lineHeight={{base:'15px',md:'22px'}} >
-           <Text fontSize={{base:'12px',md:'15px'}} color='black'>{ele.title}</Text>
+           <Text fontSize={{base:'12px',md:'15px'}} color='orange'>{ele.title}</Text>
            <Text>BRAND: {ele.brand}</Text>
            <Text color='green.300'><CheckIcon />{' '}FREE DELIVERY</Text>
            <Flex gap='20px' alignItems='center' mt='5px'>
   
        {/* ------------Cart dispatch-delete & update------------- */}
 
-           <DeleteIcon fontSize='15px' onClick={()=>dispatch(DeletefromCart(ele._id))} />
+           <DeleteIcon fontSize='18px' color='gray' onClick={()=>dispatch(DeletefromCart(ele._id))} />
               <Flex gap='3px' cursor={'pointer'}>
-               <button style={{backgroundColor:'orange',width:'28px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===ele.product_quantity} onClick={()=>dispatch(upgradeQuantity(ele._id,1,ele.quantity))} border='1px solid' pl='3px' pr='3px'>inc</button>
+               <button style={{backgroundColor:'orange',width:'30px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===ele.product_quantity} onClick={()=>dispatch(upgradeQuantity(ele._id,1,ele.quantity))} border='1px solid' pl='3px' pr='3px'>inc</button>
                <button style={{width:'28px',fontWeight:'bold',border:'1px solid orange'}} border='1px solid' pl='3px' pr='3px'>{ele.quantity}</button>
-               <button style={{backgroundColor:'orange',width:'28px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===1} onClick={()=>dispatch(upgradeQuantity(ele._id,-1,ele.quantity))}  border='1px solid' pl='3px' pr='3px'>dec</button>
+               <button style={{backgroundColor:'orange',width:'30px',fontWeight:'bold',border:'1px solid orange'}} disabled={ele.quantity===1} onClick={()=>dispatch(upgradeQuantity(ele._id,-1,ele.quantity))}  border='1px solid' pl='3px' pr='3px'>dec</button>
               </Flex>
            </Flex>
            </Th>
@@ -99,7 +99,7 @@ if(cart.length <= 0){
 </Table>
  </Box>   
 
-   <Box w={{base:'99%',md:'30%'}} color='black' bg='white'>
+   <Box w={{base:'99%',md:'30%'}} color='black' bg='white' h='fit-content' position='sticky' top='180px'>
      
      <Box border='1px solid #A0AEC0' h='fit-content'  fontWeight='bold'>
      <Text className="header2" bg='#f7f7f7'>Checkout Details</Text>
