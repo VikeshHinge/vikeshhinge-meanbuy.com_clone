@@ -11,6 +11,14 @@ productRoute.get('/',async(req,res)=>{
     let skip;
     let setlimit;
     console.log(query)
+    if(query.page ){
+        // const { page = 1, limit = 6 } = req.query;
+        // skip = (page - 1)*limit;
+        // setlimit=limit
+        delete query.page
+        delete query.limit
+    }
+    console.log(query)
     if(query.price){
         let range = [...query.price] //so that main qurey does not get affected 
          query.price={$gte:range[0],$lte:range[1]}
@@ -26,14 +34,6 @@ productRoute.get('/',async(req,res)=>{
         sorting={price:1}
        }
        delete query.sort
-    }
-    if(query.page ){
-
-        // const { page = 1, limit = 6 } = req.query;
-        // skip = (page - 1)*limit;
-        // setlimit=limit
-        delete query.page
-        delete query.limit
     }
   
     try{

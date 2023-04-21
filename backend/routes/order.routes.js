@@ -18,7 +18,7 @@ orderRoute.get('/myorders',OrderAuthantication,async(req,res)=>{
 })
 
 //Get admin side --------------------------
-orderRoute.get('/getallorder',OrderAuthantication,async(req,res)=>{
+orderRoute.get('/getallorders',async(req,res)=>{
     let query = req.query
     try{
         let orders = await orderModel.find(query)

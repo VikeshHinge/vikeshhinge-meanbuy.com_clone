@@ -19,10 +19,11 @@ userRouter.get('/profile',CartAuthantication, async(req,res)=>{
 
 
 //admin get _____________________________
-userRouter.get('/allusers',CartAuthantication, async(req,res)=>{
-    console.log(req.body)
+userRouter.get('/allusers', async(req,res)=>{
+   let query = req.body
+   console.log(query)
     try{
-        let userdata = await userModel.find()
+        let userdata = await userModel.find(query)
         res.send(userdata)
     }catch(err){
         res.send({"err":err.message})

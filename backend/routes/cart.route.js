@@ -16,8 +16,9 @@ cartRoute.get('/',CartAuthantication,async(req,res)=>{
     }
 })
 //admin side cart---------------------
-cartRoute.get('/getallcart',CartAuthantication,async(req,res)=>{
+cartRoute.get('/getallcart',async(req,res)=>{
     let query = req.query
+    console.log(query)
     try{
         let data = await cartModel.find(query)
         res.send(data)
