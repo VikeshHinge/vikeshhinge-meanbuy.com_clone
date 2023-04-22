@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import axios from 'axios';
-import { useSelector,useDispatch } from 'react-redux';
-import { Line,Bar } from "react-chartjs-2";
-import { getOrders } from '../../../Redux/Order.redux/order.action';
 import { Chart } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -36,8 +33,8 @@ const [data,setData] = useState(
             {   type: 'line',
                 label: 'Orders Quantity',
                 data:[],
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(99, 132, 0.5)',
+                borderColor: '#ffa500',
+                backgroundColor: '#ffa500',
             },
             { type: 'bar',
             label: 'Product Quantity',
@@ -50,6 +47,9 @@ const [data,setData] = useState(
 
 const options = {
     indexAxis: 'x',
+    ticks: {
+      fontColor: 'red'
+    },
     elements: {
       bar: {
         borderWidth: 2,
@@ -63,6 +63,7 @@ const options = {
       title: {
         display: true,
         text: 'Order and Cart Data',
+        color:'white'
       },
     },
   };
@@ -111,7 +112,7 @@ const GetData = async() => {
             label: 'Orders Quantity',
             data:OrderCount,
             borderColor: 'Orange',
-            backgroundColor: 'green',
+            backgroundColor:'Orange',
         },
         { type: 'bar',
         label: 'Cart Quantity',
@@ -128,11 +129,7 @@ const GetData = async() => {
 },[])
 
   return ( 
- 
-          <Box w='50%'>Chart
-             <Chart data={data} options={options}/>
-         </Box>
-     
+     <Chart data={data} options={options}/>
   )
 }
 

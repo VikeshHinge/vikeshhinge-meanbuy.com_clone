@@ -19,7 +19,7 @@ let newkey = key.substring(1,key.length)
    return data
 }
 
-
+//Search____________________________________-
 export const GetSearchData = async (key) => {
     let {data} = await axios.get(`http://localhost:4040/product/search/${key}`)
      if(data.sug){

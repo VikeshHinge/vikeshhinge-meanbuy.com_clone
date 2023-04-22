@@ -63,6 +63,7 @@ const options = {
       title: {
         display: true,
         text: 'Order and Cart Data',
+        color:'white'
       },
     },
   };
@@ -110,14 +111,14 @@ const GetData = async() => {
         {
             label: 'Orders Quantity',
             data:OrderCount,
-            borderColor: 'Orange',
-            backgroundColor: 'green',
+            borderColor: '#f50269',
+            backgroundColor: 'orange',
         },
         { type: 'line',
         label: 'Cart Quantity',
         data:CartCount,
-        borderColor: 'gray',
-        backgroundColor: '#f50269',
+        borderColor: '#7aeb8d',
+        backgroundColor: 'green',
        }
        ]
    })
@@ -129,11 +130,7 @@ const GetData = async() => {
 },[])
 
   return ( 
- 
-          <Box w='50%'>
-             <Chart data={data} options={options}/>
-         </Box>
-     
+     <Chart data={data} options={options}/>
   )
 }
 

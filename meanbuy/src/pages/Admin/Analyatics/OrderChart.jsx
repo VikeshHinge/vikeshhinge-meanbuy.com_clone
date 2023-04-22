@@ -56,7 +56,8 @@ const options = {
       },
       title: {
         display: true,
-        text: 'Order Chat',
+        text:"Brand's Ratings",
+        color:'white'
       },
     },
   };
@@ -65,32 +66,43 @@ const options = {
 useEffect(()=>{
 const GetData = async() => {
     
-   let {data} =await axios.get('http://localhost:4040/order/getallorders')
+   let {data:{data}} =await axios.get('http://localhost:4040/product')
    console.log(data)
-    let Categories=[]
-    let Count = []
+  
+   
     let obj ={}
+    let obj2 ={}
     for(let i=0; i<data.length; i++){
-      if(obj[data[i].categories]===undefined){
-        obj[data[i].categories]=data[i].rating
+      if(obj[data[i].brand]===undefined){
+        obj[data[i].brand]=data[i].rating
+        obj2[data[i].brand]=data[i].rating
     }else{
-        if( obj[data[i].categories]>data[i].rating){
-          obj[data[i].categories]=data[i].rating
+        if( obj[data[i].brand]>data[i].rating){
+          obj[data[i].brand]=data[i].rating
+        }
+        if( obj2[data[i].brand]<data[i].rating){
+          obj2[data[i].brand]=data[i].rating
         }
     }
     }
-    Categories=Object.keys(obj)
-    Count = Object.values(obj)
-    console.log(Categories,Count)
-    let dataPoints = Count
+    let Categories=Object.keys(obj)
+    let Counthigh = Object.values(obj2)
+    let CountLow = Object.values(obj)
+   console.log(obj,obj2)
    setData({
     labels:Categories,
     datasets:[
         {
-            label: 'Orders Ratings',
-            data:dataPoints,
-            borderColor: 'orange',
+            label: "High",
+            data:Counthigh,
+            // borderColor: 'orange',
             backgroundColor: '#f50269',
+        },
+        {
+          label: "Low",
+          data:CountLow,
+          // borderColor: 'orange',
+          backgroundColor: 'orange',
         }
        ]
    })
@@ -102,11 +114,7 @@ const GetData = async() => {
 },[])
 
   return ( 
- 
-          <Box w='50%'>
-             <Bar data={data} options={options}/>
-         </Box>
-     
+  <Bar data={data} options={options}/>
   )
 }
 

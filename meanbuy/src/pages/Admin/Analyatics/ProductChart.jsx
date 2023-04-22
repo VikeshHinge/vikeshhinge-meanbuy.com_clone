@@ -3,6 +3,7 @@ import { Box,Flex} from '@chakra-ui/react';
 import axios from 'axios';
 import { Line,Bar } from "react-chartjs-2";
 import OrderChart from './OrderChart';
+import YearData from './YearData';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -27,19 +28,6 @@ ChartJS.register(
   );
 
 const ProductChart  = () => {
-const [data,setData] = useState(
-    {
-        labels:[],
-        datasets:[
-            {   type: 'bar',
-                label: 'Product Category Distribution',
-                data:[],
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(99, 132, 0.5)',
-            }
-           ]
-       }
-)
 
 const [ProData,setProData] = useState(
     {
@@ -55,24 +43,6 @@ const [ProData,setProData] = useState(
        }
 )
 
-const options = {
-    indexAxis: 'y',
-    elements: {
-      bar: {
-        borderWidth: 2,
-      },
-    },
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Order Chat',
-      },
-    },
-  };
 
   
   const optionspro = {
@@ -89,7 +59,8 @@ const options = {
       },
       title: {
         display: true,
-        text: 'Order Chat',
+        text: 'Product Chart',
+        color:'white'
       },
     },
   };
@@ -99,17 +70,7 @@ useEffect(()=>{
 const GetData = async() => {
     
    let {data:{data}} =await axios.get('http://localhost:4040/product')
-   //console.log(data)
 
-   let obj={}
-    for(let i=0; i<data.length; i++){
-      if(obj[data[i].categories]===undefined){
-        obj[data[i].categories]=data[i].product_quantity
-    }else{
-        obj[data[i].categories]+=data[i].product_quantity
-    }
-    }
-  
     let Product = {}
     for(let i=0; i<data.length; i++){
         if(Product[data[i].title]===undefined){
@@ -120,23 +81,6 @@ const GetData = async() => {
       }
 
 
-
-   const Categories=Object.keys(obj)
-   const Count = Object.values(obj)
-   //console.log(Categories,Count)
-
-   
-   setData({
-    labels:Categories,
-    datasets:[
-        {
-            label: 'Product Categories',
-            data:Count,
-            backgroundColor: 'blue',
-        }
-       ]
-   })
-
    const Prodata = Object.keys(Product)
    const ProCount = Object.values(Product)
    setProData({
@@ -145,7 +89,7 @@ const GetData = async() => {
         {
             label:'Products',
             data:ProCount,
-            backgroundColor: '#f50269',
+            backgroundColor:'#f50269',
             borderColor:'orange'
         }
        ]
@@ -160,13 +104,17 @@ const GetData = async() => {
   return ( 
  
           <Box w='100%'>
-             <Flex w='100%' gap='20px'>
-             <Box w='50%'>
-             <Bar  data={data} options={options}/>
+             <Flex justifyContent='space-around' m='auto' mt='50px'>
+             <Box w='40%'>
+              <YearData/>
              </Box>
+             <Box w='50%' >
              <OrderChart/>
+             </Box>
              </Flex>
+             <Box mt='50px'>
              <Line data={ProData} options={optionspro}/>
+             </Box>
          </Box>
      
   )

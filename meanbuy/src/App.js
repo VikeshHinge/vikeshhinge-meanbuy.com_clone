@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App" style={bg?light:darkmode}>
-       <Navbar changeTheme={changeTheme} bg={bg}/>
+       {/* <Navbar changeTheme={changeTheme} bg={bg}/> */}
              <Admin/>
         {/* <Allrouts/>   */}
        {/* <Footer bg={bg}/>  */}
