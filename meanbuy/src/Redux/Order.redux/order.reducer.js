@@ -3,7 +3,8 @@ import {GET_ORDER,GET_ERROR,GET_LOADING,DO_BUYNOW,DO_CHECKOUT,UPDATE_ORDER} from
 const initialvalue = {
      loading:false,
      error:false,
-     orders:[]
+     orders:[],
+     total:0
 }
 
 
@@ -30,19 +31,17 @@ export const orederReducer = (state=initialvalue,{type,payload}) => {
     }
 
     case GET_ORDER : {
-        console.log(payload)
+
         return {
             ...state,
             loading:false,
             error:true,
-            orders:payload
+            orders:payload.data,
+            total:payload.Total
         }
     }
 
     case UPDATE_ORDER : {
-     
-        console.log(payload)
-        console.log(state)
         let Updates = state.orders.map((ele)=>{
             if(ele._id === payload.id){
                return{

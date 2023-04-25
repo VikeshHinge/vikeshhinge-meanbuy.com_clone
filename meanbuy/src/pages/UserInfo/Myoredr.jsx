@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import {
   Table,
   Thead,
@@ -16,9 +16,8 @@ import {getOrders} from '../../Redux/Order.redux/order.action.js'
 
 
 const Myoredr = () => {
-
 const dispatch = useDispatch()
-const {orders,loading,error} = useSelector((store)=>store.orderManager)
+const {orders,loading,error,total} = useSelector((store)=>store.orderManager)
 
 useEffect(()=>{
   getOrders(dispatch)
@@ -44,8 +43,8 @@ if(orders.length === 0){
 
   return (
     <Box w='100%'>
-      <Flex>
-        <Text>Total:{}</Text>
+      <Flex bg='orange' p='5px' pl='15px'> 
+        <Text as='b'>Total : ₹{total}</Text>
       </Flex>
   <TableContainer boxShadow='base'>
    
@@ -84,7 +83,7 @@ if(orders.length === 0){
               <Text as='b'>{ele.trackingID}</Text>
             </Td>
              <Td>
-              <Text as='b' color={ele.status=='ordered'?'green':ele.status=='rejected'?'gray':'yellow'} >{ele.status}</Text>
+              <Text as='b' color={ele.status=='ordered'?'green':ele.status=='rejected'?'gray':'orange'} >{ele.status}</Text>
              </Td>
           </Tr>
           )

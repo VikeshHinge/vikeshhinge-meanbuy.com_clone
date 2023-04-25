@@ -6,7 +6,13 @@ export const getOrders = async(dispatch) => {
      dispatch({type:GET_LOADING})
      try{
         let data = await GetOrder()
-        dispatch({type:GET_ORDER,payload:data})
+        let Total =0;
+        for(let i=0; i<data.length; i++){
+          if(data[i].status !== 'rejected'){
+            Total+=(data[i].quantity*data[i].price)
+          }
+        }
+        dispatch({type:GET_ORDER,payload:{data,Total}})
      }
      catch(err){
         dispatch({type:GET_ERROR,payload:err})
