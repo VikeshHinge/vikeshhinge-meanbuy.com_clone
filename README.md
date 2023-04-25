@@ -14,8 +14,14 @@
 
 # SCREEN-SHOTS
 
-<div>
- <img align="right" alt="coding" width="500" src='https://d64lkarmo2mrq.cloudfront.net/baselogo.png'>
-</div>
+
+  <img width='50%' src='https://i.postimg.cc/SRz1kvF1/home.png' alt='home' />
+  <img width='50%' src='https://i.postimg.cc/tg4jpprr/home-product.png' alt='home' />
+  <img width='50%' src='https://i.postimg.cc/jSk8nTx3/productpg.png' alt='home' />
+  <img width='50%' src='https://i.postimg.cc/J4xYmJ9L/productdetail.png' alt='home' />
+   <img width='50%' src='https://i.postimg.cc/wMd4xkq6/cart.png' alt='home' />
+  <img width='50%' src='https://i.postimg.cc/2yFc1Byn/checkout.png' alt='home' />
+
+
 
 
