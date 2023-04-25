@@ -25,7 +25,7 @@ const [Brand,setBrand] = useState([])
 const [searchParams] = useSearchParams()
 let dispatch = useDispatch()
 
-console.log(searchParams.getAll('brand','price','rating','sort','page'))
+// console.log(searchParams.getAll('brand','price','rating','sort','page'))
 const {productData,total,error,loading} = useSelector((store)=>store.productManager)
 
 

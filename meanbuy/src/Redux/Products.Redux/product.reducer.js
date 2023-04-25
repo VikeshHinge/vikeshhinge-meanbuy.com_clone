@@ -1,5 +1,5 @@
 
-import {GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING,GET_PRODUCTS_SUCESS,GET_PRODUCTS_CATEGORY} from './product.type.js';
+import {GET_PRODUCTS_ERROR, GET_PRODUCTS_LOADING,GET_PRODUCTS_SUCESS,GET_PRODUCTS_CATEGORY,GET_UPDATE_PRODUCT} from './product.type.js';
 
 
 let initialvalue = {
@@ -21,16 +21,14 @@ switch(type){
        }
     }
     case GET_PRODUCTS_SUCESS :{
-        //console.log({'reducer':payload})
         return {
             ...state,
-            productData:payload,
+            productData:payload.data,
             loading:false,
             error:false,
         }
     }
     case GET_PRODUCTS_CATEGORY:{
-       // console.log(payload)
         return{
             ...state,
             productData:payload.data,
@@ -46,6 +44,25 @@ switch(type){
             loading:false,
             error:payload
         }
+    }
+    case GET_UPDATE_PRODUCT :{
+  
+     let update = state.productData.map((ele)=>{
+        if(ele._id === payload._id){
+             return {
+            ...ele,
+             ...payload
+            }
+        }
+        return ele
+     })
+
+    return{
+        ...state,
+        productData:update,
+        loading:false,
+        error:false
+    }
     }
     default : {
         return state;

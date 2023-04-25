@@ -12,10 +12,9 @@ export const getProfile = async(dispatch) => {
 }
 
 export const updateProfile = (body)=> async(dispatch)=> {
-
-    dispatch({type:GET_LOADING})
     try{
        let data = await ProfileUpdate(body)
+       console.log(data)
        dispatch({type:GET_Update,payload:data})
     }catch(err){
         dispatch({type:GET_ERROR,payload:err})

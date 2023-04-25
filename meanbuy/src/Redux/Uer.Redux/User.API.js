@@ -19,7 +19,6 @@ export const ProfileUpdate = async (body) => {
         }
       }
     let address=[body]
-    console.log(address)
    let {data} = await axios.patch('http://localhost:4040/user/updateuser',{address},config)
     return address
 }

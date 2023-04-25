@@ -67,7 +67,7 @@ useEffect(()=>{
 const GetData = async() => {
     
    let {data:{data}} =await axios.get('http://localhost:4040/product')
-   console.log(data)
+   //console.log(data)
   
    
     let obj ={}
@@ -88,7 +88,7 @@ const GetData = async() => {
     let Categories=Object.keys(obj)
     let Counthigh = Object.values(obj2)
     let CountLow = Object.values(obj)
-   console.log(obj,obj2)
+   //console.log(obj,obj2)
    setData({
     labels:Categories,
     datasets:[

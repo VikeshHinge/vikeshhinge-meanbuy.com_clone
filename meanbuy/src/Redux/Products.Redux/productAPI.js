@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const Getdata = async(params) => { 
-    console.log(params)
+   //  console.log(params)
  let data = await axios.get(`http://localhost:4040/product`)
  //console.log({'API':data})
  return data;
@@ -26,4 +26,11 @@ export const GetSearchData = async (key) => {
         return [];
      }
     return data;
+}
+
+//update ____________________________________
+export const updateProduct = async (body) => {
+   let id=body._id
+ let {data} = await axios.patch(`http://localhost:4040/product/update/${id}`,body)
+ return data
 }

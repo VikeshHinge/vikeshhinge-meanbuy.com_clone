@@ -28,17 +28,21 @@ const Today = `${month} ${day} ${year}`;
   }, []);
 
   return (
-    <Box color='white' h='150px' border='1px solid' bgImage={event>=7?"url(https://i.pinimg.com/564x/d4/6c/0d/d46c0db60c5d04f9ce62c39d203810e5.jpg)":
-                                                event>=10?"url(https://i.pinimg.com/564x/eb/40/48/eb40481e88f8a5d8f7fd71c61425aa3a.jpg)":
-                                                event>=17 & event<=19?"url(https://i.pinimg.com/564x/9f/29/95/9f29953f7f5ac98c7475dc1cb9ba6433.jpg)":
-                                                "url(https://i.pinimg.com/564x/47/6a/93/476a9380e8ff68026a4238e2d074bbe6.jpg)"
-                                              }>
-        <Text fontSize='3xl'>{timer}</Text>
-        <Text>{Today}</Text>
-        <Box>
-        {event>=7?<WiSunrise size='65px' color='orange' />:event>=10?<WiDayCloudy size='65px'color='yellow' />:event>=17&event<=19?<WiSunset size='65px' color='orange'/>:<WiNightAltCloudy size='65px' />}
-        </Box>
-    </Box>
+ 
+  <Box borderRadius='5px'  h='150px' bgImage={event>=7 && event<10?"url(https://i.pinimg.com/564x/aa/dd/e3/aadde3cb6bcd593a9c7ddb1e88c366cd.jpg)":
+  event>=10 && event<18 ?"url(https://i.pinimg.com/564x/d3/69/7e/d3697e78a425125b0037c6ecfc6d58a8.jpg)":
+  event>=18 && event<=19?"url(https://i.pinimg.com/564x/9f/29/95/9f29953f7f5ac98c7475dc1cb9ba6433.jpg)":
+  event>19 ?"url(https://i.pinimg.com/564x/47/6a/93/476a9380e8ff68026a4238e2d074bbe6.jpg)":''
+} bgSize='cover' bgPosition='center' bgRepeat='no-repeat' >
+ <Box w='fit-content' m='auto' backdropFilter='auto' backdropContrast='30%' p='5px' mt='10px'>
+ <Text fontSize='3xl'>{timer}</Text>
+  <Text>{Today}</Text>
+ </Box>
+<Box>
+{event>=7 && event<10?<WiSunrise size='65px' color='orange' />:event>=10 && event<18?<WiDayCloudy size='65px'color='yellow' />:event>=18 & event<=19?<WiSunset size='65px' color='orange'/>:<WiNightAltCloudy size='65px' />}
+</Box>
+</Box>
+ 
   )
 }
 

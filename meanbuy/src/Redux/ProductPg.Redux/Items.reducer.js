@@ -18,7 +18,6 @@ export const ProductPgReducer = (state=initialvalue,{type,payload}) =>{
            }
         }
         case GET_ITEMS_SUCESS :{
-            console.log(payload)
             return {
                 ...state,
                 productData:payload,

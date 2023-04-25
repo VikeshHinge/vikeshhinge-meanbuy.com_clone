@@ -99,7 +99,7 @@ const GetData = async() => {
             ProductObj[cart.data[i].categories]+=cart.data[i].quantity
         }
     }
-    console.log(OrdersObj,ProductObj,Allcategeries)
+   // console.log(OrdersObj,ProductObj,Allcategeries)
     
     const AllProCategories = Object.keys(OrdersObj)
     const OrderCount = Object.values(OrdersObj)

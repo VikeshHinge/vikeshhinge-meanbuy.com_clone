@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react';
 
 import { Box,Text,Flex, Accordion,AccordionItem,AccordionButton, AccordionPanel, AccordionIcon,Checkbox} from '@chakra-ui/react'
 import {one,two,three,four} from '../../Componunt/objects';
-import Pricerange from '../../Componunt/Pricerange';
 import {useSearchParams} from 'react-router-dom';
 
 const Filtersidebar = ({Brand}) => {
@@ -48,7 +47,7 @@ const Filtersidebar = ({Brand}) => {
     }
 
     const handelsorting = (item) => {
-      console.log(item)
+      //console.log(item)
       if(sort.includes(item)){
         setSort([])
       }else{
@@ -101,8 +100,8 @@ const Filtersidebar = ({Brand}) => {
          <AccordionIcon />
        </AccordionButton>
          {
-          Brand && Brand.map((ele,i)=>(
-              <AccordionPanel key={i} pb={0} textAlign='start'>
+          Brand && Brand.map((ele)=>(
+              <AccordionPanel key={ele} pb={0} textAlign='start'>
               <Checkbox value={ele} onChange={()=>handelbrand(ele)} isChecked={brand.includes(ele)}   >
                {ele}
                 </Checkbox>

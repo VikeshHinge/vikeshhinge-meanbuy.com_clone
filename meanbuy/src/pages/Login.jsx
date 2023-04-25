@@ -1,8 +1,8 @@
 
-import {Box,Text,Input,Button,useToast,Alert,AlertIcon} from "@chakra-ui/react";
-import {useContext} from "react"
+import {Box,Text,Input,Button,useToast,Alert,AlertIcon,InputGroup,InputLeftAddon,InputRightElement} from "@chakra-ui/react";
+import {useContext} from "react";
 import Authcontext from '../AuthContext/Authcontext';
-//import { useNavigate } from "react-router-dom";
+import {ViewIcon} from '@chakra-ui/icons';
 import React,{useState} from 'react';
 import "./Signup.css";
 import axios from "axios";
@@ -15,7 +15,7 @@ const userEmail = {
 
 
 const Login = ({input, setUsersignup}) => {
-
+const [view,setView] =useState(false)
 let {setUsername,loginAuth} = useContext(Authcontext)
 const [userLogin,setUserLogin] = useState(userEmail)
 const toast = useToast();
@@ -80,8 +80,11 @@ const handelchange_Email = (e) => {
            <Input  mb='20px' borderRadius='0px'  placeholder="Email Address" name = 'email' onChange={handelchange_Email} />
       
            <Text fontSize='12px'>Password</Text>
-           <Input  mb='20px' borderRadius='0px' type={"password"}  placeholder="Password" name='password' onChange={handelchange_Email}/>
-
+           <InputGroup size='sm'>
+           <Input size='md' mb='20px' borderRadius='0px' type={view===false?"password":'text'}  placeholder="Password" name='password' onChange={handelchange_Email}/>
+           <InputRightElement h='40px'  m='auto' onClick={()=>setView(!view)} children={<ViewIcon fontSize='20px'/> }/>
+           </InputGroup>       
+           
           </Box>
            
            <Button w='100%' colorScheme='orange' borderRadius='0px' variant='solid'  mb='50px' mt='10px'

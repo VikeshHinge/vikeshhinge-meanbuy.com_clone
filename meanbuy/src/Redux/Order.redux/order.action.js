@@ -1,11 +1,11 @@
-import {GET_ORDER,GET_ERROR,GET_LOADING,DO_BUYNOW,DO_CHECKOUT} from './order.type.js';
-import {GetOrder,PlaceOrder} from './order.api.js'
+import {GET_ORDER,GET_ERROR,GET_LOADING,DO_BUYNOW,DO_CHECKOUT,UPDATE_ORDER} from './order.type.js';
+import {GetOrder,PlaceOrder,GetallOrder, updateOrder} from './order.api.js';
+import { useToast } from '@chakra-ui/react';
 
 export const getOrders = async(dispatch) => {
      dispatch({type:GET_LOADING})
      try{
         let data = await GetOrder()
-        console.log(data)
         dispatch({type:GET_ORDER,payload:data})
      }
      catch(err){
@@ -13,14 +13,35 @@ export const getOrders = async(dispatch) => {
      }
 }
 
+export const GetAllOrders = async(dispatch) => {
+   dispatch({type:GET_LOADING})
+   try{
+      let data = await GetallOrder()
+      dispatch({type:GET_ORDER,payload:data})
+   }
+   catch(err){
+      dispatch({type:GET_ERROR,payload:err})
+   }
+}
+
 export const PlaceUrOrder = (products)=>async(dispatch)=> {
-    console.log(products)
-    dispatch({type:GET_LOADING})
+    
     try{
        let data = await PlaceOrder(products)
-       console.log(data)
     }
     catch(err){
       dispatch({type:GET_ERROR,payload:err})
    }
+}
+
+export const UpdateOrsers = (key,status)=> async(dispatch)=>{
+  
+   console.log(key,status)
+   try{
+      let data = await updateOrder(key,status)
+      dispatch({type:UPDATE_ORDER,payload:{id:key,status}})
+   }
+   catch(err){
+     dispatch({type:GET_ERROR,payload:err})
+  }
 }

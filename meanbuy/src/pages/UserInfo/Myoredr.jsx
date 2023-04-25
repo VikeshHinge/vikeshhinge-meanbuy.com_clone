@@ -35,30 +35,36 @@ if(loading){
 
 if(orders.length === 0){
   return (
-    <Box>
-      <Image src='https://cdn-icons-png.flaticon.com/512/4688/4688853.png' alt="Your Orders Are Empty" />
+    <Box m='auto'>
+      <Text m='auto' fontSize='5xl' color='orange'  w='fit-content'>Shop Something</Text>
+      <Image m='auto' w='50%' src='https://media4.giphy.com/media/fGsz5zu3sQqYCc5M6C/giphy.gif?cid=6c09b952d9718add0faa58f254a49bf782048493921a298a&rid=giphy.gif&ct=s' alt="Your Orders Are Empty" />
     </Box>
   )
 }
 
   return (
     <Box w='100%'>
+      <Flex>
+        <Text>Total:{}</Text>
+      </Flex>
   <TableContainer boxShadow='base'>
-  <Table variant='striped' colorScheme='orange' color='black' p='5px'>
+   
+  <Table  color='black' p='5px'>
 
-    <Thead w='100%' bg='orange.300' color='black'>
+    <Thead w='100%' bg='orange.500' >
       <Tr>
-        <Th >Product</Th>
-        <Th > Dates</Th>
-        <Th>Tracking ID</Th>
+        <Th color='black'>Product</Th>
+        <Th color='black'> Dates</Th>
+        <Th color='black'>Tracking ID</Th>
+        <Th color='black'>Status</Th>
       </Tr>
     </Thead>
-    <Tbody bg='green.100'>
+    <Tbody >
         {orders.map((ele)=>{
           return(
-           <Tr key={ele._id} >
+           <Tr key={ele._id} bg='orange.100' filter='auto' brightness={ele.status=='rejected'?'50%':'100%'} border='1px solid gray'>
            {/* <Link to={`/product/${ele._id}`}> */}
-           <Td p='5px'>
+           <Td p='5px' >
                <Flex gap='10px'  >
                 <Image w='70px' src={ele.img1} alt={ele.title}/>
                 <Box  overflow='hidden'>
@@ -70,13 +76,16 @@ if(orders.length === 0){
                </Flex>
             </Td>
            {/* </Link> */}
-            <Td>
+            <Td >
               <Text as='b'>{ele.deliverydate}</Text>
               <Text fontSize='15px'>ordered:{ele.orderdate}</Text>
             </Td>
             <Td>
               <Text as='b'>{ele.trackingID}</Text>
             </Td>
+             <Td>
+              <Text as='b' color={ele.status=='ordered'?'green':ele.status=='rejected'?'gray':'yellow'} >{ele.status}</Text>
+             </Td>
           </Tr>
           )
         })}

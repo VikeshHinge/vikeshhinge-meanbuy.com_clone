@@ -13,7 +13,7 @@ let arr = []
 for(let i=0; i<Math.ceil(Total/postPerPage); i++){
   arr.push(i+1)
 }
-console.log(searchParams)
+//console.log(searchParams)
 
 const handelPage = (num) => {
   if(!page.includes(num)){
@@ -48,8 +48,8 @@ const handelAction = (num)=>{
     { arr && arr.length>0 && 
          <Flex gap='5px' alignItems='center' >
         <Box border='2px solid orange' w='50px'> <button disabled={page.includes(1)||currpage===1}  onClick={()=>handelAction(-1)} >Prev</button></Box>
-          {arr && arr.map((ele,i)=>(
-             <Box border='2px solid orange' bg={page.includes(ele)?'orange':'orange.200'} w='25px' key={i} onClick={()=>handelPage(ele)} >
+          {arr && arr.map((ele)=>(
+             <Box key={ele} border='2px solid orange' bg={page.includes(ele)?'orange':'orange.200'} w='25px'  onClick={()=>handelPage(ele)} >
                {ele}
             </Box>
          

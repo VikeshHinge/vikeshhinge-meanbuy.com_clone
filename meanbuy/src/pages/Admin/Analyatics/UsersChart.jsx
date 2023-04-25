@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box,Text,Flex,Image } from '@chakra-ui/react';
+import { Box,Text,Flex,Image, SimpleGrid,Grid, GridItem } from '@chakra-ui/react';
 import axios from 'axios';
 import { Doughnut } from "react-chartjs-2";
 import CountUp from 'react-countup';
@@ -58,7 +58,11 @@ const [data,setData] = useState({
             boxWidth: 5,
             boxHeight:5,
             boxBorder:'none'
-        },
+        },title: {
+          display: true,
+          text: "Sales Targeted Categories",
+          color: 'white'
+        }
       },
     },
   };
@@ -105,8 +109,8 @@ const Total = data.reduce((acc, ele) => {
         {
             label: 'Orders Quantity',
             data: orderData,
-            borderColor:['red','orange','pink','green'],
-            backgroundColor: ['red','orange','pink','green']
+            borderColor:['red','orange','#f50269','#7aeb8d'],
+            backgroundColor: ['red','orange','#f50269','#7aeb8d']
         },
      
        ]
@@ -121,17 +125,24 @@ const Total = data.reduce((acc, ele) => {
   return ( 
  
           <Box w='100%'>
-           <Flex gap='3px' justifyContent='center' m='auto' textAlign='left'>
-           <Box  color='black' h='140px' bg='orange.100' p='10px' w='25%' border='2px solid orange' >
+           <Grid 
+              m='auto' h='250px'
+              templateColumns='repeat(4, 1fr)'
+              templateRows='repeat(1, 1fr)'
+              gap='5px'
+              textAlign='left'
+            >
+
+           <GridItem h='140px'   borderRadius='5px' p='10px'  bgGradient='linear(to-l, #7928CA, #FF0080)'>
                 <Text>Total Sales:</Text>
                 <Text as='b' fontSize='4xl'>₹<CountUp start={1000} end={Sale}duration={1.6}></CountUp></Text>
                 <Flex gap='20px'>
                 <Text>20%</Text>
                 <Text>33.5k this week</Text>
              </Flex>
-            </Box>
+            </GridItem>
 
-            <Box h='140px' color='black' bg='orange.100' p='10px' w='25%' border='2px solid orange'>
+            <GridItem  h='140px' borderRadius='5px' bgGradient='linear(to-l, #7928CA, #FF0080)' p='10px' >
              <Text>Total Users:</Text>
              <Flex justifyContent='space-around'>
              <Text as='b' fontSize='5xl'>{user}M</Text>
@@ -140,9 +151,9 @@ const Total = data.reduce((acc, ele) => {
              <Flex gap='10px'>
              <Text as='b' fontSize='md'>{active} M+ active users</Text><p>&#128512;</p>
              </Flex>
-             </Box>
+             </GridItem>
 
-             <Box color='black' h='140px' bg='orange.100' p='10px' w='25%' border='2px solid orange'>
+             <GridItem h='140px' borderRadius='5px' bgGradient='linear(to-l, #7928CA, #FF0080)' p='10px'>
              <Text>Total Orders:</Text>
              <Flex justifyContent='space-around'>
              <Text as='b' fontSize='5xl'><CountUp start={0} end={orders} duration={1.6} />K</Text>
@@ -152,12 +163,17 @@ const Total = data.reduce((acc, ele) => {
                 <Text>3.8%</Text>
                 <Text>+5k this week</Text>
              </Flex>
-            </Box>
-            <Box p='10px' w='25%' border='2px solid'>
-                <Text>Sales by Categories</Text>
+            </GridItem>
+
+            <GridItem borderRadius='5px' rowSpan={2} colSpan={1} >
               <Doughnut  data={data} options={options}/>
-             </Box>
-           </Flex>
+            </GridItem>
+
+            <GridItem colSpan={3}> 
+              <Text fontSize='7xl' textAlign='center' bgClip='text' letterSpacing='15px' bgGradient='linear(to-l, #7928CA, #FF0080)'fontWeight='bold'>MEANBUY.com</Text>
+            </GridItem>
+
+           </Grid>
          </Box>
      
   )

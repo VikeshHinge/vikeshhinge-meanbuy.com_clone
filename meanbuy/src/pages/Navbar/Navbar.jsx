@@ -1,18 +1,17 @@
 import React,{useCallback, useContext, useEffect,useState} from "react";
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon,TriangleDownIcon,TriangleUpIcon } from '@chakra-ui/icons'
-import Authcontext from "../AuthContext/Authcontext";
+import Authcontext from "../../AuthContext/Authcontext";
 import { IoIosCart } from "react-icons/io";
 import { FaInstagramSquare,FaFacebook } from "react-icons/fa";
 import { HiUserCircle } from "react-icons/hi2";
-import CategoriesDrop from "../Dropdown/Categories_drop";
-import Sidedrower from "../Dropdown/SideDrower";
+import CategoriesDrop from "../../Dropdown/Categories_drop";
 import './navbar.css';
-import {Link,useNavigate} from 'react-router-dom';
+import {Link,useNavigate,useLocation} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 import Search from "./Search";
 import { MoonIcon,SunIcon } from '@chakra-ui/icons';
-import { GetCartData,GetCartNum} from "../Redux/Cart.Redux/cart.action.js";
+import { GetCartData,GetCartNum} from "../../Redux/Cart.Redux/cart.action.js";
 
 
 const Navbar2 = ({changeTheme,bg}) => {
@@ -24,27 +23,28 @@ const Navbar2 = ({changeTheme,bg}) => {
     const [users,setUsers]=useState('')
     const Navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
+
     const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
     const handeldropdown = () => {
         setcategories(!categories)
     }
     
-    const GotoCart = ()=>{
+    const GotoCart = ()=>{    
      return Navigate('/cart')
     }
 
- 
-    console.log('navbar render')
     let email= localStorage.getItem('user')||'';
+    let local = location.pathname.split('/')
   
-    
+
     useEffect(()=>{
       GetCartNum(dispatch)
       setUsers(email)
-    },[dispatch,logoutAuth,users,email])
+    },[dispatch,logoutAuth,users,email,location])
  
     return(
-       <Box m='0px' position='fixed' w='100%' bg={bg?'white':'#2d3748'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
+       <Box display={local.includes('admin')||local.includes('adminlogin')?'none':'block'} m='0px' position='fixed' w='100%' bg={bg?'white':'#2d3748'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
          <Box bg='black' color='white'w='100%'>
             <Flex alignItems='center' justifyContent='center' gap='10px'>
                New Year Beast Offer on Watches  
@@ -102,13 +102,13 @@ const Navbar2 = ({changeTheme,bg}) => {
           </InputGroup>
           </Box>
          
-          <HStack className="navop" >
-          <Link  onClick={handeldropdown} >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop /></>}</Link>
-          <Link><Text>flash Sale</Text></Link>
-          <Link> <Text display={{base:'none',md:'block'}} >Best Deals</Text></Link>
-          <Link><Text display={{base:'none',md:'block'}} >Shop by Brand</Text></Link>
-          <Link><Text display={{base:'none',md:'block'}} >Trending</Text></Link>
-          <Link><Text>New Arrivals</Text></Link>
+          <HStack w='fit-content' onClick={handeldropdown} className="navop" cursor='pointer'>
+          <Text >Categories {categories===false?<TriangleDownIcon/>:<><TriangleUpIcon/> <CategoriesDrop /></>}</Text>
+           <Text className='blinktext'>flash Sale</Text>
+          <Text display={{base:'none',md:'block'}} >Best Deals</Text>
+          <Text display={{base:'none',md:'block'}} >Shop by Brand</Text>
+          <Text display={{base:'none',md:'block'}} >Trending</Text>
+          <Text>New Arrivals</Text>
          </HStack>
          <Divider/>
        </Box>

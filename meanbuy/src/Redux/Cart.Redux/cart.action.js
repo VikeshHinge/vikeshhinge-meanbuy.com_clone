@@ -23,17 +23,20 @@ export const GetCartData = async(dispatch) => {
 export const GetCartNum = (dispatch) => {
    dispatch({type:GET_CART_NUM})
 }
+
+
 //AddtoCart______________________________
 export const AddtoCart =(item)=>async (dispatch) => {
   // console.log(item)
   try{
    let {data} = await AddToCart (item)
      alert(data.msg || data.sug)
+     
     if(data.msg){
-      dispatch({type:ADD_CART,payload:item})
+      dispatch({type:ADD_CART,payload:item,msg:data.msg || data.sug})
+      return data.msg || data.sug
     }
   }catch(err){
-    console.log(err.message)
      dispatch({type:GET_CART_ERROR,payload:err.message})
   }
 
@@ -42,7 +45,6 @@ export const AddtoCart =(item)=>async (dispatch) => {
 
 //DeleteCart_________________________________
 export const DeletefromCart =(id)=>async(dispatch) => {
-       console.log(id)
       try{
          await DeleteCart(id)
          dispatch({type:DELETE_CART,payload:id})

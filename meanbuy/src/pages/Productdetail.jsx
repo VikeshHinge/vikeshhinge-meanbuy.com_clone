@@ -1,5 +1,5 @@
 import {Box,Image,Stack,ListItem,UnorderedList, Grid,TabPanel,Tab,TabList,TabPanels,Tabs,
-    Flex,Heading,Badge,Text,Divider,Radio,RadioGroup,Button
+    Flex,Heading,Badge,Text,Divider,Radio,RadioGroup,Button,useToast
 } from "@chakra-ui/react"
 import {StarIcon} from "@chakra-ui/icons"
 import {GetProductbyId} from "../Redux/ProductPg.Redux/Items.action.js"
@@ -18,7 +18,7 @@ import {AddtoCart} from '../Redux/Cart.Redux/cart.action.js';
 
 const ProductDetail = () => {
 const [tabIndex, setTabIndex] = useState(0)
-
+const toast = useToast()
 const param = useParams()
 const dispatch = useDispatch()
 const Navigate = useNavigate()
@@ -27,19 +27,19 @@ const Navigate = useNavigate()
 const addToCart = (item) => {
   let token = localStorage.getItem('token')
   if(token ==='' || token ===null || token === undefined ){
-    alert('user need to login first !')
+    toast({
+      title: 'Please LogIn First !',
+      position: 'top',
+      isClosable: true,
+    })
     return Navigate('/login')
   }
   dispatch(AddtoCart(item))
+
 }
 
 const handelBuy = (item) => {
   console.log(item)
-  // let token = localStorage.getItem('token')
-  // if(token){
-  
-  // }
-
 }
 
 let {error,loading,productData} = useSelector((store)=>store.ItemsManager)

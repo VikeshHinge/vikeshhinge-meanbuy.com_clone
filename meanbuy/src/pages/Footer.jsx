@@ -1,41 +1,44 @@
 
 import {Text,Flex,VStack,Box,Button,InputGroup,Input,Divider,Spacer,HStack,SimpleGrid} from "@chakra-ui/react"
 import { FaYoutube,FaInstagramSquare,FaLinkedin,FaCcVisa,FaAmazonPay,FaCcMastercard,FaTwitter } from "react-icons/fa";
-import {Link} from 'react-router-dom';
-
+import { useLocation,Link} from "react-router-dom";
 
 const Footer = ({bg}) => {
+  const location = useLocation()
+ let local = location.pathname.split('/')
+
 
     return(
-        <Box pt='15px' bg={bg?'#e9e9e9':'gray'} zIndex='999'>
+        <Box cursor='default' display={local.includes('admin')||local.includes('adminlogin')?'none':'block'} pt='15px' bg={bg?'#e9e9e9':'gray'} zIndex='999'>
           <SimpleGrid columns={{base:"2",md:"5"}} spacing={0}>
               <Flex flexDirection='column' textAlign='left' g='10px' ml='10px'  >
-               <Link fontSize='sm'   mt='20px' color='orange.500' fontWeight='bold' >OUR POLICIES</Link>
-               <Link  fontSize='xs' >Covid-19 Precautions</Link>
-               <Link  fontSize='xs' >Our Promise</Link>
-               <Link  fontSize='xs' >Terms & Conditions</Link>
-               <Link  fontSize='xs' >Privacy Policy</Link>
-               <Link  fontSize='xs' >Customs tariffs and fees</Link>
+               <Text fontSize='sm'   mt='20px' color='orange.500' fontWeight='bold' >OUR POLICIES</Text>
+               <Text  fontSize='xs' >Covid-19 Precautions</Text>
+               <Text  fontSize='xs' >Our Promise</Text>
+               <Text  fontSize='xs' >Terms & Conditions</Text>
+               <Text  fontSize='xs' >Privacy Policy</Text>
+               <Text  fontSize='xs' >Customs tariffs and fees</Text>
               </Flex>
               <Flex flexDirection='column' textAlign='left' g='10px' ml='10px'  >
-               <Link fontSize='sm'   mt='20px' color='orange.500' fontWeight='bold'>CORPORATE</Link>
-               <Link  fontSize='xs' >Sell With Us</Link>
-               <Link  fontSize='xs' >Career Opportunities</Link>
-               <Link  fontSize='xs' >Our Blog</Link>
-               <Link  fontSize='xs' >Sitemap</Link>
+               <Text fontSize='sm'   mt='20px' color='orange.500' fontWeight='bold'>CORPORATE</Text>
+               <Text  fontSize='xs' >Sell With Us</Text>
+               <Text  fontSize='xs' >Career Opportunities</Text>
+               <Text  fontSize='xs' >Our Blog</Text>
+               <Text  fontSize='xs' >Sitemap</Text>
               </Flex>
               <Flex flexDirection='column' textAlign='left' g='10px' ml='10px'  >
-               <Link fontSize='sm'  mt='20px' color='orange.500' fontWeight='bold'>HELP</Link>
-               <Link  fontSize='xs' >How MeanBuy Works</Link>
-               <Link  fontSize='xs' >My Orders</Link>
-               <Link  fontSize='xs' >Exchanges, Returns and Refunds</Link>
-               <Link  fontSize='xs' >Contact Us</Link>
-               <Link  fontSize='xs' >FAQ</Link>
+               <Text fontSize='sm'  mt='20px' color='orange.500' fontWeight='bold'>HELP</Text>
+               <Text  fontSize='xs' >How MeanBuy Works</Text>
+               <Text  fontSize='xs' >My Orders</Text>
+               <Text  fontSize='xs' >Exchanges, Returns and Refunds</Text>
+               <Text  fontSize='xs' >Contact Us</Text>
+               <Text  fontSize='xs' >FAQ</Text>
               </Flex>
               <Flex flexDirection='column' textAlign='left' g='10px' ml='10px'  >
-               <Link fontSize='sm'  mt='20px' color='orange.500' fontWeight='bold'>SELL WITH US</Link>
-               <Link  fontSize='xs' >General Information</Link>
-               <Link  fontSize='xs' >Signup</Link>
+               <Text fontSize='sm'  mt='20px' color='orange.500' fontWeight='bold'>SELL WITH US</Text>
+               <Text  fontSize='xs' >General Information</Text>
+               <Text  fontSize='xs' >Signup</Text>
+                <Link to='/admin'>Admin</Link>
               </Flex>
 
               <VStack >

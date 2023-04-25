@@ -2,7 +2,7 @@ import React,{useState,useCallback, useEffect} from 'react';
 import {Box,Flex,HStack,Text,Image,InputGroup,Input,InputRightElement,Button,Spacer,Divider} from "@chakra-ui/react"
 import { Search2Icon } from '@chakra-ui/icons';
 import {Link,useNavigate} from 'react-router-dom'
-import { GetSearchData } from "../Redux/Products.Redux/productAPI";
+import { GetSearchData } from "../../Redux/Products.Redux/productAPI";
 
 const Search = ({bg}) => {
     const [searchData,setSearchData] = useState([])

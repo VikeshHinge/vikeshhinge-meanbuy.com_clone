@@ -41,11 +41,15 @@ export const UserReducer = (state=initialvalue,{type,payload}) => {
 
        case GET_Update:{
         console.log(payload)
+       
+        state.user[0].address=payload
+        console.log(state.user[0].address)
         return{
-            ...state,
-            loading:false,
-            error:false,
-            user:[...state.user,state.user.address=payload]
+          ...state,
+          loading:false,
+          error:false,
+          user:state.user
+          
         }
        }
 

@@ -44,7 +44,6 @@ const UserAuth = () => {
            let input = document.querySelector('#email').focus()
         }
       else {
-        console.log(input)
        const {data} = await axios.post('http://localhost:4040/user/register',{email,password,name,contact})
        if(data.msg){
         toast({

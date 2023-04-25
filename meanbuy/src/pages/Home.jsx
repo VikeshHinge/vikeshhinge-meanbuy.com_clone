@@ -35,14 +35,15 @@ const dataheading = [HDdata,BFdata,Hbagdata,MobiAdata,Toysdata,keyMouse,
                      MWdata,Makeup,Kitchen,Actionfig,Clothing,New,Watchdata]
 let dispatch = useDispatch()
 
-let {productData:{data},loading,error} = useSelector((store)=>(store.productManager))
+let {productData,loading,error} = useSelector((store)=>(store.productManager))
 
     useEffect(()=> {
         GetProducts(dispatch)
     },[dispatch])
 
     useEffect(()=>{
-      if(data !== undefined){
+      if(productData !== undefined){
+       let data=productData
         FetchFilter(data,"Home Decor")
         FetchFilter(data,"mens watch")
         FetchFilter(data,"Ballet Flats")
@@ -57,7 +58,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
         FetchFilter(data,'clothing')
         FetchFilter(data,'Disney')
       }
-    },[data])
+    },[productData])
 
     let FetchFilter = (Data,str) => {
         let FilterData = Data.filter((item) => item.categories === str)
@@ -131,7 +132,7 @@ let {productData:{data},loading,error} = useSelector((store)=>(store.productMana
                     </HStack>
                     {loading ? 
                         <SimpleGrid columns={5} spacing={10}>
-                         {Loading.map((ele)=><Box kry={ele} className='loading'>
+                         {Loading.map((ele,i)=><Box key={i} className='loading'>
                             loading ....
                          </Box>)}
                         </SimpleGrid>

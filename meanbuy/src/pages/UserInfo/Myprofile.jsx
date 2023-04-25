@@ -18,7 +18,7 @@ const Myprofile = () => {
     const [userinfo,setUserinfo] = useState(info)
     const dispatch = useDispatch()
     let {user,loading,error} = useSelector((store)=>store.userManager)
-
+  
     const handelchange = (e) => {
       let {name,value} = e.target;
       setUserinfo({...userinfo,[name]:value})

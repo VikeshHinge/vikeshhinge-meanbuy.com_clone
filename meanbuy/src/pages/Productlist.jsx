@@ -18,7 +18,6 @@ const Productlist = ({product,num}) => {
    const Navigate = useNavigate()
 
    let handelRoue = (id) => {
-      console.log(id)
      return Navigate(`product/${id}`)
    }
 

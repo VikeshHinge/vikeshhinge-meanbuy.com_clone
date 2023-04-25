@@ -6,11 +6,12 @@ let initialvalue = {
     cart:[],
     loading:false,
     error:false,
-    total:0
+    total:0,
+    msg:''
 }
 
-export const cartReducer = (state=initialvalue,{type,payload}) => {
-       
+export const CartReducer = (state=initialvalue,{type,payload}) => {
+ 
         switch(type){
             case GET_CART_SUCESS :{
               
@@ -40,21 +41,21 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                 }
             }
             case ADD_CART :{
+                
                 return{
                     ...state,
                     error:false,
                     loading:false,
-                    cart:[...state.cart,payload]
+                    cart:[...state.cart,payload],
+                    msg:payload.msg
                 }
             }
             case DELETE_CART :{
-                //console.log(payload)
                 let newcart = state.cart.filter((ele)=>ele._id !== payload)
                 let Total = 0;
                 for(let i=0; i<newcart.length; i++){
                    Total+=(newcart[i].price*newcart[i].quantity)
                 }
-                console.log(newcart)
                 return{
                     ...state,
                     error:false,
@@ -64,8 +65,6 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                 }
             }
             case GET_CART_UPDATE :{
-                // console.log(payload)
-                // console.log(state)
                 let newcart = state.cart.map((ele)=>{
                     if(ele._id===payload._id){
                         return{
@@ -78,7 +77,6 @@ export const cartReducer = (state=initialvalue,{type,payload}) => {
                         }
                     }
                 })
-                //console.log(newcart)
                 let Total = 0;
                 for(let i=0; i<newcart.length; i++){
                    Total+=(newcart[i].price*newcart[i].quantity)
