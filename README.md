@@ -5,7 +5,7 @@
 - Deployed Netlify link:- https://meanbuy-seven.vercel.app/
 
 # Tech stacks used :
- **html** |  **css** |  **chakra-ui** |  **ReactJs** |  **Redux** |  **ExpressJs** |  **MongoDB** |  **Chakra-UI** |  **nodeJs** |  **express** |  **mongoose** | **mongodb Atlas**
+ **html** |  **css** |  **chakra-ui** |  **ReactJs** |  **Redux** |  **ExpressJs** |  **MongoDB** |  **Chakra-UI** |  **nodeJs** |  **express** |  **mongoose** | **mongodb Atlas** | **ChartJs** 
 
 
 <div>
