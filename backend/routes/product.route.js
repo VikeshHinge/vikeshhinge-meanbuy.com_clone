@@ -18,7 +18,7 @@ productRoute.get('/',async(req,res)=>{
         delete query.page
         delete query.limit
     }
-    console.log(query)
+    //console.log(query)
     if(query.price){
         let range = [...query.price] //so that main qurey does not get affected 
          query.price={$gte:range[0],$lte:range[1]}
@@ -82,13 +82,13 @@ productRoute.post('/addproduct',async(req,res)=>{
 //update__________________________________
 productRoute.patch('/update/:id',async(req,res)=>{
     let id = req.params.id;
-    console.log(id)
+    console.log(req.body)
     try{
        let product = await productModel.findOneAndUpdate({_id:id},req.body)
-         //console.log(product)
-        res.send('product get Updated!')
+       // console.log(product)
+        res.send({msg:'product get Updated!'})
     }catch(err){
-        res.send({'msg':err.message})
+        res.send({error:err.message})
     }
 })
 

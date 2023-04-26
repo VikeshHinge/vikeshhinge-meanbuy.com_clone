@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken')
 const CartAuthantication = (req,res,next) => {
      
      const token = req.headers.authorization ;
-     console.log(req.body,'cart-8989')
      delete req.body._id;
     if(token){
        jwt.verify(token,'meanbuy',(err,decoded)=>{

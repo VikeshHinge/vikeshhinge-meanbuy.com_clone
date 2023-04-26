@@ -7,7 +7,6 @@ const {CartAuthantication} = require('../middleware/cartAuth.js')
 //get___________________
 cartRoute.get('/',CartAuthantication,async(req,res)=>{
     let cartuser = req.body.user
-    
     try{
         let data = await cartModel.find({user:cartuser})
         res.send(data)
@@ -18,7 +17,6 @@ cartRoute.get('/',CartAuthantication,async(req,res)=>{
 //admin side cart---------------------
 cartRoute.get('/getallcart',async(req,res)=>{
     let query = req.query
-    console.log(query)
     try{
         let data = await cartModel.find(query)
         res.send(data)
@@ -30,7 +28,6 @@ cartRoute.get('/getallcart',async(req,res)=>{
 //addtocart______________________
 cartRoute.post('/addtocart',CartAuthantication,async(req,res)=>{
     let product = req.body;
-    console.log(req.body,'cart')
     try{
        let item = await cartModel.find({title:product.title,user:product.user})
        if(item.length > 0){
@@ -48,7 +45,6 @@ cartRoute.post('/addtocart',CartAuthantication,async(req,res)=>{
 //update___________________________cd
 cartRoute.patch('/updatecart/:id',CartAuthantication,async(req,res)=>{
     let id = req.params.id
-    console.log(id,req.body)
     try{
     let item = await cartModel.findOneAndUpdate({_id:id,user:req.body.user},{quantity:req.body.value})
         res.send(item)

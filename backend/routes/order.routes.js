@@ -19,9 +19,9 @@ orderRoute.get('/myorders',OrderAuthantication,async(req,res)=>{
 
 //Get admin side --------------------------
 orderRoute.get('/getallorders',async(req,res)=>{
-    let query = req.query
+  
     try{
-        let orders = await orderModel.find(query)
+        let orders = await orderModel.find()
         res.send(orders)
     }
     catch(err){
@@ -74,6 +74,17 @@ orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
   }
 })
 
+orderRoute.patch('/updateorder/:id',async(req,res)=>{
+       let id = req.params.id;
+       console.log(id,req.body)
+    try{
+         let data = await orderModel.findByIdAndUpdate({_id:id},req.body)
+         res.send({msg:'Order Update Sucess!'})
+    }
+    catch(err){
+        res.send({'err':err.message})
+     }
+})
 
 // orderRoute.delete('/deleteorders',async(req,res)=>{
 //     let body = {user:'642c61599d288a1c143b3806'}
