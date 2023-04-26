@@ -10,7 +10,6 @@ productRoute.get('/',async(req,res)=>{
     let sorting;
     let skip;
     let setlimit;
-    console.log(query)
     if(query.page ){
         // const { page = 1, limit = 6 } = req.query;
         // skip = (page - 1)*limit;
@@ -68,7 +67,6 @@ productRoute.get('/search/:key',async(req,res)=>{
 //Addproduct _______________________________________
 productRoute.post('/addproduct',async(req,res)=>{
     const payload = req.body
-    console.log(payload)
     try{                             //insertMany...[]required*****
         let item =await productModel.insertMany(payload)
        // await item.save()
@@ -82,7 +80,6 @@ productRoute.post('/addproduct',async(req,res)=>{
 //update__________________________________
 productRoute.patch('/update/:id',async(req,res)=>{
     let id = req.params.id;
-    console.log(req.body)
     try{
        let product = await productModel.findOneAndUpdate({_id:id},req.body)
        // console.log(product)
@@ -94,7 +91,6 @@ productRoute.patch('/update/:id',async(req,res)=>{
 
 productRoute.patch('/update',async(req,res)=>{
     let query = req.query
-    console.log(req.body)
     try{
         let product = await productModel.updateMany(query,req.body)
         console.log(product)

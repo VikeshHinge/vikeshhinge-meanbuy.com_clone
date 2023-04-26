@@ -7,7 +7,6 @@ const {OrderAuthantication} = require('../middleware/OrderAuth.js')
 
 // Get_________________
 orderRoute.get('/myorders',OrderAuthantication,async(req,res)=>{
-    console.log(req.body)
     try{
         let orders = await orderModel.find({user:req.body.user})
         res.send(orders)
@@ -57,7 +56,6 @@ orderRoute.post('/buynow',OrderAuthantication,async(req,res)=>{
 //checkout _________________________________
 orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
   let products = req.body;
-  console.log(products,'order-1')
   try{
     let data = await orderModel.insertMany(products)
   
@@ -76,7 +74,6 @@ orderRoute.post('/checkout',OrderAuthantication,async(req,res)=>{
 
 orderRoute.patch('/updateorder/:id',async(req,res)=>{
        let id = req.params.id;
-       console.log(id,req.body)
     try{
          let data = await orderModel.findByIdAndUpdate({_id:id},req.body)
          res.send({msg:'Order Update Sucess!'})

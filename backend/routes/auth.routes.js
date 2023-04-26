@@ -8,7 +8,6 @@ const { CartAuthantication } = require('../middleware/cartAuth.js')
 
 //GetProfile_________________________
 userRouter.get('/profile',CartAuthantication, async(req,res)=>{
-    console.log(req.body)
     try{
         let userdata = await userModel.find({_id:req.body.user})
         res.send(userdata)
@@ -21,7 +20,6 @@ userRouter.get('/profile',CartAuthantication, async(req,res)=>{
 //admin get _____________________________
 userRouter.get('/allusers', async(req,res)=>{
    let query = req.body
-   console.log(query)
     try{
         let userdata = await userModel.find(query)
         res.send(userdata)
@@ -33,7 +31,6 @@ userRouter.get('/allusers', async(req,res)=>{
 //Register_________________________________
 userRouter.post('/register',async(req,res)=>{
     let {name,email,password,contact}=req.body
-    console.log(name,email,password,contact)
     try{
         let check = await userModel.find({email:email})
         if(check.length>0){
@@ -58,7 +55,6 @@ userRouter.post('/register',async(req,res)=>{
 // Login_______________________________
 userRouter.post('/login',async(req,res)=>{
     const {email,password} = req.body;
-    console.log(email,password)
    try{
       let user = await userModel.find({email})
        if(user.length>0){
@@ -85,7 +81,6 @@ userRouter.post('/login',async(req,res)=>{
 userRouter.patch('/updateuser',CartAuthantication,async(req,res)=>{
     let id = req.body.user;
      let data = req.body
-     console.log(data)
     try{
         let user = await userModel.findByIdAndUpdate({_id:id},data)
         res.send("user updated")
