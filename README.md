@@ -17,7 +17,7 @@
   <img  src='https://i.ibb.co/7201hnd/Home-1.png' alt='home' />
   
  # MOBILE-SHOTS
- <img  src='https://i.ibb.co/txV1vTs/Untitled-design-1.png' alt='home' />
+ <img  src='https://i.ibb.co/qkn0FRM/Untitled-design-2.png' alt='home' />
  
  # Features :
  - Product catalogue
