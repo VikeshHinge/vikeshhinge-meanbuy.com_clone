@@ -16,16 +16,14 @@ import { GetCartData,GetCartNum} from "../../Redux/Cart.Redux/cart.action.js";
 
 const Navbar2 = ({changeTheme,bg}) => {
   
- 
-    const {logoutAuth,carttotal} = useContext(Authcontext)
     const [categories,setcategories] = useState(false)
-  
     const [users,setUsers]=useState('')
     const Navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
 
-    const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
+    const {cart} = useSelector((store)=>store.cartManager)
+ 
     const handeldropdown = () => {
         setcategories(!categories)
     }
@@ -39,9 +37,9 @@ const Navbar2 = ({changeTheme,bg}) => {
   
 
     useEffect(()=>{
-      GetCartNum(dispatch)
+      GetCartData(dispatch)
       setUsers(email)
-    },[dispatch,logoutAuth,users,email,location])
+    },[dispatch,users,email,location])
  
     return(
        <Box display={local.includes('admin')||local.includes('adminlogin')?'none':'block'} m='0px' position='fixed' w='100%' bg={bg?'white':'#2d3748'} color={bg?'black':'white'} zIndex='999' borderBottom='2px solid orange'>
@@ -78,7 +76,7 @@ const Navbar2 = ({changeTheme,bg}) => {
 
 {/*---------------------- user login/logout ------------------------ */}
                     {email?<Flex gap='3px'justifyContent='end' p='5px' alignItems='center' fontWeight='bold'><Text fontSize='18px' color='orange' >{users}</Text><Link to='/userprofile'><HiUserCircle color='#f38f2f' size='25px'/></Link></Flex>:<><Link to='/login'>Login</Link>/ <Link to='/signup'>Signup</Link></>}
-
+{/* ------------------cartside drower --------------*/}
                     <Flex ml='10px' >
                       <Text fontWeight='bold' mr='10px' >WELCOME</Text>
                       <IoIosCart color="F38F2F" size='30px'  onClick={GotoCart}  />
@@ -87,7 +85,7 @@ const Navbar2 = ({changeTheme,bg}) => {
                 </Box>
                
              </Flex>
- {/* ------------------cartside drower --------------*/}
+ 
         
           </Flex>
 

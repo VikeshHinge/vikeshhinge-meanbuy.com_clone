@@ -1,5 +1,5 @@
 
-import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART,DELETE_CART} from './cart.type.js';
+import {GET_CART_ERROR,GET_CART_LOADING,GET_CART_SUCESS,GET_CART_UPDATE,ADD_CART,DELETE_CART, GET_CART_NUM} from './cart.type.js';
 
 
 let initialvalue = {
@@ -63,6 +63,11 @@ export const CartReducer = (state=initialvalue,{type,payload}) => {
                     cart:newcart,
                     total:Total
                 }
+            }
+            case GET_CART_NUM :{
+                return(
+                    state
+                )
             }
             case GET_CART_UPDATE :{
                 let newcart = state.cart.map((ele)=>{

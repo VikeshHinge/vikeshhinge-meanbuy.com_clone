@@ -22,12 +22,18 @@ useEffect(()=>{
 
 let arr = [1,2,3,4,5,6,7,8,9,10]
 
+if(error){
+  return(
+    <Text>Error : 400</Text>
+  )
+}
+
   return (
     <Box p='10px' bg='#1a202c' color='white' w='100%' m='auto'>
       <Flex gap='10px'>
         <AdminSidebar/>
-        {loading && <Box m='auto'> loading   <Spinner/></Box>}
-        {orders.length>0 && <Order orders={orders} handelStatus={handelStatus}/>}
+        {loading && <Box m='auto'> loading ...<Spinner/></Box>}
+        {orders && <Order orders={orders} handelStatus={handelStatus}/>}
       </Flex>
    </Box>
   )

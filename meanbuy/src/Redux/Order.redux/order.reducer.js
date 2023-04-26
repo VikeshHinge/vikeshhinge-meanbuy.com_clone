@@ -31,11 +31,11 @@ export const orederReducer = (state=initialvalue,{type,payload}) => {
     }
 
     case GET_ORDER : {
-
+     
         return {
             ...state,
             loading:false,
-            error:true,
+            error:false,
             orders:payload.data,
             total:payload.Total
         }
@@ -51,7 +51,6 @@ export const orederReducer = (state=initialvalue,{type,payload}) => {
             }
             return ele
         })
-         console.log(Updates)
         return{
             ...state,
             loading:false,

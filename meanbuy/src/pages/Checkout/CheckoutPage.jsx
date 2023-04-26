@@ -1,13 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import {Box,Flex,Text,Image, Button,Square,Divider,Input,Checkbox} from "@chakra-ui/react";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from '@chakra-ui/react'
+import {Box,Flex,Text,Image, Button,Square,Divider,Input,Checkbox,useDisclosure,useToast} from "@chakra-ui/react";
 import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import { GetCartData } from '../../Redux/Cart.Redux/cart.action';
@@ -15,28 +8,51 @@ import { getProfile } from '../../Redux/Uer.Redux/User.action';
 import Myprofile from '../UserInfo/Myprofile';
 import CompDates from './CompDates';
 import { PlaceUrOrder } from '../../Redux/Order.redux/order.action';
+import Payment from './Payment';
 
 
 const CheckoutPage = () => {
  const [payment,setPayment] = useState(false)
+ const { isOpen, onOpen, onClose } = useDisclosure()
  const Navigate = useNavigate()
  const dispatch = useDispatch()
+ const toast = useToast()
  const {cart,loading,error,total} = useSelector((store)=>store.cartManager)
 
  const handelPayment = () =>{
   if(!payment){
+   
+    setTimeout(()=>{
+      toast({
+        title: `₹${total} Payment is sucess`,
+        description:'place your order now !',
+        position: 'top',
+        status:'success',
+        isClosable: true,
+      })
     setPayment(true)
-    alert('Payment Sucess !')
+    },2000)
+   
   }
  }
 
  const handelOrder = () => {
   if(payment){
    dispatch( PlaceUrOrder(cart))
-   alert('Order Placed Sucess !!')
+   toast({
+    title:'Order Placed Sucess !!',
+    position: 'top',
+    status:'success',
+    isClosable: true,
+  })
    return Navigate('/')
   }else{
-   alert('payment not done yet!')
+   toast({
+    title: 'payment not done yet!',
+    position: 'top',
+    status:'error',
+    isClosable: true,
+  })
   }
 }
 
@@ -58,7 +74,7 @@ if(loading){
 
   return (
   <Box  m='auto' >
-
+   
    <Flex m='auto' gap='10px'   w='95%'>
 
    <Box width='35%'  borderRight='1px solid gray' pt='180px'>
@@ -71,7 +87,6 @@ if(loading){
               <Text as='b'>Price: {ele.price} </Text>
               <Text as='del' color='red'> {Math.floor(ele.price*ele.discount/100)+ele.price}</Text>
                <Text>Quantity:{ele.quantity}</Text>
-               <Button bg='red' >Cancel</Button>
             </Box>
            </Flex>
            
@@ -100,7 +115,14 @@ if(loading){
       </Box>
     
       {/* _----------- Dates ----------------------- */}
-      <CompDates handelOrder={handelOrder}/>
+      <CompDates handelOrder={handelOrder}
+        handelPayment={handelPayment} 
+        total={total}
+        onClose={onClose}
+        onOpen={onOpen}
+        isOpen={isOpen}
+        payment={payment}
+      />
       </Flex>
        <Flex>
         {/* ------------Profile--------- */}
@@ -108,40 +130,14 @@ if(loading){
        <Myprofile/>
        </Box>
 {/* ------------payment---------------- */}
-        <Box mt='20px' w='40%' textAlign='left'>
-          <Text as='b'>Payment</Text>
-        <Accordion allowToggle>
-  <AccordionItem>
-    <h2>
-      <AccordionButton>
-        <Box as="span" flex='1' textAlign='left'>
-        Cash On Delivery
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-    </h2>
-    <AccordionPanel pb={4}>
-    <Checkbox >Payment By COD</Checkbox>
-    </AccordionPanel>
-  </AccordionItem>
-
-  <AccordionItem>
-    <h2>
-      <AccordionButton>
-        <Box as="span" flex='1' textAlign='left'>
-         Online Payment
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-    </h2>
-    <AccordionPanel pb={4}>
-     <Image src='https://t4.ftcdn.net/jpg/04/73/84/61/360_F_473846184_0k637f6855ZJqaulKqAmgJTEVGVibR1P.jpg' alt='online payment'/>
-     <Input isRequired placeholder='Enter UPI' size='sm' />
-     <Button bg='#8a3ab9' w='100%' onClick={handelPayment}>Pay</Button>
-    </AccordionPanel>
-  </AccordionItem>
-</Accordion>
-  
+        <Box w='50%' mt='20px' textAlign='left'>
+          {/* <Payment 
+          handelPayment={handelPayment} 
+          total={total}
+          onClose={onClose}
+          onOpen={onOpen}
+          isOpen={isOpen}
+          /> */}
         </Box>
        
        </Flex>

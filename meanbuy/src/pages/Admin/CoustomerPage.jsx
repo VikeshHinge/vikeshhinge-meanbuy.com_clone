@@ -12,8 +12,8 @@ const CoustomerPage = () => {
     const [Orders,setOrders] = useState([])
     
     const GetData = async() => {
-        let {data} = await axios.get('http://localhost:4040/user/allusers')
-        let order = await axios.get('http://localhost:4040/order/getallorders')
+        let {data} = await axios.get('https://busy-worm-jewelry.cyclic.app/user/allusers')
+        let order = await axios.get('https://busy-worm-jewelry.cyclic.app/order/getallorders')
 
         setUser(data)
         setUserOrder(order.data)
@@ -46,7 +46,7 @@ const CoustomerPage = () => {
        <Customer user={user} setuserProfile={setuserProfile}/>
        </Box>
 
-       <Box w='55%'>
+       <Box w='55%' h='fit-content' position='sticky' top='0'>
         <Text bg='orange'>Profile</Text>
         <Box>
             

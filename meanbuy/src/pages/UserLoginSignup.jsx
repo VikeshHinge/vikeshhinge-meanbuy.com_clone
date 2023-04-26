@@ -44,7 +44,7 @@ const UserAuth = () => {
            let input = document.querySelector('#email').focus()
         }
       else {
-       const {data} = await axios.post('http://localhost:4040/user/register',{email,password,name,contact})
+       const {data} = await axios.post('https://busy-worm-jewelry.cyclic.app//user/register',{email,password,name,contact})
        if(data.msg){
         toast({
           title:data.msg,
@@ -54,7 +54,7 @@ const UserAuth = () => {
           position:'top',
           isClosable: true,
         })
-        // setUsersignup(true)
+        //setUsersignup(false)
        }
       }
       

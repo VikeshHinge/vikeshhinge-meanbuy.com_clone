@@ -62,7 +62,7 @@ const options = {
 
 useEffect(()=>{
 const GetData = async() => {
-   let {data} =await axios.get('http://localhost:4040/order/getallorders')
+   let {data} =await axios.get('https://busy-worm-jewelry.cyclic.app/order/getallorders')
   //const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   let obj = {'January':0, 'February':0, 'March':0, 'April':0, 'May':0, 'June':0, 'July':0, 'August':0, 'September':0, 'October':0, 'November':0, 'December':0}

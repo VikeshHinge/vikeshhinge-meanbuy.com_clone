@@ -8,7 +8,7 @@ export const GetCartItem = async ()=> {
             "authorization": localStorage.getItem('token') 
         }
       }
-    let {data} = await axios.get(`http://localhost:4040/cart`,config)
+    let {data} = await axios.get(`https://busy-worm-jewelry.cyclic.app/cart`,config)
     return data;
 }
 
@@ -20,7 +20,7 @@ export const AddToCart = async(item) => {
             "authorization": localStorage.getItem('token') 
         }
       }
-    let data = await axios.post('http://localhost:4040/cart/addtocart',item,config)
+    let data = await axios.post('https://busy-worm-jewelry.cyclic.app/cart/addtocart',item,config)
     return data
 }
 
@@ -32,7 +32,7 @@ export const DeleteCart = async(id)=>{
             "authorization": localStorage.getItem('token') 
         }
       }
-  let {data} =  await axios.delete(`http://localhost:4040/cart/deletecart/${id}`,config)
+  let {data} =  await axios.delete(`https://busy-worm-jewelry.cyclic.app/cart/deletecart/${id}`,config)
 //   console.log(data)
 }
 
@@ -44,6 +44,6 @@ export const cartUpdate = async(id,value) => {
             "authorization": localStorage.getItem('token') 
         }
       };
-      let {data} = await axios.patch(`http://localhost:4040/cart/updatecart/${id}`,{value},config)
+      let {data} = await axios.patch(`https://busy-worm-jewelry.cyclic.app/cart/updatecart/${id}`,{value},config)
       return data._id
 }

@@ -71,8 +71,8 @@ const options = {
 
 useEffect(()=>{
 const GetData = async() => {
-   let  cart = await axios.get('http://localhost:4040/cart/getallcart')
-   let {data} =await axios.get('http://localhost:4040/order/getallorders')
+   let  cart = await axios.get('https://busy-worm-jewelry.cyclic.app/cart/getallcart')
+   let {data} =await axios.get('https://busy-worm-jewelry.cyclic.app/order/getallorders')
    
   //const AllProD = ['mens watch','Action Figures','Kitchen Wares','Home Decor','Disney','HandbagsClutches','Kitchen Wares','Toys','clothing','womens watch','electronics','Makeup Accessories','Gaming Accessories']
   let Allcategeries = {'mens watch':0,'Action Figures':0,'Kitchen Wares':0,'Home Decor':0,'Disney':0,'HandbagsClutches':0,'Kitchen Wares':0,'Toys':0,'clothing':0,'womens watch':0,'electronics':0,'Makeup Accessories':0,'Gaming Accessories':0}

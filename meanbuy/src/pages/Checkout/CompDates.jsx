@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {Box,Flex,Text,Image,Table,Tr,Th, Button,Square,Divider,Tbody,Thead,} from "@chakra-ui/react";
+import Payment from './Payment';
 
-
-const CompDates = ({handelOrder}) => {
+const CompDates = ({handelOrder,handelPayment,total,onClose,onOpen,isOpen,payment}) => {
 
     let dates = []
     let currentDate = new Date();
@@ -36,7 +36,14 @@ const CompDates = ({handelOrder}) => {
         <Divider mb='10px' mt='10px'/>
         <Text as='b'> Will Arrive On :{dates[3]}</Text>
         <Divider mb='10px' mt='10px'/>
-        <Button display='block' m='auto' bg='orange' w='90%' onClick={handelOrder}>Order Now</Button>
+     { payment?<Button display='block' m='auto' bg='orange' w='100%' onClick={handelOrder}>Order Now</Button>:
+        <Payment 
+          handelPayment={handelPayment} 
+          total={total}
+          onClose={onClose}
+          onOpen={onOpen}
+          isOpen={isOpen}
+          />}
       </Box>
   )
 }

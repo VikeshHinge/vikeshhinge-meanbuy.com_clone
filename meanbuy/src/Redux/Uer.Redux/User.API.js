@@ -6,7 +6,7 @@ export const GetUserInfo = async () =>{
             "authorization": localStorage.getItem('token') 
         }
       }
-     let {data} = await axios.get('http://localhost:4040/user/profile',config)
+     let {data} = await axios.get('https://busy-worm-jewelry.cyclic.app/user/profile',config)
      return data
 }
 
@@ -19,6 +19,6 @@ export const ProfileUpdate = async (body) => {
         }
       }
     let address=[body]
-   let {data} = await axios.patch('http://localhost:4040/user/updateuser',{address},config)
+   let {data} = await axios.patch('https://busy-worm-jewelry.cyclic.app/user/updateuser',{address},config)
     return address
 }

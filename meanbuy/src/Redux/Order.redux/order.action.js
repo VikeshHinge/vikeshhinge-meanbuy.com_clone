@@ -23,7 +23,7 @@ export const GetAllOrders = async(dispatch) => {
    dispatch({type:GET_LOADING})
    try{
       let data = await GetallOrder()
-      dispatch({type:GET_ORDER,payload:data})
+      dispatch({type:GET_ORDER,payload:{data}})
    }
    catch(err){
       dispatch({type:GET_ERROR,payload:err})

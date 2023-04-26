@@ -66,7 +66,7 @@ const options = {
 useEffect(()=>{
 const GetData = async() => {
     
-   let {data:{data}} =await axios.get('http://localhost:4040/product')
+   let {data:{data}} =await axios.get('https://busy-worm-jewelry.cyclic.app/product')
    //console.log(data)
   
    

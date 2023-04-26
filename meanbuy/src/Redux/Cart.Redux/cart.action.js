@@ -30,7 +30,7 @@ export const AddtoCart =(item)=>async (dispatch) => {
   // console.log(item)
   try{
    let {data} = await AddToCart (item)
-     alert(data.msg || data.sug)
+      data.sug && alert(data.sug)
      
     if(data.msg){
       dispatch({type:ADD_CART,payload:item,msg:data.msg || data.sug})
